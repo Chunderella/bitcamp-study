@@ -34,3 +34,4 @@ public class Exam0430 {
     System.out.println((char)('각' - 1));
   }
 }
+
