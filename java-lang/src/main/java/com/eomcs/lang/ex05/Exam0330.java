@@ -17,9 +17,14 @@ public class Exam0330 {
     // r = false
     System.out.printf("a=%b, b=%b, r=%b\n", a, b, r);
 
+    // 효율적 연산 && 앞에 있는 값으로 값을 유추할수 있으면 뒤에 값을 계산하지 않음
+
     a = false;
     b = false;
     r = a & (b = true);
+
+    //앞에값으로 예측할수 있더라도 뒤의 값을 계산한다.
+
     // 계산 순서
     // r = a & (b = true)
     // r = false & (b = true)
@@ -37,3 +42,6 @@ public class Exam0330 {
 // &, |
 // - 앞의 피연산자로 결과를 알 수 있을 지라도, 
 //   뒤에 놓은 명령까지 모두 실행한다.
+
+
+//시험문제 나옴

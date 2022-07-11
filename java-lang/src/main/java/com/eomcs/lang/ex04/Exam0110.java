@@ -9,8 +9,8 @@ package com.eomcs.lang.ex04;
 // - 변수를 선언한 후 바로 그 이름을 사용하여 메모리에 접근하고 값을 넣고 꺼낸다.
 // - 보통 "변수를 생성한다"라고 표현하기도 한다.
 // - 문법
-// 메모리의종류 메모리이름;
-// int a;
+//    메모리의종류 메모리이름;
+//    int a;
 //
 public class Exam0110 {
   public static void main(String[] args) {
@@ -34,6 +34,6 @@ public class Exam0110 {
 // - 보통 소문자로 시작한다.
 // - 대소문자를 구분한다.
 // - 여러 단어로 구성된 경우 두 번째 단어의 시작 알파벳은 대문자로 한다.
-// - 예) firstName, createdDate, userId
+// - 예) firstName, createdDate, userId -다음 단어의 시작은 대문자
 // - 상수인 경우 보통 모두 대문자로 이름을 짓는다. 단어와 단어 사이는 _를 사용한다.
 // - 예) USER_TYPE, USER_MANAGER

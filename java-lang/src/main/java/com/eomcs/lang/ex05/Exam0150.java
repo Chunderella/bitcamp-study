@@ -51,6 +51,7 @@ public class Exam0150 {
 
     // byte + short + int + long + float + double = double
     //long r10 = b + s + i + l + f + d; // 컴파일 오류!
+    //       형변환 ->    int + int + int + long + float + double = double
 
     // float + int + long = float
     //    long r11 = f + i + l; // 컴파일 오류!

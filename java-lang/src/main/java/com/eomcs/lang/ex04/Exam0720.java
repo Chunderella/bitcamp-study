@@ -4,7 +4,7 @@ package com.eomcs.lang.ex04;
 //
 class MyClass {
   int a = 11; // 인스턴스 변수
-  static int b = 22; // 클래스 변수
+  static int b = 22; // 클래스 변수 & 스태틱변수
 
   static void m1(int v1/*로컬변수=파라미터*/) {
     int v2; // 로컬 변수

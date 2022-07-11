@@ -17,6 +17,8 @@ public class Exam0434 {
       // 문법
       //   (char) 정수
       System.out.print(v + i);
+      //System.out.print((char)(v + i)); //문자값을 출력할 경우 (char) 명령어를 추가 (typecating)!!
+      System.out.print(' ');
     }
   }
 }

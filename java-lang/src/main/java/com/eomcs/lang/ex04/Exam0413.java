@@ -4,9 +4,9 @@ package com.eomcs.lang.ex04;
 //
 public class Exam0413 {  
   public static void main(String[] args) {
-    long l = 100;
-    int i = 100;
-    short s = 100;
+    long l = 100; //4byte
+    int i = 100;  //4byte
+    short s = 100; //2byte
     byte b = 100;
     char c = 100;
 
@@ -21,7 +21,7 @@ public class Exam0413 {
 
     // long ===> long 이상
     l2 = l;
-    //i2 = l; // 컴파일 오류
+    //i2 = l; // 컴파일 오류 (8byte메모리 자체를 4byte 메모리에 넣는것은 안됨)
     //s2 = l; // 컴파일 오류
     //b2 = l; // 컴파일 오류!
     //c2 = l; // 컴파일 오류!

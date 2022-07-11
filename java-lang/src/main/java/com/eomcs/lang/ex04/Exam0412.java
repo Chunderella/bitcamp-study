@@ -6,7 +6,7 @@ public class Exam0412 {
   public static void main(String[] args) {
 
     //4바이트 정수 리터럴 ==> byte, short 변수
-    //- 4바이트 리터럴인 경우 메모리 크기에 상관없이 저장할 수만 있다면 
+    //- 4바이트 리터럴인 경우 메모리 크기에 상관없이 저장할 수만 있다면, 
     //  byte(1바이트), short(2바이트) 메모리에 값을 저장해도 컴파일 오류가 발생하지 않는다. 
     //    
     byte b;

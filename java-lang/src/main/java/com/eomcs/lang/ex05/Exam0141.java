@@ -20,6 +20,7 @@ public class Exam0141 {
     // - 변수에 들어 있는 값을 다른 타입으로 바꿔라.
     //   "형변환(type conversion=type casting)"하라!
     r = (float)i / (float)j; // float / float = float
+    //i,j; 를 (float) 메모리에 저장한 후 계산 후 r에 저장 
     // i / j의 값은 2.5가 되고
     // r에 저장되는 것은 2.5이다.
     System.out.println(r);

@@ -11,7 +11,7 @@ public class Exam0930 {
     // 명시적 형변환을 통해 부동소수점의 값을 정수 메모리에 저장할 때
     // 소수점 이하의 값이 짤린다.
     //
-    // "명시적 형변환(explicit type conversion)"?
+    // "명시적 형변환(explicit type conversion = explicit type casting)"?
     // - 컴파일러에게 강제로 값을 넣을 것을 명령하는 것.
     //
     // float ==> int 
@@ -30,4 +30,4 @@ public class Exam0930 {
 // - 부동소수점을 정수로 변환 할 때  
 // - 문법
 //   변수 = (바꾸고자하는타입) 변수 또는 값;
-//
+//타입캐스팅(type casting)

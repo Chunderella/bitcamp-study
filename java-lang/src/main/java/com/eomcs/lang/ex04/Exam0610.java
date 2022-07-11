@@ -26,6 +26,8 @@ public class Exam0610 {
     final float PI = 3.14159f;
     final float MILE = 0.621371f;
 
+    //a: 상수 - 항시 똑같은 수/ final + 데이터 타입 (자료형 + 변수)
+    
 
   }
 }

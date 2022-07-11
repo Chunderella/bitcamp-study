@@ -5,9 +5,9 @@ package com.eomcs.lang.ex05;
 public class Exam0351 {
   public static void main(String[] args) {
 
-    System.out.println(57 % 2);
-    System.out.println(57 & 0b0000_0001);
-    System.out.println(57 & 1);
+    System.out.println(54 % 2);
+    System.out.println(54 & 0b0000_0001); /*실무에서 주로 이렇게 계산함 */
+    System.out.println(54 & 1);
     // % 연산은 나누기 연산을 수행해야 한다.
     // 나누기 연산은 여러 번의 계산을 수행하게 된다.
     // 그에 비해 & 비트 연산은 한 번만 하면 된다.
@@ -19,7 +19,7 @@ public class Exam0351 {
     // & 연산자를 이용하여 그 값의 하위 1비트 값만 추출하면 된다.
     // 예)
     //    0011 0110 (54)
-    //  & 0000 0001 (뒤의 1비트의 값을 추출)
+    //  & 0000 0001 (뒤의 1비트의 값을 추출) //(어떤 값에 0을 &하면 값을 차단한다. / 어떤 값에 1을 &하면 그대로 떨어짐 : 마스크효과)
     // --------------
     //    0000 0000 추출된 값은 0이다. 즉 나머지가 없다.
     //
