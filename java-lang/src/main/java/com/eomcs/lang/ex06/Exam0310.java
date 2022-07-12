@@ -11,7 +11,7 @@ public class Exam0310 {
     // 문법1:
     //      while (조건) 문장;
     // => 조건이 참인 동안 문장을 계속 실행한다.
-    while (count < 5) System.out.println(count++);
+    while (count < 5) System.out.println(count++); //count++ => 0~5에 도달할때까지
 
     System.out.println("---------------------------");
 

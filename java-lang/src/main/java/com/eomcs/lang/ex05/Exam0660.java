@@ -17,6 +17,7 @@ public class Exam0660 {
     System.out.println(--i); 
     // i = i - 1
     // System.out.println(4)
+    //먼저 하나를 빼고 값을 놓는다.
 
     System.out.println(i); // 4
 

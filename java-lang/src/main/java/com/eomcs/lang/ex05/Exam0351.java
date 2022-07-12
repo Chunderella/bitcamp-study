@@ -6,7 +6,7 @@ public class Exam0351 {
   public static void main(String[] args) {
 
     System.out.println(54 % 2);
-    System.out.println(54 & 0b0000_0001); /*실무에서 주로 이렇게 계산함 */
+    System.out.println(54 & 0b0000_0001); /*실무에서 주로 이렇게 계산함 */ //★★맨끝에 1비트만 추출한다.★★ = 1은 마스크 효과(통과) (0은 막는효과)
     System.out.println(54 & 1);
     // % 연산은 나누기 연산을 수행해야 한다.
     // 나누기 연산은 여러 번의 계산을 수행하게 된다.

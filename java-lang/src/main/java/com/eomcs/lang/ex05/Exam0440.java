@@ -1,13 +1,13 @@
 package com.eomcs.lang.ex05;
 
-//# 비트 연산자 : 응용 I
+//# 비트 연산자 : 응용 I★★★
 //
 public class Exam0440 {
   public static void main(String[] args) {
 
-    // i 변수에 들어있는 값을 순서대로 1바이트씩 잘라서
+    //★★★ i 변수에 들어있는 값을 순서대로 1바이트씩 잘라서★★★
     // a,b,c,d 변수에 넣은 다음 각 변수의 값을 16진수로 출력하라!
-    int i = 0x27a130ff;
+    int i = 0x27a130ff; // 0x27 / a130 / ff
     int a, b, c, d;
 
     System.out.println(i);
@@ -15,6 +15,7 @@ public class Exam0440 {
 
 
     // [00100111_10100001_00110000_11111111] => 27a130ff
+     // 1. 27을 가장 오른쪽으로 보내기 위해 i >>24를 함
 
     a = i >> 24;
     // [00000000_00000000_00000000_00100111]_10100001_00110000_11111111
@@ -48,6 +49,7 @@ public class Exam0440 {
     System.out.println(Integer.toHexString(c));
     System.out.println(Integer.toHexString(d));
 
-
+    //Integer : 정수값을 다루는 도구함 - toHexString - 정수를 다루는 도구 
+    
   }
 }

@@ -20,6 +20,6 @@ public class Exam0141 {
     //    else
     //      System.out.println("미성년입니다.");
 
-
+//==> 중괄호가 없기때문에 "성인입니다"가 문장의 끝
   }
 }

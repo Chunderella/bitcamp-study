@@ -28,6 +28,8 @@ public class Exam0620 {
     //    i = i - 1;
     //    System.out.println(temp);
 
+    //줄어들기 전에 i 값 -> 괄호안에 있는 값은 먼저 뺀다. -> 현재 i값이 아니라 임시변수에 넣어둔 1빼기 전의 i값을 표현
+
     System.out.println(i); // 4
 
   }

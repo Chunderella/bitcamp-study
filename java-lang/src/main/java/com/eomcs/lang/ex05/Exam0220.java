@@ -6,7 +6,7 @@ public class Exam0220 {
     double d1 = 987.6543;
     double d2 = 1.111111;
     System.out.println((d1 + d2) == 988.765411);
-    
+      //극한소수값보다 작거나 같게 만들기.
     // 결과는 false이다.
     // 이유?
     // - 부동소수점 값을 연산할 때 IEEE 754 명세에 따라 2진수로 바꿔 메모리에 담을 때 
@@ -71,5 +71,5 @@ public class Exam0220 {
     System.out.println(Math.abs((d1 + d2) - (x + y)) < EPSILON);
   }//결과값이 EPSILON보다 작으면 남은 절대값을 버린다.
 }
-
+//class : 도구함 / 메서드 명 : 도구 + (패키지명)
 //Math라는 도구함(클래스)에는 입력값을 받아서 음수면 양수 등 절대값을 만들어주는 것(abs: 도구 : 메서드&펑션) 

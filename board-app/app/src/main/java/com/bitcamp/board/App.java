@@ -15,20 +15,31 @@ public class App {
 
         java.util.Scanner keyboardInput = new java.util.Scanner(System.in);
 
+        //Scanner 라는 도구의 이름을 정한다. = new ~
+
+
+        String title = "";
+        String content = "";
+        String writer = "";
+        String password = "";
+        //변수가 초기화되면 더 바깥에 두면 됨
+        //String[] titles new String[1000]; //배열 for문이 있어야함.
 
         while (true) {
             System.out.println("메뉴:");
             System.out.println("  1:게시글 목록");
             System.out.println("  2:게시글 상세보기");
+            System.out.println("  3:게시글 등록");
             System.out.println();
-            System.out.print("메뉴를 선택하세요[1..2](0: 종료) ");
+            System.out.print("메뉴를 선택하세요[1..3](0: 종료) ");
 
            
-            int menuNo = keyboardInput.nextInt();
+            int menuNo = keyboardInput.nextInt(); //키보드에 입력한 숫자를 읽어라. -> 엔터를 칠때까지 blocking(엔터를 칠때까지 막음)
             keyboardInput.nextLine(); //입력한 숫자 뒤에 남아있는 줄바꿈 코드 제거
 
+           
             if (menuNo == 0) {
-            break;
+             break; //소속되어있는 반복문을 나가기. (반복문 & switch문을 찾아서 나감)
             }  else if (menuNo == 1) {
                 System.out.println("[게시글 목록]");
                 System.out.println("번호 제목 조회수 작성자 등록일");
@@ -53,14 +64,31 @@ public class App {
                 System.out.println("게시판 상세보기");
 
                 System.out.printf("번호:%d\n", 1);
-                System.out.printf("제목:%s\n", "제목입니다.");
-                System.out.printf("내용:%s\n", "내용입니다.");
+                System.out.printf("제목:%s\n", title);
+                System.out.printf("내용:%s\n", content);
                 System.out.printf("조회수:%d\n", 100);
-                System.out.printf("작성자:%s\n", "홍길동");
+                System.out.printf("작성자:%s\n", writer);
                 System.out.printf("등록일:%s\n", "2022-07-08");
+            } else if (menuNo == 3) {
+                System.out.println("[게시글 등록]");
+
+                System.out.print("제목? ");
+                title = keyboardInput.nextLine();
+
+                System.out.print("내용? ");
+                content = keyboardInput.nextLine();
+
+                System.out.print("작성자? ");
+                writer = keyboardInput.nextLine();
+
+                System.out.print("암호? ");
+                password = keyboardInput.nextLine();
+               
             } else {
                 System.out.println("메뉴 번호가 옳지 않습니다!");
             }
+
+            System.out.println(); //메뉴를 처리한 후 빈 줄 출력
         } //while 
 
         System.out.println("안녕히 가세요!");

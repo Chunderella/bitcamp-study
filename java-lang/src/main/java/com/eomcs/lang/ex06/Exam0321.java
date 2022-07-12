@@ -18,6 +18,7 @@ public class Exam0321 {
         sum += count;
       }
     }
+    //((count & 1(끝비트가 1비트 = 짝수))면 합쳐라(sum)
     System.out.printf("count=%d, sum=%d\n", count, sum);
 
     System.out.println("------------------------");

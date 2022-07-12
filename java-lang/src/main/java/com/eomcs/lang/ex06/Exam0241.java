@@ -11,8 +11,8 @@ public class Exam0241 {
     // => case 문자의 값으로 변수를 사용할 수 없다.
     // => 단 값이 변경되지 않는 final 변수라면 사용할 수 있다.
     //
-    final int GUEST = 0, MEMBER = 1, ADMIN = 2;
-
+    final int GUEST = 0, MEMBER = 1, ADMIN = 2; //case에는 변수를 쓸수 없기때문에 final을 써서 적어준다.
+//조회만 하는 코드기때문에 바꿀 수 없이 final을 붙인다.(조회용도)
     switch (level) {
       case GUEST:
         System.out.println("조회만 가능합니다.");

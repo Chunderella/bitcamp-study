@@ -11,7 +11,7 @@ public class Exam0331 {
     //      라벨: 문장;
     //      라벨: {문장1, 문장2, ...}
 
-    myloop:  
+    myloop:  // {
       while (x <= 9) {
 
         while (y <= 9) {
@@ -24,9 +24,9 @@ public class Exam0331 {
         System.out.println();
         x++;
         y = 1;
-      }
+      } //myloop 문장을 나간다. 바깥쪽 반복문을 나가고 싶다면 braak + 라벨 (중첩 반복문일 경우 탈출하는 방법)
     System.out.println("종료!!");
-
+// }
     System.out.println("-----------------------------");
   }
 }

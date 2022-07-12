@@ -8,7 +8,7 @@ public class Exam0410 {
     // for (변수선언 및 초기화; 조건; 증감문) {문장1; 문장2; ...}
 
     // for 문의 전형적인 예
-    for (int i = 1; i <= 5; i++)
+    for (int i = 1; i <= 5; i++) // ==>index
       System.out.println(i);
     // 실행 순서
     // 1) 변수초기화  => int i = 1

@@ -43,3 +43,13 @@ public class Exam0140 {
     }
   }
 }
+
+
+/*  if (age >= 19) {
+System.out.println("성인입니다.5"); }
+
+else {
+  System.out.println("미성년입니다.5");
+  System.out.println("--------------------------");
+} */
+// 구글방식 각 묶음마다 블록으로 묶기 -> 한문장이든 두분장이든 

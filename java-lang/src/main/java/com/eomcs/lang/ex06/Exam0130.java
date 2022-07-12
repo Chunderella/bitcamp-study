@@ -28,6 +28,8 @@ public class Exam0130 {
   }
 }
 
+// b == ture // b = ture 다르다. 값을 넣는 것과 값이 같다 
+
 
 
 

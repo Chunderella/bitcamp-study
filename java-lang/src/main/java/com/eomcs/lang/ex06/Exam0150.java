@@ -10,10 +10,10 @@ public class Exam0150 {
     // else는 가장 가까운 if에 소속된다.
     // 들여쓰기에 속지 말라!
     if (age >= 19)
-      if (age >= 70) 
+      if (age >= 70) /*if문 시작*/
         System.out.println("지하철 무임승차 가능합니다.");
       else  
-        System.out.println("미성년입니다.");
+        System.out.println("미성년입니다.");/*if문 끝*/
 
     System.out.println("------------------------------");
 

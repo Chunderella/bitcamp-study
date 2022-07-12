@@ -16,3 +16,5 @@ public class Exam0320 {
     System.out.printf("count=%d, sum=%d\n", count, sum);
   }
 }
+
+// int count = 1; 일경우에는 while (count<= 100)을 해야함 이경우 후위연산지 count++을 써야함
