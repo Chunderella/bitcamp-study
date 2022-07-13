@@ -25,7 +25,7 @@ public class Exam0162 {
       System.out.println("성인입니다.");
     } else {
       System.out.println("노인입니다.");
-
+    }
     keyScan.close();
   }
 }
