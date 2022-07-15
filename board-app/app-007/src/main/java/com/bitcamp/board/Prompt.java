@@ -4,7 +4,7 @@
 package com.bitcamp.board;
 
 public class Prompt {
-
+  
   static java.util.Scanner keyboardInput = new java.util.Scanner(System.in);
 
   static int inputInt() {
@@ -31,7 +31,3 @@ public class Prompt {
     keyboardInput.close();
   }
 }
-
-/*static void delete() {
- System.out.print()};
- */ 

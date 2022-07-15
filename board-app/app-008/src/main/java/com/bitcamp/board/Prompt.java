@@ -31,7 +31,3 @@ public class Prompt {
     keyboardInput.close();
   }
 }
-
-/*static void delete() {
- System.out.print()};
- */ 
