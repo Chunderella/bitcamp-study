@@ -19,7 +19,8 @@ public class Exam0251 {
     String[] arr = {"김구", "안중근", "윤봉길", "유관순"};
 
     // 가변 파라미터에 배열을 넘길 경우
-    hello(arr);
+    hello(arr); //배열 그자체를 받음. 
+
     System.out.println("-------------------");
 
     for (String value : arr) {

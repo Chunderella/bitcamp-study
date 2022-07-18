@@ -11,7 +11,7 @@ public class Exam0250 {
   //
   // 다음은 hello()를 호출할 때 String 값을 0개 이상 전달할 수 있다.
   static void hello(String... names) {
-    for (int i = 0; i < names.length; i++) {
+    for (int i = 0; i < names.length; i++) { //넘어온 갯수만큼 넘긴다.
       System.out.printf("%s님 반갑습니다.\n", names[i]);
     }
   }

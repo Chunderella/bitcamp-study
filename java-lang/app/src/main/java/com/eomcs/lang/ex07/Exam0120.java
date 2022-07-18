@@ -30,7 +30,7 @@ public class Exam0120 {
   static void printStars(int len) {
     for (int i = 0; i < len; i++) {
       System.out.print("*");
-    }
+    }//0114번 참고
   }
 
   public static void main(String[] args) {

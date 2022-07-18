@@ -22,6 +22,8 @@ public class Exam0114 {
 
   static int getSpaceLength(int totalStar, int displayStar) {
     return (totalStar - displayStar) / 2;
+    //0113. 1)을 더욱 가시적으로 볼 수 있도록 코드화
+
   }
 
   public static void main(String[] args) {
@@ -31,12 +33,14 @@ public class Exam0114 {
     keyScan.close();
 
     for (int starLen = 1; starLen <= len; starLen += 2) {
-      printSpaces(getSpaceLength(len, starLen));
+      printSpaces(getSpaceLength(len, starLen)); //출력할 공백 계산
+      //expression 메서드를 호출하는 문장
       printStars(starLen);
       System.out.println();
     }
   }
 }
+//리펙터링
 
 
 

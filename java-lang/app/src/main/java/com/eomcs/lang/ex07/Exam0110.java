@@ -5,6 +5,7 @@ import java.util.Scanner;
 //# 메서드 : 사용 전
 //
 public class Exam0110 {
+  //main - 메인 메서드(진입점)
   public static void main(String[] args) {
     Scanner keyScan = new Scanner(System.in);
     System.out.print("밑변의 길이? ");
@@ -15,7 +16,7 @@ public class Exam0110 {
     while (starLen <= len) {
       // 별 앞에 공백 출력
       int spaceCnt = 1;
-      int spaceLen = (len - starLen) / 2;
+      int spaceLen = (len - starLen) / 2; //입력받은 갯수 - 출력할 갯수 % 2
       while (spaceCnt <= spaceLen) {
         System.out.print(" ");
         spaceCnt++;

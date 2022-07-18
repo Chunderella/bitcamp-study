@@ -14,11 +14,15 @@ public class Exam0450 {
   public static void main(String[] args) {
     // 다음과 같이 작은 수를 계산 할 때는 재귀호출을 사용하는 것이
     // 코드도 간단하고 이해하기도 쉽다.
-    System.out.println(sum(500000));
+    System.out.println(sum(18900));
+
+    //메소드를 호출하기 위해 메서드를 만듬. 그렇기때문에 시간이 오래걸림.
+    //차라리 반복문을 통해 계산하는게 더 빠름.
+    //코드가 간결할때, 직관적일 때
   }
 }
 // JVM Stack 메모리의 사용
-// 0) 시작
+// 0) 시작ㄴ
 // 1) main()
 // 2) main() => sum(5) 
 //           => 5 + sum(4) 

@@ -13,6 +13,10 @@ public class Exam0330 {
     int a;
     int b;
   }
+  //class 는 
+  //new 명령을 실행할 때 만들어야 할 변수 :
+  //int 메모리를 만들고 이름을 a라고 해라.
+  //int 메모리를 만들고 이름을 b라고 해라.
 
   static void swap(MyObject ref) {
     System.out.printf("swap(): a=%d, b=%d\n", ref.a, ref.b);

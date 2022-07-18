@@ -30,7 +30,7 @@ public class Exam0280 {
     // 위의 문장은 다음과 같다.
     System.out.printf("100 + 200 = %d\n", plus(100, 200));
   }
-
+  // plus 라는 메서드 값 
   static int plus(int a, int b) {
     return a + b;
   }

@@ -10,6 +10,7 @@ public class Exam0610 {
     // - 형식
     // $java -cp ./bin/main -D이름=값 -D이름=값 -D이름=값 com.eomcs.basic.ex07.Exam0610
     //
+    //뒤에 적으면 메인 메서드로 들어감.
 
     // JVM 아규먼트의 값 꺼내기
     // => System.getProperty("이름");

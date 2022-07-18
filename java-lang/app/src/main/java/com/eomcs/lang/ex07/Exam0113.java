@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Exam0113 {
 
   static void printSpaces(int len) {
-    for (int i = 0; i < len; i++) {
+    for (int i = 0; i < len; i++) { //0부터 len 전까지 (변수 초기화 / 변수 비교 / 변수 담기)
       System.out.print(" ");
     }
   }
@@ -27,7 +27,7 @@ public class Exam0113 {
     keyScan.close();
 
     for (int starLen = 1; starLen <= len; starLen += 2) {
-      printSpaces((len - starLen) / 2);
+      printSpaces((len - starLen) / 2); //1)별 앞에 출력할 공백의 개수 계산
       printStars(starLen);
       System.out.println();
     }

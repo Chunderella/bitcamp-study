@@ -5,6 +5,9 @@ import java.util.Scanner;
 // 1단계: 공백 출력 코드를 메서드로 추출하기
 // 2단계: 별을 출력하는 코드를 메서드로 추출하기
 //
+
+//Exam0100 ~ Exam0112 ( while 문) // Exam0113 (for 문)
+
 public class Exam0112 {
 
   static void printSpaces(int len) {

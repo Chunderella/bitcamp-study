@@ -10,6 +10,7 @@ public class Exam0260 {
       System.out.printf("%s님 반갑습니다.\n", names[i]);
     }
   }
+  //파라미터 낱개로 전달할 수 있다.
 
   // 배열 파라미터
   static void hello2(String[] names) {
@@ -17,6 +18,7 @@ public class Exam0260 {
       System.out.printf("%s님 반갑습니다.\n", names[i]);
     }
   }
+  //반드시 배열을 줘야함.
 
   public static void main(String[] args) {
 
@@ -28,7 +30,7 @@ public class Exam0260 {
     // => 또는 다음과 같이 배열에 담아서 전달할 수도 있다.
     String[] arr = {"김구", "안중근", "윤봉길", "유관순"};
     hello(arr);
-    System.out.println("-------------------");
+    System.out.println("------------------");
 
     // 배열 파라미터의 메서드를 호출할 때는
     // => 가변 파라미터와 달리 낱개의 값을 여러 개 줄 수 없다!

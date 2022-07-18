@@ -9,11 +9,12 @@ public class Exam0270 {
   //       예) m1("aaa", "bbb", "aaa@test.com", "bbb@test.com");
   //       어느 값이 names 배열에 들어가고, 어느 값이 emails 배열에 들어가는가?
   //    static void m1(String... names, String... emails) {} // 컴파일 오류!
+  // 한 메서드당 한개만 선언 가능.
   //    static void m1(String[] names, String[] emails) {} // OK!
   //
   //    => 중간에 다른 타입이 온다 하더라도 안된다.
   //  static void m1(String... names, int a, String... emails) {}// 컴파일 오류!
-  //  static void m1(String[] names, int a, String[] emails) {} // OK!
+  //  static void m1(String[] names, int a, String[] emails) {} // OK! (배열은 가능)
   //
   // 위의 메서드는 값을 구분할 수 있을 것 같은데?
   // => 그냥 다음과 같이 호출하면 되는 것 아닌가?
@@ -30,7 +31,7 @@ public class Exam0270 {
   //  static void m2(String... names, String a) {} // 컴파일 오류!
   //  static void m2(boolean b, String... names, int a) {} // 컴파일 오류!
   static void m2(int a, String... names) {} // OK!
-
+  //가변 파라미터는 항상 맨 뒤에 들어가야함. 맨 앞/중간 불가능
   public static void main(String[] args) {
     // 컴파일 확인하라!
 
