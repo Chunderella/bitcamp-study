@@ -22,6 +22,7 @@ public class Exam0240 {
     Score[] arr = new Score[3];
 
     // 메서드에서 생성한 Score 객체를 레퍼런스 배열의 각 항목에 저장한다.
+    //factory 메서드
     arr[0] = createScore("홍길동", 100, 100, 100);
     arr[1] = createScore("임꺽정", 90, 90, 90);
     arr[2] = createScore("유관순", 80, 80, 80);

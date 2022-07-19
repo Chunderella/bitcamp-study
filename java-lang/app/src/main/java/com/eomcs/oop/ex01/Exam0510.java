@@ -26,7 +26,7 @@ public class Exam0510 {
   //   4) 익명 클래스(anonymous class)
   //
 
-  // 1) 스태틱 중첩 클래스
+  // 1) 스태틱 중첩 클래스 = inner class
   // - 이 클래스를 소유하고 있는 클래스 뿐만 아니라 다른 클래스도 사용할 수 있다.
   //
   // bin/main/com/eomcs/oop/ex01/Exam0510$B.class

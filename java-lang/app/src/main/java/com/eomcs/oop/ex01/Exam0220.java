@@ -31,12 +31,16 @@ public class Exam0220 {
     System.out.println(arr[1]);
     System.out.println(arr[2]);
 
+    boolean bb = false;
+    System.out.println(bb);
+
     System.out.println("------------------------");
 
     // 레퍼런스 배열의 각 항목에 인스턴스를 저장한 후 사용해야 한다.
     arr[0] = new Score();
     arr[1] = new Score();
     arr[2] = new Score();
+    //new Score를 통해 메모리가 생성
 
     System.out.println(arr[0]);
     System.out.println(arr[1]);
