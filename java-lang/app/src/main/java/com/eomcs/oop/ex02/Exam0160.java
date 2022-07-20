@@ -12,7 +12,7 @@ package com.eomcs.oop.ex02;
 //6) 패키지 멤버 클래스: 
 //     => 여러 곳에서 사용할 클래스라면 다른 클래스에 안에 두지 말고 
 //        패키지의 멤버 클래스로 둬라!
-// 
+// 스코어를 밖으로 뺌. (다른 클래스에서 쓸 수 있다.중첩 클래스: 클래스 안에서만 사용 => 패키지 맴버 클래스)
 public class Exam0160 {
 
   public static void main(String[] args) {

@@ -1,7 +1,11 @@
 package com.eomcs.oop.ex02;
 
 // # 관련된 기능(메서드)을 묶어 분류하기 - 클래스 메서드와 클래스 변수
-//
+//1) 분류 전
+//2) 클래스로 묶어 분류하기
+//3)
+//4) 클래스 변수의 한계 확인
+
 public class Exam0230 {
 
   static class Calculator {
@@ -12,10 +16,18 @@ public class Exam0230 {
     // - 클래스 변수는 new 명령으로 생성하지 않는다.
     // - 클래스가 메모리에 로딩될 때 자동으로 "Method Area" 영역에 생성된다.
     static int result = 0;
+    //스태틱 변수 
+
+    int plus2(int value) {
+      return value + 100;
+    }
 
     static void plus(int value) {
       // 메서드 작업 결과는 클래스 변수에 보관한다.
       result += value; // result = result + value
+      //클래스변수의 경우 이름을 앞에 붙이지 않아도 됨.
+      //static 에는 this가 없음 // 인스턴스변수만 this라는 내장 변수가 있음
+
     }
 
     static void minus(int value) {

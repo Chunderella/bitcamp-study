@@ -8,7 +8,8 @@ package com.eomcs.quiz.ex01;
 // - 관계 연산자 및 비트 연산자, 비트 이동 연산자 활용
 // - 반복문 활용
 // - 메서드 파라미터 및 리턴 값 다루기
-//
+////      [시간 복잡도]
+//==> 0(n), n은 비트 개수
 public class Test02 {
 
   public static void main(String[] args) {
@@ -21,13 +22,10 @@ public class Test02 {
 
   static int parity(int value) {
     int r = 0;
-
-    while (value !=0) {
-      r ^= 1;
-      value = value & (value -1);
-    }
     // 이 메서드를 완성하시오!
     return r;
   }
 
 }
+
+//시간복잡도 = O(n)

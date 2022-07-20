@@ -1,7 +1,8 @@
 package com.eomcs.oop.ex02;
 
 // # 관련된 기능(메서드)을 묶어 분류하기 : 분류 전
-//
+//1) 분류 전
+//2)
 public class Exam0210 {
 
   public static void main(String[] args) {

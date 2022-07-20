@@ -13,6 +13,7 @@ public class Score {
   public float aver;
 
   // 다른 패키지에서 메서드를 사용할 수 있도록 공개한다.
+  // 메모리를 다루는 연산자
   public void compute() {
     // 인스턴스 메서드를 호출할 때 넘겨준 인스턴스를 주소는
     // this 라면 내장 변수(built-in)에 보관된다.
