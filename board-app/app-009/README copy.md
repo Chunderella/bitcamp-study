@@ -1,4 +1,4 @@
-# 009. 리팩토링: 함수 추출
+# 009. 리팩토링: 함수 추출 및 함수 옮기기
 
 
 ## 작업 내용
@@ -35,3 +35,12 @@
 - com.bitcamp.board.App 클래스 변경
   - onBoardMenu() 메서드 추가
   - displayMenu() 메서드 제거: onBoardMenu()로 코드를 옮긴다.
+  - App02.java 로 백업
+
+### 3단계 - 리팩토링: 게시판 메뉴를 출력하는 메서드를 BoardHandler로 옮긴다.
+- com.bitcamp.board.App 클래스 변경
+  - onBoardMenu(), displayLine(), displayBlankLine() 메서드를 BoardHandler 로 옮긴다.
+- com.bitcamp.board.BoardHandler 클래스 변경
+  - onBoardMenu(), displayLine(), displayBlankLine() 메서드 추가
+  - displayLine() ==> displayHeadline() 이름 변경
+  - onBoardMenu() ==> execute() 이름 변경

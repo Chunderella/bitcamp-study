@@ -1,37 +1,42 @@
-# 009. 리팩토링: 함수 추출
+# 012. 인스턴스 목록을 다루는 코드를 분리: High Cohesion 구현(재사용성 강화)
 
 
 ## 작업 내용
 
-### 1단계 - 메뉴 구조를 변경한다.
+### 1단계 - BoardHandler에서 인스턴스 목록을 다루는 코드를 분리한다.
 
-```
-메뉴:
-  1: 게시판
-  2: 독서록
-  3: 방명록
-  4: 공지사항
-메뉴를 선택하세요[1..4](0: 종료) 1
-
-게시판:
-  1: 목록
-  2: 상세보기
-  3: 등록
-  4: 삭제
-  5: 변경
-메뉴를 선택하세요[1..5](0: 이전) 0
-
-메뉴:
-  1: 게시글
-  2: 독서록
-  3: 방명록
-  4: 공지사항
-메뉴를 선택하세요[1..4](0: 종료)
-```
+- com.bitcamp.board.BoardHandler 클래스 변경
+  - 목록과 관련된 필드를 BoardList 클래스로 옮긴다.
+  - 각 메서드에서 데이터 목록을 다루는 코드를 BoardList 클래스로 옮긴다.
+- com.bitcamp.board.BoardList 클래스 추가
 - com.bitcamp.board.App 클래스 변경
-  - App01.java 로 백업
+  - BoardHandler의 인스턴스를 만들어 다양한 게시판을 관리한다.
 
-### 2단계 - 리팩토링: 게시판 메뉴를 다루는 코드를 메서드로 추출한다.
+### 2단계 - 각 게시판의 제목을 따로 다룰 수 있게 한다.
+
+- com.bitcamp.board.BoardHandler 클래스 변경
+  - 게시판 제목을 저장할 인스턴스 필드 title을 추가한다.
+  - 게시판 제목을 출력할 수 있도록 관련 메서드를 변경한다.
 - com.bitcamp.board.App 클래스 변경
-  - onBoardMenu() 메서드 추가
-  - displayMenu() 메서드 제거: onBoardMenu()로 코드를 옮긴다.
+  - BoardHandler의 인스턴스를 만들 때 각 게시판에 대해 title 필드를 설정한다.
+
+### 3단계 - 게시판의 제목을 설정하지 않으면 쓸 수 없도록 제한을 가한다.
+
+- com.bitcamp.board.BoardHandler 클래스 변경
+  - 인스턴스를 생성활 때 게시판 제목을 저장하는 title 필드의 값을 반드시 입력하도록 생성자를 추가한다.
+  - 인스턴스 메서드가 제대로 작업할 수 있도록 인스턴스 필드를 유효한 값으로 설정하기 위해 생성자를 이용한다.
+
+### 4단계 - 리팩토링: 사용자의 명령을 처리하는 메서드의 이름을 적절하게 변경한다.
+
+- com.bitcamp.board.BoardHandler 클래스 변경
+  - processList() ==> onList()
+  - processDetail() ==> onDetail()
+  - processInput() ==> onInput()
+  - processDelete() ==> onDelete()
+  - processUpdate() ==> onUpdate();
+
+### 5단계 - 다양한 상황에서 사용할 생성자를 추가한다.
+
+- com.bitcamp.board.BoardHandler 클래스 변경
+  - Board() 기본 생성자 추가
+  - Board(int) 생성자 추가
