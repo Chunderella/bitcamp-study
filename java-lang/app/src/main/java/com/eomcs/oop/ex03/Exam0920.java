@@ -13,6 +13,15 @@ public class Exam0920 {
     int widthRes = 1920; // 해상도 너비
     int heightRes = 1080; // 해상도 높이
 
+    // 생성자가 없으면 기본 생성자를 만든다.
+    //    
+    //    public Monitor() {
+    //      bright = 50;
+    //      contrast = 50;
+    //      - - - 
+    //      
+    //  }
+
     void display() {
       System.out.println("----------------------------------");
       System.out.printf("밝기(%d)\n", this.bright);

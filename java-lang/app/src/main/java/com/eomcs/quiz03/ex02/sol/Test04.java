@@ -38,6 +38,8 @@ true if sequence represents a geometric progression,
 public class Test04 {
 
   public static void main(String[] args) {
+
+
     System.out.println(isGeometricProgression(new int[]{1,4,16}) == true);
     System.out.println(isGeometricProgression(new int[]{2,4,8,17,34}) == false);
 
@@ -52,7 +54,21 @@ public class Test04 {
     return true;
   }
 }
+/*
+int n = 1;
+long result = 1;
+for (int i = 1; i <= n; i++ ) {
+result *= i;
+System.out.printlf(result);
+while (result % 10) == 0) {
+zeros++;
+result /= 10;
+}
+System.out.println(zeros);
 
+}
+
+ */
 // 등비수열 예) 
 //   2, 4, 8, 16, 32, ...
 //   공비 => 2

@@ -16,7 +16,7 @@ public class Exam0220 {
     void m2() {
       // 인스턴스 메서드는 인스턴스 주소가 있어야만 호출되기 때문에
       // 인스턴스 주소를 받을 변수가 내장되어 있다.
-      this.value = 100;
+      this.value = 100; //this 는 obj1
     }
 
     void m3() {
@@ -26,6 +26,7 @@ public class Exam0220 {
     }
 
     void m4(int value) {
+      //value 라는 로컬 변수, 0번째 this // 1번째 value
       // 로컬 변수의 이름이 인스턴스 이름과 같을 경우 
       // this를 붙이지 않으면 로컬 변수를 가리킨다.
       value = 200; // 로컬 변수이다.

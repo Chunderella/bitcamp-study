@@ -38,4 +38,11 @@ public class Exam0850 {
   }
 }
 
-
+//
+//int b;
+//int c;
+//int a;
+//
+//b = 200;
+//a = 111;
+//a = 100;

@@ -1,10 +1,19 @@
-// 스태틱 초기화 블록(static initializer) - 변수 초기화 문장(variable initializer)
+// 스태틱 초기화 블록(static initializer) - ★★변수 초기화 문장(variable initializer)
 package com.eomcs.oop.ex03;
 
 public class Exam0670 {
 
   public static class A {
-    static int a = 100;
+    static int a = 100; //스태틱 변수가 생성되자마자 100이란 값을 넣는다.
+    //★★스태틱 블럭안에 첫번째에 삽입됨, 스태틱블럭이 없으면 생성하고 넣음★★ 
+    // 이 문장이 아래 문장으로 바뀐다.
+
+    /* static int a;
+    static { a = 100; }*/
+
+
+
+    //★★★★변수 초기화 문장 = "variable initializer"★★★★
     // 위 문장 해석:
     // 1) "클래스가 로딩될 때" int 타입의 메모리를 만들고 그 메모리의 이름을 'a'라고 하라.
     // 2) 'a'라는 변수가 생성된 후 100으로 초기화시켜라.

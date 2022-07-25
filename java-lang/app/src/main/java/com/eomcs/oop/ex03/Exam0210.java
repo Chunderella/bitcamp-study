@@ -10,6 +10,7 @@ public class Exam0210 {
     static void m1() {
       System.out.println("m1()");
     }
+    //static이 붙으면 이름을 호출 가능 / 인스턴스가 필요없음.
 
     //2) 인스턴스 메서드 = non-static 메서드
     //   => static 이 붙지 않은 메서드이다.

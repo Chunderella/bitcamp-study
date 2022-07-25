@@ -22,7 +22,7 @@ public class Exam0150 {
     Student.count = 0;
 
     // 인스턴스 필드는 new 명령을 수행해야지만 생성된다.
-    Student s1 = new Student();
+    Student s1 = new Student(); //인스턴스 필드를 만듬.(new)
     s1.name = "홍길동"; // 인스턴스 필드는 인스턴스의 주소(s1)가 있어야만 접근할 수 있다.
     s1.age = 10;
 

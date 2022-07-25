@@ -6,6 +6,11 @@ public class Exam0691 {
   static class A {
     static int a = 7;
 
+    //    static { 
+    //      a = 7
+    //    }
+    //    }
+
     static {
       System.out.println("A.static{}");
       a += B.b;
@@ -21,6 +26,10 @@ public class Exam0691 {
     }
   }
 
+
+  // Exam0691 로딩 - 1
+  // main 호출 - 2
+  //
   public static void main(String[] args) {
     System.out.println(A.a); // ?
     System.out.println(B.b); // ?

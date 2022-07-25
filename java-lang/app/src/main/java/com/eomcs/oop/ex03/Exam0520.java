@@ -34,4 +34,4 @@ public class Exam0520 {
   }
 }
 
-
+//Heap 메모리에 생성될때 자동으로 초기화됨

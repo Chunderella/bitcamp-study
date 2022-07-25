@@ -14,6 +14,8 @@ public class Exam0450 {
   public static void main(String[] args) {
     X obj1;
 
+
+    //다른 클래스기때문에 생성자를 호출할 수 없음. = new 명령으로 생성 불가
     // 생성자의 접근이 막혀있기 때문에 생성자를 호출할 수 없다.
     // 따라서 new 명령으로 객체를 생성할 수 없도록 만든다.
     //    obj1 = new X(); // 컴파일 오류!

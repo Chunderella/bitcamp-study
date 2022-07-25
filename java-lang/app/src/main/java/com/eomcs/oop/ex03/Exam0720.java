@@ -26,6 +26,8 @@ public class Exam0720 {
     public A() {
       a = 200;
       System.out.println("A() 생성자 호출");
+      /* a = 100; 컴파일러가 생성자 앞부분에 만듬.
+      System.out.println("인스턴스 초기화 블록 실행!");*/
     }
   }
 

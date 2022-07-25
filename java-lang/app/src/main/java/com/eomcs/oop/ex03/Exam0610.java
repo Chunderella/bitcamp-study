@@ -9,9 +9,9 @@ public class Exam0610 {
       System.out.println("Static{} 11111");
     }
 
-    static int a;
+    static int a; //스태틱 변수
 
-    static void m() {}
+    static void m() {} //스태틱 메소드
 
     // 클래스 로딩,
     // 1) 스태틱 필드를 만든다(Method Area)
@@ -36,7 +36,7 @@ public class Exam0610 {
     // 주의!
     // - 각각의 클래스는 딱 한 번만 로딩된다.
     // - 레퍼런스를 선언할 때는 클래스가 로딩되지 않는다.
-    // - 그래서 스태틱 초기화 블록이 실행되지 않는다.
+    // - 그래서 스태틱 초기화 블록(static initializer)이 실행되지 않는다.
     A obj1;
     A obj2;
 
