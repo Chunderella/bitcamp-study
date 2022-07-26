@@ -5,3 +5,4 @@ public class A {
     System.out.println("A.m1()");
   }
 }
+

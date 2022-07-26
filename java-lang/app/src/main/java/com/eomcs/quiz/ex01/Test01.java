@@ -25,8 +25,3 @@ public class Test01 {
   }
 
 }
-
-
-//while (value !=0);
-//r += (value & 1);
-//value >>>= 1;

@@ -9,6 +9,7 @@ public class CalculatorTest {
 
     com.eomcs.oop.ex05.x1.Calculator calculator = new com.eomcs.oop.ex05.x1.Calculator(); 
 
+    //Calculator 객체 생성 = 포함 관계
     Calculator2 upgradeCalculator = new Calculator2(calculator);
 
     upgradeCalculator.plus(100);

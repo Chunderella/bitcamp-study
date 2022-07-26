@@ -4,6 +4,9 @@ public class Calculator2 {
 
   // plus(), minus()는 기존의 Calculator 클래스에게 위임한다.
   com.eomcs.oop.ex05.x1.Calculator origin = new com.eomcs.oop.ex05.x1.Calculator();
+  //Calculator 객체에게 위임하기 = Calculator origin.
+
+  //  생성자에서 calculator 객체를 만든다.
 
   public void plus(int value) {
     // 이 클래스가 포함하고 있는 객체에게 실행을 위임한다.
@@ -24,6 +27,8 @@ public class Calculator2 {
     return origin.result;
   }
 }
+
+
 
 
 

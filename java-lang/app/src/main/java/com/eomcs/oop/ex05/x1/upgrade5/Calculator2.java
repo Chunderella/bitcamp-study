@@ -3,7 +3,7 @@ package com.eomcs.oop.ex05.x1.upgrade5;
 public class Calculator2 {
 
   // 의존 객체를 외부에서 주입받는다.
-  com.eomcs.oop.ex05.x1.Calculator origin;
+  com.eomcs.oop.ex05.x1.Calculator origin; // 품지 않고 외부에서 받음
 
   public Calculator2(com.eomcs.oop.ex05.x1.Calculator origin) {
     this.origin = origin;

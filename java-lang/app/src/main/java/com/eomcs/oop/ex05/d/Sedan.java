@@ -8,17 +8,24 @@ package com.eomcs.oop.ex05.d;
 // => 새 클래스에는 추가할 기능을 덧붙인다.
 public class Sedan extends Car {
 
+  // "Sedan을 통해서 Car의 기능을 쓸 수 있다."
+
+
+
   // 인스턴스 변수 추가
   public boolean sunroof;
   public boolean auto;
 
   public Sedan(String model, String maker, int capacity,
       boolean sunroof, boolean auto) {
-    this.model = model;
-    this.maker = maker;
-    this.capacity = capacity;
+    this.model = model; //Car의 기능
+    this.maker = maker; //Car의 기능
+    this.capacity = capacity; //Car의 기능
     this.sunroof = sunroof;
     this.auto = auto;
   }
 
 }
+
+
+//Car를 상속받은 Sadan.
