@@ -21,3 +21,7 @@ public class Exam0110 {
 }
 
 
+
+//String s1; ==> 인스턴스 주소를 담는 레퍼런스
+//s1 = new String("Hello");
+//String s2 = new String("Hello");

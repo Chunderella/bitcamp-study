@@ -13,5 +13,6 @@ public class Exam0112 {
     System.out.println(s2 instanceof String);
   }
 }
-
+//그 지정한 클래스에 인스턴스가 맞는지 확인하고 싶을때
+//instanceof ==> 오퍼레이터
 

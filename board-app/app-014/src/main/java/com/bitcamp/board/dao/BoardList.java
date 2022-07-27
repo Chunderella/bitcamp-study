@@ -73,7 +73,7 @@ public class BoardList {
 
     return true;
   }
-  //=============private를 통해 그 클래스 내부에서만 사용 제어=============
+
   private void grow() {
     int newSize = this.boards.length + (this.boards.length >> 1);
     Board[] newArray = new Board[newSize];

@@ -8,7 +8,8 @@ public class Exam0121 {
     String s2 = new String("HELLO");
 
     // equals()는 대소문자를 구분한다.
-    System.out.println(s1.equals(s2));
+    System.out.println(s1.equals(s2)); 
+
 
     // 대소문자 구분없이 문자열을 비교하고 싶다면,
     System.out.println(s1.equalsIgnoreCase(s2));

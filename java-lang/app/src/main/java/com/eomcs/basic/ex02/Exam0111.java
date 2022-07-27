@@ -19,3 +19,4 @@ public class Exam0111 {
 }
 
 
+//String은 문자열 비교가 아니다.

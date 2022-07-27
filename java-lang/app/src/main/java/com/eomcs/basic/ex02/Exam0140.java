@@ -6,6 +6,8 @@ public class Exam0140 {
     String s1 = new String("Hello");
 
     String s2 = s1.toString();
+
+    //String s2 = s1 해도된다.
     // Object.toString()은 "클래스명@해시값" 을 리턴한다.
     // String은 상속 받은 toString()을 오버라이딩 했다.
     // => this 주소를 그대로 리턴한다.
