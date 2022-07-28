@@ -53,7 +53,7 @@ public class BoardHandler {
         displayBlankLine();
         //메뉴를 입력했는데 오류가 있을 경우 catch가 실행되고 while 문 반복
       } catch (Throwable ex) {
-        System.out.printf("예외 발생: %s\n", ex.getMessage());
+        System.out.println("입력 값이 옳지 않습니다!");
       }
     } // 게시판 while
   }
@@ -85,20 +85,21 @@ public class BoardHandler {
 
   }
   //<<============================onDetail==============================>>
-  private void onDetail() throws Throwable {
+  private void onDetail() {
     System.out.printf("[%s 상세보기]\n", this.title);
 
 
     int  boardNo = 0; //로컬변수는 초기화 시킨 상태에서 사용하는 것이 좋음
     while (true) {
-
-      boardNo = Prompt.inputInt("조회할 게시글 번호? ");
-      break;
-
+      try {
+        boardNo = Prompt.inputInt("조회할 게시글 번호? ");
+        break;
+      }catch (Throwable ex) {
+        System.out.println("입력값이 옳지 않습니다.");
+      }
     }
     // 해당 번호의 게시글이 몇 번 배열에 들어 있는지 알아내기
-
-    Board board = this.boardList.get(boardNo); // get = 호출한 get
+    Board board = this.boardList.get(boardNo);
 
     // 사용자가 입력한 번호에 해당하는 게시글을 못 찾았다면
     if (board == null) {
@@ -113,9 +114,8 @@ public class BoardHandler {
     System.out.printf("작성자: %s\n", board.writer);
     Date date = new Date(board.createdDate);
     System.out.printf("등록일: %tY-%1$tm-%1$td %1$tH:%1$tM\n", date);
+
   }
-
-
   //<<==========================oninput================================>>
   private void onInput() {
     System.out.printf("[%s 등록]\n", this.title);
@@ -134,7 +134,7 @@ public class BoardHandler {
     System.out.println("게시글을 등록했습니다.");
   }
   //<<==========================================================>>
-  private void onDelete()  throws Throwable {
+  private void onDelete() {
     System.out.printf("[%s 삭제]\n", this.title);
 
 
@@ -153,12 +153,11 @@ public class BoardHandler {
     } else {
       System.out.println("해당 번호의 게시글이 없습니다!");
     }
-
   }
 
 
   //<<==========================================================>>
-  private void onUpdate() throws Throwable {
+  private void onUpdate() {
     System.out.printf("[%s 변경]\n", this.title);
 
     int boardNo = 0;
@@ -170,8 +169,6 @@ public class BoardHandler {
         System.out.println("입력 값이 옳지 않습니다!");
       }
     }
-    //=============try catch로 해결하는 예===================
-
     Board board = this.boardList.get(boardNo);
 
     if (board == null) {
@@ -190,7 +187,6 @@ public class BoardHandler {
     } else {
       System.out.println("변경 취소했습니다.");
     }
-
   }
 }
 

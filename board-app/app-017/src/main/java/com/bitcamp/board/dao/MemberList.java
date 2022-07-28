@@ -6,16 +6,13 @@ import com.bitcamp.util.ObjectList;
 // 회원 목록을 관리하는 역할
 //
 public class MemberList extends ObjectList {
-
-
-  //수퍼 클래스의 get() 메서드를 호출했을 때 예외가 발생하면,
-  // 서브 클래스의 get() 메서드에서 처리할 상황이 아니다.
-  // 서브 클래스의 get()을 호출한 쪽에 보고하는 것이 더 낫다.
-  // 이럴 경우 try ~ catch를 쓰지말고 메서드 선언부에 발생되는 예외를표시하라!
-
-
+  //인덱스 대신 이메일로 회원데이터를 찾을 수 있도록
+  //메서드를 추가한다.
+  //기존의 메서드와 같은 이름으로 지어서
+  //메서드 호출할 때 일관되게 사용할 수 있다.
+  // ==> 오버로딩(overloading)
   //<<==========================get================================>>
-  public Member get(String email) throws Throwable { //예외를 위임한다. "이 메서드를 호출한 쪽에 예외를 던진다." 
+  public Member get(String email) {
     for (int i = 0; i < size(); i++) {
       Member member = (Member) get(i);
       if (member.email.equals(email)) {
@@ -36,7 +33,7 @@ public class MemberList extends ObjectList {
   //메소드 이름도 같다.
   //overloading = 오버로딩
 
-  public boolean remove(String email) throws Throwable  {
+  public boolean remove(String email) {
     for (int i = 0; i < size(); i++) {
       Member member = (Member) get(i);
       if (member.email.equals(email)) {

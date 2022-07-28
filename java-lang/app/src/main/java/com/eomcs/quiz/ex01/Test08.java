@@ -13,23 +13,22 @@ package com.eomcs.quiz.ex01;
 //
 public class Test08 {
   public static void main(String[] args) {
-    //    System.out.println(multiply(5, 3) == 15);
-    //    System.out.println(multiply(17, 13) == 221);
+    System.out.println(multiply(5, 3) == 15);
+    System.out.println(multiply(17, 13) == 221);
   }
 
-  int a = 5; // 0101 ==> 010 ==> 01 ==> 맨끝 1비트 추출 ==> 오른쪽 이동 0
-  int b = 3; // 0011 ==> 0110 ==> 1100 ==> 오른쪽 이동 1000
-  int result = 0; // 0011 + 1100
-  while (a > 0) {
-    int x = a & 1;
-    if (x != 0) {
-      result = result + b;
-      a = a >>> 1;
-      b = b << 1;
+  static int multiply(int a, int b) {  
+    int result = 0; // 결과를 담을 변수
+    while (a > 0) { // b 값에 대해 곱할 값이 있으면 계속 계산을 수행한다.
+      int lsb = a & 1; // 곱할 값에서 최하위 비트 값을 꺼낸다.
+      if (lsb != 0) { // 최하위 비트 값이 있으면 b 값을 결과에 더한다.
+        result = result | b;
+      }
+      a = a >>> 1; // 곱합 값에서 다음 비트를 최하위 비트로 이동시킨다. 
+      b = b << 1; // b 값을 1비트 이동(곱하기 2)하여 다음 비트의 계산을 수행하도록 준비한다.
     }
-    System.out.println(result);
-    return
+    return result;
   }
 }
-}
+
 

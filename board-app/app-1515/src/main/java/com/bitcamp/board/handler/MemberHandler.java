@@ -22,25 +22,20 @@ public class MemberHandler {
       System.out.println("  5: 변경");
       System.out.println();
 
-      try {
-        int menuNo = Prompt.inputInt("메뉴를 선택하세요[1..5](0: 이전) ");
-        displayHeadline();
+      int menuNo = Prompt.inputInt("메뉴를 선택하세요[1..5](0: 이전) ");
+      displayHeadline();
 
-        switch (menuNo) {
-          case 0: return;
-          case 1: this.onList(); break;
-          case 2: this.onDetail(); break;
-          case 3: this.onInput(); break;
-          case 4: this.onDelete(); break;
-          case 5: this.onUpdate(); break;
-          default: System.out.println("메뉴 번호가 옳지 않습니다!");
-        }
-
-        displayBlankLine();
-
-      }catch (Throwable ex) { 
-        System.out.printf("예외 발생: %s\n", ex.getMessage());
+      switch (menuNo) {
+        case 0: return;
+        case 1: this.onList(); break;
+        case 2: this.onDetail(); break;
+        case 3: this.onInput(); break;
+        case 4: this.onDelete(); break;
+        case 5: this.onUpdate(); break;
+        default: System.out.println("메뉴 번호가 옳지 않습니다!");
       }
+
+      displayBlankLine();
     } // 게시판 while
   }
 
@@ -66,8 +61,7 @@ public class MemberHandler {
 
   }
 
-  private void onDetail() throws Throwable {
-
+  private void onDetail() {
     System.out.println("[회원 상세보기]");
 
     String email = Prompt.inputString("조회할 회원 이메일? ");
@@ -98,11 +92,10 @@ public class MemberHandler {
 
     this.memberList.add(member);
 
-    System.out.println("회원을 등록했습니다.");
+    System.out.println("회워을 등록했습니다.");
   }
 
-  private void onDelete()  throws Throwable{
-
+  private void onDelete() {
     System.out.println("[회원 삭제]");
 
     String email = Prompt.inputString("삭제할 회원 이메일? ");
@@ -112,10 +105,9 @@ public class MemberHandler {
     } else {
       System.out.println("해당 이메일의 회원이 없습니다!");
     }
-
   }
 
-  private void onUpdate() throws Throwable {
+  private void onUpdate() {
     System.out.println("[회원 변경]");
 
     String email = Prompt.inputString("변경할 회원 이메일? ");
@@ -138,7 +130,6 @@ public class MemberHandler {
     } else {
       System.out.println("변경 취소했습니다.");
     }
-
   }
 }
 

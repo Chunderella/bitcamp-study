@@ -10,7 +10,7 @@ package com.eomcs.quiz.ex01;
 // - 메서드 파라미터 및 리턴 값 다루기
 // [시간 복잡도]
 // - ?
-public class Test02 {
+public class Test0201 {
 
   public static void main(String[] args) {
     int p = parity(0b01100011);
@@ -22,8 +22,6 @@ public class Test02 {
 
   static int parity(int value) {
     int r = 0;
-
-    while (value != 0);
     // 이 메서드를 완성하시오!
     return r;
   }
