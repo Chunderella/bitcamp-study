@@ -9,17 +9,17 @@ public class App {
   public static void main(String[] args) {
     welcome();
 
-    //인스턴스를 생성할 때 생성자가 원하는값을 반드시 줘야 한다.
+    // 인스턴스를 생성할 때 생성자가 원하는 값을 반드시 줘야 한다.
     // 주지 않으면 컴파일 오류이다!
+    //
     BoardHandler boardHandler = new BoardHandler(100);
-    BoardHandler readingdHandler = new BoardHandler("독서록");;
+    BoardHandler readingHandler = new BoardHandler("독서록");
     BoardHandler visitHandler = new BoardHandler("방명록");
     BoardHandler noticeHandler = new BoardHandler("공지사항");
     BoardHandler diaryHandler = new BoardHandler("일기장");
 
-
-
     loop: while (true) {
+
       // 메인 메뉴 출력
       System.out.println("메뉴:");
       System.out.println("  1: 게시판");
@@ -28,27 +28,27 @@ public class App {
       System.out.println("  4: 공지사항");
       System.out.println("  5: 일기장");
       System.out.println();
-      int mainmenuNo = Prompt.inputInt("메뉴를 선택하세요[1..4](0: 종료) ");
+      int mainMenuNo = Prompt.inputInt("메뉴를 선택하세요[1..5](0: 종료) ");
 
-      switch (mainmenuNo) { 
+      switch (mainMenuNo) {
         case 0: break loop;
-        case 1: //게시판
+        case 1: // 게시판
           boardHandler.execute();
           break;
-        case 2: //독서록
-          readingdHandler.execute();
+        case 2: // 독서록
+          readingHandler.execute();
           break;
-        case 3: //방명록1
+        case 3: // 방명록
           visitHandler.execute();
           break;
-        case 4: //공지사항
+        case 4: // 공지사항
           noticeHandler.execute();
           break;
-        case 5: //일기장
+        case 5: // 일기장
           diaryHandler.execute();
           break;
         default: System.out.println("메뉴 번호가 옳지 않습니다!");
-      } //switch
+      } // switch
 
 
     } // while
@@ -64,3 +64,10 @@ public class App {
     System.out.println();
   }
 }
+
+
+
+
+
+
+

@@ -19,9 +19,9 @@ public class Exam0510 {
 
   public static void main(String[] args) {
     try {
-      m(0);
+      m(4);
       System.out.println("try");
-
+      // return; 리턴(나가기) 전에 파이널리를 실행한다.
     } catch (RuntimeException | SQLException | IOException e) {
       System.out.println("catch 1");
 

@@ -37,3 +37,5 @@ public class Exam0630 {
   }
 
 }
+
+//try 안에는 변수선언만 넣을 수 있음.

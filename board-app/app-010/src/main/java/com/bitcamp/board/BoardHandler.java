@@ -23,10 +23,9 @@ public class BoardHandler {
       System.out.println();
 
       int menuNo = Prompt.inputInt("메뉴를 선택하세요[1..5](0: 이전) ");
-      displayHeadLine();
+      displayHeadline();
 
-      switch (menuNo) { 
-
+      switch (menuNo) {
         case 0: return;
         case 1: BoardHandler.processList(); break;
         case 2: BoardHandler.processDetail(); break;
@@ -37,10 +36,10 @@ public class BoardHandler {
       }
 
       displayBlankLine();
-    } //게시판 while
+    } // 게시판 while
   }
 
-  static void displayHeadLine() {
+  static void displayHeadline() {
     System.out.println("=========================================");
   }
 
@@ -106,19 +105,20 @@ public class BoardHandler {
 
     // 배열의 크기를 초과하면 배열 크기를 50% 증가시킨다.
     if (boardCount == boards.length) {
-      //새로 만들 배열의 크기를 계산한다.
+
+      // 새로 만들 배열의 크기를 계산한다.
       int newSize = boards.length + (boards.length >> 1);
-      //int newSize = boards.length + (boards.length / 2); = 기존의 개수 나누기 2
-      //새 배열 준비
+
+      // 새 배열 준비
       Board[] newArray = new Board[newSize];
-      //기존 배열의 값을 새 배열에 넣는다
-      for (int i = 0; i <boards.length; i ++) {
+
+      // 기존 배열의 값을 새 배열에 넣는다.
+      for (int i = 0; i < boards.length; i++) {
         newArray[i] = boards[i];
       }
 
-      //기존 배열(주소)을 버리고 새배열(주소)를 사용한다.
+      // 기존 배열(주소)을 버리고 새 배열(주소)을 사용한다.
       boards = newArray;
-
     }
 
     Board board = new Board();

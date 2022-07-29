@@ -23,10 +23,9 @@ public class BoardHandler {
       System.out.println();
 
       int menuNo = Prompt.inputInt("메뉴를 선택하세요[1..5](0: 이전) ");
-      displayHeadLine();
+      displayHeadline();
 
-      switch (menuNo) { 
-
+      switch (menuNo) {
         case 0: return;
         case 1: BoardHandler.processList(); break;
         case 2: BoardHandler.processDetail(); break;
@@ -37,10 +36,10 @@ public class BoardHandler {
       }
 
       displayBlankLine();
-    } //게시판 while
+    } // 게시판 while
   }
 
-  static void displayHeadLine() {
+  static void displayHeadline() {
     System.out.println("=========================================");
   }
 

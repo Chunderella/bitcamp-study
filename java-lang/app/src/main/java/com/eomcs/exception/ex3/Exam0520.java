@@ -19,7 +19,8 @@ public class Exam0520 {
 
   public static void main(String[] args) throws Exception {
     try {
-      m(1);
+      m(0); 
+      System.out.println("try");
       // m()에서 발생된 예외는
       // try 블록에서 받지 않는다.
       // 따라서 main() 호출자에게 위임한다.
@@ -36,5 +37,5 @@ public class Exam0520 {
     // - 그러나 이 메서드를 호출하는 동안 사용한 자원은 이 메서드를 종료하기 전에 해제시킨다.
     //
   }
-
 }
+//예외처리를 호출자에게 맡기더라도 작업한 작업물을 해제시키고 나갈때주로씀

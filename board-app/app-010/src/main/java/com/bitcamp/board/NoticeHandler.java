@@ -5,12 +5,12 @@ package com.bitcamp.board;
 
 public class NoticeHandler {
 
-  static int boardCount = 0; 
+  static int boardCount = 0; // 저장된 게시글의 개수
 
-  static final int DEFAULT_SIZE = 3;
+  static final int SIZE = 3;
 
-
-  static Board[] boards = new Board[DEFAULT_SIZE];
+  // Board 인스턴스의 주소를 저장할 레퍼런스 배열을 만든다.
+  static Board[] boards = new Board[SIZE];
 
   static void execute() {
     while (true) {
@@ -23,10 +23,9 @@ public class NoticeHandler {
       System.out.println();
 
       int menuNo = Prompt.inputInt("메뉴를 선택하세요[1..5](0: 이전) ");
-      displayHeadLine();
+      displayHeadline();
 
-      switch (menuNo) { 
-
+      switch (menuNo) {
         case 0: return;
         case 1: NoticeHandler.processList(); break;
         case 2: NoticeHandler.processDetail(); break;
@@ -37,10 +36,10 @@ public class NoticeHandler {
       }
 
       displayBlankLine();
-    } //게시판 while
+    } // 게시판 while
   }
 
-  static void displayHeadLine() {
+  static void displayHeadline() {
     System.out.println("=========================================");
   }
 
@@ -74,7 +73,7 @@ public class NoticeHandler {
   static void processDetail() {
     System.out.println("[공지사항 상세보기]");
 
-    int boardNo = Prompt.inputInt("조회할 게시물 번호? ");
+    int boardNo = Prompt.inputInt("조회할 게시글 번호? ");
 
     // 해당 번호의 게시글이 몇 번 배열에 들어 있는지 알아내기
     Board board = null;
@@ -87,7 +86,7 @@ public class NoticeHandler {
 
     // 사용자가 입력한 번호에 해당하는 게시글을 못 찾았다면
     if (board == null) {
-      System.out.println("해당 번호의 독서록이 없습니다!");
+      System.out.println("해당 번호의 게시글이 없습니다!");
       return;
     }
 
@@ -104,10 +103,11 @@ public class NoticeHandler {
   static void processInput() {
     System.out.println("[공지사항 등록]");
 
+    // 배열의 크기를 초과하면 배열 크기를 50% 증가시킨다.
     if (boardCount == boards.length) {
       int newSize = boards.length + (boards.length >> 1);
       Board[] newArray = new Board[newSize];
-      for (int i = 0; i <boards.length; i ++) {
+      for (int i = 0; i < boards.length; i++) {
         newArray[i] = boards[i];
       }
       boards = newArray;

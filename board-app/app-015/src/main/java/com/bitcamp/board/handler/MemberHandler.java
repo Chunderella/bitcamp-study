@@ -11,7 +11,7 @@ import com.bitcamp.util.Prompt;
 public class MemberHandler {
 
   private MemberList memberList = new MemberList();
-  //<<==========================================================>>
+
   public void execute() {
     while (true) {
       System.out.println("회원:");
@@ -38,7 +38,7 @@ public class MemberHandler {
       displayBlankLine();
     } // 게시판 while
   }
-  //<<==========================================================>>
+
   private static void displayHeadline() {
     System.out.println("=========================================");
   }
@@ -46,7 +46,7 @@ public class MemberHandler {
   private static void displayBlankLine() {
     System.out.println(); 
   }
-  //<<==========================================================>>
+
   private void onList() {
     System.out.println("[회원 목록]");
     System.out.println("이메일 이름");
@@ -60,12 +60,11 @@ public class MemberHandler {
     }
 
   }
-  //<<==========================================================>>
+
   private void onDetail() {
     System.out.println("[회원 상세보기]");
 
-
-    String email = Prompt.inputString("조회할 회원 번호? ");
+    String email = Prompt.inputString("조회할 회원 이메일? ");
 
     Member member = this.memberList.get(email);
 
@@ -74,14 +73,13 @@ public class MemberHandler {
       return;
     }
 
-    System.out.printf("번호: %d\n", member.no);
     System.out.printf("이름: %s\n", member.name);
     System.out.printf("이메일: %s\n", member.email);
     Date date = new Date(member.createdDate);
     System.out.printf("등록일: %tY-%1$tm-%1$td %1$tH:%1$tM\n", date);
 
   }
-  //<<==========================================================>>
+
   private void onInput() {
     System.out.println("[회원 등록]");
 
@@ -96,9 +94,9 @@ public class MemberHandler {
 
     System.out.println("회워을 등록했습니다.");
   }
-  //<<==========================================================>>
+
   private void onDelete() {
-    System.out.println("[회원 이메일]");
+    System.out.println("[회원 삭제]");
 
     String email = Prompt.inputString("삭제할 회원 이메일? ");
 
@@ -108,7 +106,7 @@ public class MemberHandler {
       System.out.println("해당 이메일의 회원이 없습니다!");
     }
   }
-  //<<==========================================================>>
+
   private void onUpdate() {
     System.out.println("[회원 변경]");
 

@@ -3,32 +3,32 @@ package com.eomcs.exception.ex3;
 
 public class Exam0641 {
 
-  static class B implements AutoCloseable {
-
+  static class B implements AutoCloseable { //요구조건
     public void m(int value) throws Exception {
       if (value < 0) {
-        throw new Exception("음수입니다!");
+        throw new Exception("음수입니다!"); 
       }
-      System.out.println("m() 호출!");
+      System.out.println("m() 호출!");    //2
     }
 
+    //요구조건 채우기
     @Override
     public void close() throws Exception {
-      System.out.println("close() 호출!");
+      System.out.println("close() 호출!"); //4  // 1-2
     }
   }
 
   public static void main(String[] args) {
     try (B obj = new B() /* 마지막 문장에는 세미콜론을 붙이지 않아도 된다. */) {
-      System.out.println("try 블록 실행...시작");
+      System.out.println("try 블록 실행...시작");  //1  // 1-1
       obj.m(-100);
       // 예외가 발생하면 try{} 블록을 나가기 전에 close()가 먼저 호출된다.
 
-      System.out.println("try 블록 실행...종료");
+      System.out.println("try 블록 실행...종료"); //3
 
     } catch (Exception e) {
       // close()가 호출된 후 catch 블록이 실행된다.
-      System.out.println("예외 발생!: " + e.getMessage());
+      System.out.println("예외 발생!: " + e.getMessage());  // 1-3
     }
   }
 }

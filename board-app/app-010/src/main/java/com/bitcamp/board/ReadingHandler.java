@@ -5,12 +5,11 @@ package com.bitcamp.board;
 
 public class ReadingHandler {
 
-  static int boardCount = 0; 
+  static int boardCount = 0; // 
 
-  static final int DEFAULT_SIZE = 3;
+  static final int SIZE = 3;
 
-
-  static Board[] boards = new Board[DEFAULT_SIZE];
+  static Board[] boards = new Board[SIZE];
 
   static void execute() {
     while (true) {
@@ -23,10 +22,9 @@ public class ReadingHandler {
       System.out.println();
 
       int menuNo = Prompt.inputInt("메뉴를 선택하세요[1..5](0: 이전) ");
-      displayHeadLine();
+      displayHeadline();
 
-      switch (menuNo) { 
-
+      switch (menuNo) {
         case 0: return;
         case 1: ReadingHandler.processList(); break;
         case 2: ReadingHandler.processDetail(); break;
@@ -37,10 +35,10 @@ public class ReadingHandler {
       }
 
       displayBlankLine();
-    } //게시판 while
+    } // 게시판 while
   }
 
-  static void displayHeadLine() {
+  static void displayHeadline() {
     System.out.println("=========================================");
   }
 
@@ -74,7 +72,7 @@ public class ReadingHandler {
   static void processDetail() {
     System.out.println("[독서록 상세보기]");
 
-    int boardNo = Prompt.inputInt("조회할 게시물 번호? ");
+    int boardNo = Prompt.inputInt("조회할 게시글 번호? ");
 
     // 해당 번호의 게시글이 몇 번 배열에 들어 있는지 알아내기
     Board board = null;
@@ -106,19 +104,12 @@ public class ReadingHandler {
 
     // 배열의 크기를 초과하면 배열 크기를 50% 증가시킨다.
     if (boardCount == boards.length) {
-      //새로 만들 배열의 크기를 계산한다.
       int newSize = boards.length + (boards.length >> 1);
-      //int newSize = boards.length + (boards.length / 2); = 기존의 개수 나누기 2
-      //새 배열 준비
       Board[] newArray = new Board[newSize];
-      //기존 배열의 값을 새 배열에 넣는다
-      for (int i = 0; i <boards.length; i ++) {
+      for (int i = 0; i < boards.length; i++) {
         newArray[i] = boards[i];
       }
-
-      //기존 배열(주소)을 버리고 새배열(주소)를 사용한다.
       boards = newArray;
-
     }
 
     Board board = new Board();

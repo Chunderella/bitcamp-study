@@ -18,11 +18,11 @@ public class Exam0212 {
   }
 
   // 메서드의 throws 에 선언할 수 있는 클래스는 Throwable 타입만 가능한다.
-  static void m3() throws String {
-    throw new String(); // 컴파일 오류!
-    // throw 로 던질 수 있는 객체는 오직 java.lang.Throwable 타입만 가능하다.
-  }
+  static void m3() throws String //Throwable 객체만 선언할 수 있다.{
+  throw new String(); // 컴파일 오류!
+  // throw 로 던질 수 있는 객체는 오직 java.lang.Throwable 타입만 가능하다.
+}
 
-  public static void main(String[] args) {}
+public static void main(String[] args) {}
 
 }

@@ -8,7 +8,9 @@ public class App01 {
 
   public static void main(String[] args) {
     welcome();
+
     loop: while (true) {
+
       // 메인 메뉴 출력
       System.out.println("메뉴:");
       System.out.println("  1: 게시판");
@@ -16,18 +18,17 @@ public class App01 {
       System.out.println("  3: 방명록");
       System.out.println("  4: 공지사항");
       System.out.println();
-      int mainmenuNo = Prompt.inputInt("메뉴를 선택하세요[1..4](0: 종료) ");
+      int mainMenuNo = Prompt.inputInt("메뉴를 선택하세요[1..4](0: 종료) ");
 
-      switch (mainmenuNo) { 
+      switch (mainMenuNo) {
         case 0: break loop;
-        case 1: //게시판
+        case 1: // 게시판
           board_loop: while (true) {
             displayMenu();
             int menuNo = Prompt.inputInt("메뉴를 선택하세요[1..5](0: 이전) ");
             displayLine();
 
-            switch (menuNo) { 
-
+            switch (menuNo) {
               case 0: break board_loop;
               case 1: BoardHandler.processList(); break;
               case 2: BoardHandler.processDetail(); break;
@@ -38,16 +39,16 @@ public class App01 {
             }
 
             displayBlankLine();
-          } //게시판 while
+          } // 게시판 while
           break;
-        case 2: //독서록
+        case 2: // 독서록
           break;
-        case 3: //방명록
+        case 3: // 방명록
           break;
-        case 4: //공지사항
+        case 4: // 공지사항
           break;
         default: System.out.println("메뉴 번호가 옳지 않습니다!");
-      } //switch
+      } // switch
 
 
     } // while
