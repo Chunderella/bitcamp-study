@@ -1,4 +1,4 @@
-// 예외 처리 전 - 1단계 : 수동으로 자원 해제 close()
+// 예외 처리 전 - 2) finally {} 를 이용하여 자원 해제를 자동화 하기
 package com.eomcs.exception.ex5;
 
 import java.sql.Date;
@@ -7,34 +7,34 @@ import java.util.Scanner;
 public class Exam0111 {
 
   static Board read() {
-    Scanner keyScan = new Scanner(System.in);
-    Board board = new Board();
 
-    System.out.print("번호> ");
-    board.setNo(Integer.parseInt(keyScan.nextLine()));
+    Scanner keyScan = null;
 
-    System.out.print("제목> ");
-    board.setTitle(keyScan.nextLine());
+    try {
+      keyScan = new Scanner(System.in);
 
-    System.out.print("내용> ");
-    board.setContent(keyScan.nextLine());
+      Board board = new Board();
 
-    System.out.print("등록일> ");
-    board.setCreatedDate(Date.valueOf(keyScan.nextLine()));
+      System.out.print("번호> ");
+      board.setNo(Integer.parseInt(keyScan.nextLine()));
 
-    keyScan.close(); //개발자가 직접 자원을 해제시킨다.
-    // "주의"
-    // ==>close() 호출하기 전에 예외가 발생한다면,
-    // Scanner 자원이 해제되지 못한다.
-    // "해결책"
-    // ==> 정상적으로 실행되든 예외가 발생하든지 간에
-    // 무조건 close()가 실행되게 만들라!
-    // "어떻게?"
-    //finally{}에 자원 해제 시키는 코드를 담아라!
-    return board;
-  } 
+      System.out.print("제목> ");
+      board.setTitle(keyScan.nextLine());
 
-  //read가 리턴한 board의 값을 받아서 출력한다.
+      System.out.print("내용> ");
+      board.setContent(keyScan.nextLine());
+
+      System.out.print("등록일> ");
+      board.setCreatedDate(Date.valueOf(keyScan.nextLine()));
+
+      return board;
+
+    } finally { 
+      // 정상적으로 실행하든 예외가 발생하든지 간에 무조건 close()를 실행한다.
+      keyScan.close();
+      System.out.println("Scanner 자원을 해제시켰다.");
+    }
+  }
 
   public static void main(String[] args) {
     Board board = read();

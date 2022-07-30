@@ -12,13 +12,11 @@ public class Exam0640 {
     }
   }
 
-  static class C implements AutoCloseable { //이행하다(implements) , (닫기)AutoCloseable
-    //AutoCloseable라는 규칙을 시행한다. (요구 조건을 채운다.)
-
+  static class C implements AutoCloseable {
     @Override
-    public void close() throws Exception { //클래스에서 AutoCloseable의 요구조건을 채움 = close
+    public void close() throws Exception {
       System.out.println("C 클래스의 자원을 해제하였습니다.");
-    }//이메서드가 호출됨  = try 블럭을 나가면 자동으로 호출되도록 함.
+    }
   }
 
   public static void main(String[] args) throws Exception {

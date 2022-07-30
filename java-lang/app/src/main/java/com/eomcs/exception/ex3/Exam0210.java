@@ -10,6 +10,8 @@ public class Exam0210 {
   //
   // java.lang.Throwable
   // => Throwable에는 두 부류의 서브 클래스가 있다.
+
+
   // 1) java.lang.Error (시스템 오류)
   //    => JVM에서 발생된 오류이다.
   //    => 개발자가 사용하는 클래스가 아니다.

@@ -14,7 +14,7 @@ public class Exam0650 {
   }
 
   public static void main(String[] args) throws Exception {
-    B obj2 = null;// 변수선언은 괄호 안에서 해야함.
+    B obj2 = null;
 
     try (
         obj2 = new B(); // 컴파일 오류!
