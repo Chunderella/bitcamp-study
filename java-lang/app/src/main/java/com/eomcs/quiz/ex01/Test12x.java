@@ -38,7 +38,7 @@ x coordinate of the center of the circle
 [input] integer yc
 y coordinate of the center of the circle
 
-[input] integer rc
+[input] integer rc 
 the radius of the circle
 
 [output] boolean

@@ -35,7 +35,8 @@ public class App {
       System.out.println("  6: 회원");
       System.out.println();
 
-      try {
+
+      try { //호출한 쪽에서 예외 처리
         int mainMenuNo = Prompt.inputInt("메뉴를 선택하세요[1..6](0: 종료) ");
 
         switch (mainMenuNo) {
@@ -64,7 +65,6 @@ public class App {
         System.out.println("입력 값이 옳지 않습니다.");
       }
 
-
     } // while
 
     System.out.println("안녕히 가세요!");
@@ -83,5 +83,11 @@ public class App {
 
 
 
-
+/*메뉴 번호를 잘못 입력하는 상황이 발생했을 때
+InputInt() 리턴 값은 -121212를 리턴할 것이다.
+이 경우를 고려해서 처리한다.
+if(mainMenuNo == -12121212) {
+  continue;// 다시 위로 올라감.
+}
+ */
 

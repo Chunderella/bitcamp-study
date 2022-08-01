@@ -5,7 +5,7 @@ package com.bitcamp.board.handler;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import com.bitcamp.board.dao.BoardDao;
+import com.bitcamp.board.dao.BoardList;
 import com.bitcamp.board.domain.Board;
 import com.bitcamp.util.Prompt;
 
@@ -14,7 +14,7 @@ public class BoardHandler {
   private String title; // 게시판의 제목
 
   // 게시글 목록을 관리할 객체 준비
-  private BoardDao boardDao = new BoardDao();
+  private BoardList boardList = new BoardList();
 
   public BoardHandler() {
     this.title = "게시판";
@@ -24,7 +24,7 @@ public class BoardHandler {
     this.title = title;
   }
 
-  public void execute() {
+  public void execute() { //app 클래스에서 호출
     while (true) {
       System.out.printf("%s:\n", this.title);
       System.out.println("  1: 목록");
@@ -51,7 +51,7 @@ public class BoardHandler {
         }
 
         displayBlankLine();
-
+        //메뉴를 입력했는데 오류가 있을 경우 catch가 실행되고 while 문 반복
       } catch (Exception ex) {
         System.out.printf("예외 발생: %s\n", ex.getMessage());
       }
@@ -73,31 +73,33 @@ public class BoardHandler {
     System.out.println("번호 제목 조회수 작성자 등록일");
 
     // boardList 인스턴스에 들어 있는 데이터 목록을 가져온다.
-    Board[] boards = this.boardDao.findAll();
+    Object[] list = this.boardList.getArray();
 
-    for (Board board : boards) {
+    for (Object item : list) {
+      Board board = (Board) item; //list 배열에 있는 주소 item에 있는 주소가 board객체의 주소다.
       Date date = new Date(board.createdDate);
       String dateStr = formatter.format(date); 
       System.out.printf("%d\t%s\t%d\t%s\t%s\n",
           board.no, board.title, board.viewCount, board.writer, dateStr);
     }
-  }
 
-  private void onDetail() {
+  }
+  //<<============================onDetail==============================>>
+  private void onDetail()  {
     System.out.printf("[%s 상세보기]\n", this.title);
 
-    int boardNo = 0;
+
+    int  boardNo = 0; //로컬변수는 초기화 시킨 상태에서 사용하는 것이 좋음
     while (true) {
       try {
         boardNo = Prompt.inputInt("조회할 게시글 번호? ");
         break;
-      } catch (Exception ex) {
-        System.out.println("입력 값이 옳지 않습니다!");
+      }catch (Exception ex) {
+        System.out.println("입력 값이 옳지 않습니다");
       }
+      // 해당 번호의 게시글이 몇 번 배열에 들어 있는지 알아내기
     }
-
-    // 해당 번호의 게시글이 몇 번 배열에 들어 있는지 알아내기
-    Board board = this.boardDao.findByNo(boardNo);
+    Board board = this.boardList.retrieve(boardNo); // get = 호출한 get
 
     // 사용자가 입력한 번호에 해당하는 게시글을 못 찾았다면
     if (board == null) {
@@ -112,9 +114,10 @@ public class BoardHandler {
     System.out.printf("작성자: %s\n", board.writer);
     Date date = new Date(board.createdDate);
     System.out.printf("등록일: %tY-%1$tm-%1$td %1$tH:%1$tM\n", date);
-
   }
 
+
+  //<<==========================oninput================================>>
   private void onInput() {
     System.out.printf("[%s 등록]\n", this.title);
 
@@ -127,13 +130,14 @@ public class BoardHandler {
     board.viewCount = 0;
     board.createdDate = System.currentTimeMillis();
 
-    this.boardDao.insert(board);
+    this.boardList.append(board);
 
     System.out.println("게시글을 등록했습니다.");
   }
-
-  private void onDelete() {
+  //<<==========================================================>>
+  private void onDelete()   {
     System.out.printf("[%s 삭제]\n", this.title);
+
 
     int boardNo = 0;
     while (true) {
@@ -141,19 +145,21 @@ public class BoardHandler {
         boardNo = Prompt.inputInt("삭제할 게시글 번호? ");
         break;
       } catch (Exception ex) {
-        System.out.println("입력 값이 옳지 않습니다!");
+        System.out.println("입력값이 옳지 않습니다!");
       }
     }
 
-    if (boardDao.delete(boardNo)) {
+    if (boardList.delete(boardNo)!= null)  {
       System.out.println("삭제하였습니다.");
     } else {
       System.out.println("해당 번호의 게시글이 없습니다!");
     }
+
   }
 
-  private void onUpdate() {
 
+  //<<==========================================================>>
+  private void onUpdate() {
     System.out.printf("[%s 변경]\n", this.title);
 
     int boardNo = 0;
@@ -161,12 +167,13 @@ public class BoardHandler {
       try {
         boardNo = Prompt.inputInt("변경할 게시글 번호? ");
         break;
-      } catch (Throwable ex) {
+      }catch (Exception ex) {
         System.out.println("입력 값이 옳지 않습니다!");
       }
     }
+    //=============try catch로 해결하는 예===================
 
-    Board board = this.boardDao.findByNo(boardNo);
+    Board board = this.boardList.retrieve(boardNo);
 
     if (board == null) {
       System.out.println("해당 번호의 게시글이 없습니다!");
@@ -184,6 +191,7 @@ public class BoardHandler {
     } else {
       System.out.println("변경 취소했습니다.");
     }
+
   }
 }
 

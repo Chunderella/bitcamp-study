@@ -1,11 +1,11 @@
 package com.bitcamp.board.dao;
 
 import com.bitcamp.board.domain.Member;
-import com.bitcamp.util.ObjectList;
+import com.bitcamp.util.LinkedList;
 
 // 회원 목록을 관리하는 역할
 //
-public class MemberList extends ObjectList {
+public class MemberList extends LinkedList {
 
   //objectList의 get()에서 던지는 예외를 이 메서드에서 처리하지 않고
   //호출자에게 처리를 위임한다.
@@ -13,11 +13,11 @@ public class MemberList extends ObjectList {
   // 메서드 선언부에 표시하지않아도 된다.
   // Exception 계열의 예외를 다루는 것보다 덜 번거롭다.
 
-
+  //메서드의 이름을 일관성을 위해 수퍼클래스의 메서드 이름에 맞춰 변경한다.
   //<<==========================get================================>>
-  public Member get(String email)  { //예외를 위임한다. "이 메서드를 호출한 쪽에 예외를 던진다." 
-    for (int i = 0; i < size(); i++) {
-      Member member = (Member) get(i);
+  public Member retrieve(String email)  { //예외를 위임한다. "이 메서드를 호출한 쪽에 예외를 던진다." 
+    for (int i = 0; i < length(); i++) {
+      Member member = (Member) retrieve(i);
       if (member.email.equals(email)) {
         return member;
       }
@@ -36,11 +36,14 @@ public class MemberList extends ObjectList {
   //메소드 이름도 같다.
   //overloading = 오버로딩
 
-  public boolean remove(String email)  {
-    for (int i = 0; i < size(); i++) {
-      Member member = (Member) get(i); //예외가 발생하는데 컴파일러가 검사를 안한다. "ListException"에 대한 에러를
+  //수퍼 클래스 교체에 따라 메서드의 이름도 일관성 있게 
+  //수퍼 클래스의 메서드 이름과 같게 한다. 오버로딩 규칙을 준수한다.
+
+  public Object delete(String email)  {
+    for (int i = 0; i < length(); i++) {
+      Member member = (Member) retrieve(i); //예외가 발생하는데 컴파일러가 검사를 안한다. "ListException"에 대한 에러를
       if (member.email.equals(email)) {
-        return remove(i);
+        return delete(i);
       }
     }
     return false;

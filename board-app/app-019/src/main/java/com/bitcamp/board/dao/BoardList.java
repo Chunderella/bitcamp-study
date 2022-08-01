@@ -1,19 +1,19 @@
 package com.bitcamp.board.dao;
 
 import com.bitcamp.board.domain.Board;
-import com.bitcamp.util.ObjectList;
+import com.bitcamp.util.LinkedList;
 
 // 게시글 목록을 관리하는 역할
 //
-public class BoardList extends ObjectList{
+public class BoardList extends LinkedList{
   private int boardNo = 0;
 
   @Override
-  public void add(Object e) {
+  public void append(Object e) {
 
     Board board = (Board) e;
     board.no = nextNo();
-    super.add(e);
+    super.append(e);
   }
 
 
@@ -30,9 +30,9 @@ public class BoardList extends ObjectList{
   // Exception 계열의 예외를 다루는 것보다 덜 번거롭다.
 
   @Override
-  public Board get(int boardNo) {
-    for (int i = 0; i < size(); i++) { 
-      Board board = (Board) super.get(i); 
+  public Board retrieve(int boardNo) {
+    for (int i = 0; i < length(); i++) { 
+      Board board = (Board) super.retrieve(i); 
       if (board.no == boardNo) {
         return board;
       }
@@ -41,19 +41,17 @@ public class BoardList extends ObjectList{
   }
 
   @Override
-  public boolean remove(int boardNo){
-    for (int i = 0; i < size(); i++) {
-      Board board = (Board) super.get(i);
+  public Object delete(int boardNo){
+    for (int i = 0; i < length(); i++) {
+      Board board = (Board) super.retrieve(i);
       if (board.no == boardNo) {
-        return super.remove(i);
+        return super.delete(i);
 
-        //catch문에서 예외를 받는다고 써놔야함.
       }
     }
 
-    return false;
+    return null;
   }
-
 
 
   private int nextNo() {
