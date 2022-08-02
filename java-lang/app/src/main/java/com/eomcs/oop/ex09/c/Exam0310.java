@@ -18,6 +18,9 @@ public class Exam0310 {
     }
   }
 
+  //default는 구현된것이기때문에 클래스처럼 보면 쉬움.
+
+
   static class ProtocolImpl implements ProtocolA, ProtocolB {
     // ProtocolA 규칙 준수!
     @Override

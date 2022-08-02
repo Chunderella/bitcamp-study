@@ -37,8 +37,8 @@ public class MemberHandler {
         }
 
         displayBlankLine();
-      }catch (Throwable ex) { 
-        System.out.println("입력 값이 옳지 않습니다.");
+      } catch (Throwable ex) {
+        System.out.println("입력 값이 옳지 않습니다!");
       }
     } // 게시판 while
   }

@@ -21,6 +21,8 @@ public class Exam01 {
     Worker w2 = new WhiteWorker();
     Worker w3 = new JubuWorker();
 
+    //워커 객체 주소에 따른다.
+
     // Worker 인터페이스에 선언된 메서드를 구현한다고 해서 되는 게 아니다.
     // 반드시 implements 키워드를 사용해서 
     // Worker 인터페이스를 구현한다고 선언해야 한다.
@@ -45,8 +47,7 @@ public class Exam01 {
     // => callee : BlueWorker, WhiteWorker, JubuWorker
 
     // 참고!
-    Worker w;
-
+    Worker w; 
     // 인터페이스 레퍼런스?
     // => 해당 인터페이스에 따라 작성된(사용규칙을 준수하는) 클래스의 인스턴스 주소를 저장한다.
     // 

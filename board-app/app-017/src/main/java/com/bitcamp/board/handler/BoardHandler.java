@@ -24,7 +24,7 @@ public class BoardHandler {
     this.title = title;
   }
 
-  public void execute() { //app 클래스에서 호출
+  public void execute() {
     while (true) {
       System.out.printf("%s:\n", this.title);
       System.out.println("  1: 목록");
@@ -51,7 +51,7 @@ public class BoardHandler {
         }
 
         displayBlankLine();
-        //메뉴를 입력했는데 오류가 있을 경우 catch가 실행되고 while 문 반복
+
       } catch (Throwable ex) {
         System.out.println("입력 값이 옳지 않습니다!");
       }
@@ -76,7 +76,7 @@ public class BoardHandler {
     Object[] list = this.boardList.toArray();
 
     for (Object item : list) {
-      Board board = (Board) item; //list 배열에 있는 주소 item에 있는 주소가 board객체의 주소다.
+      Board board = (Board) item;
       Date date = new Date(board.createdDate);
       String dateStr = formatter.format(date); 
       System.out.printf("%d\t%s\t%d\t%s\t%s\n",
@@ -84,20 +84,20 @@ public class BoardHandler {
     }
 
   }
-  //<<============================onDetail==============================>>
+
   private void onDetail() {
     System.out.printf("[%s 상세보기]\n", this.title);
 
-
-    int  boardNo = 0; //로컬변수는 초기화 시킨 상태에서 사용하는 것이 좋음
+    int boardNo = 0;
     while (true) {
       try {
         boardNo = Prompt.inputInt("조회할 게시글 번호? ");
         break;
-      }catch (Throwable ex) {
-        System.out.println("입력값이 옳지 않습니다.");
+      } catch (Throwable ex) {
+        System.out.println("입력 값이 옳지 않습니다!");
       }
     }
+
     // 해당 번호의 게시글이 몇 번 배열에 들어 있는지 알아내기
     Board board = this.boardList.get(boardNo);
 
@@ -116,7 +116,7 @@ public class BoardHandler {
     System.out.printf("등록일: %tY-%1$tm-%1$td %1$tH:%1$tM\n", date);
 
   }
-  //<<==========================oninput================================>>
+
   private void onInput() {
     System.out.printf("[%s 등록]\n", this.title);
 
@@ -133,10 +133,9 @@ public class BoardHandler {
 
     System.out.println("게시글을 등록했습니다.");
   }
-  //<<==========================================================>>
+
   private void onDelete() {
     System.out.printf("[%s 삭제]\n", this.title);
-
 
     int boardNo = 0;
     while (true) {
@@ -144,7 +143,7 @@ public class BoardHandler {
         boardNo = Prompt.inputInt("삭제할 게시글 번호? ");
         break;
       } catch (Throwable ex) {
-        System.out.println("입력값이 옳지 않습니다!");
+        System.out.println("입력 값이 옳지 않습니다!");
       }
     }
 
@@ -155,8 +154,6 @@ public class BoardHandler {
     }
   }
 
-
-  //<<==========================================================>>
   private void onUpdate() {
     System.out.printf("[%s 변경]\n", this.title);
 
@@ -165,10 +162,11 @@ public class BoardHandler {
       try {
         boardNo = Prompt.inputInt("변경할 게시글 번호? ");
         break;
-      }catch (Throwable ex) {
+      } catch (Throwable ex) {
         System.out.println("입력 값이 옳지 않습니다!");
       }
     }
+
     Board board = this.boardList.get(boardNo);
 
     if (board == null) {

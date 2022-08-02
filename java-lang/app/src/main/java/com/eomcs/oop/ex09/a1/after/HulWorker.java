@@ -12,3 +12,6 @@ public class HulWorker {
     System.out.println("헐....^^");
   }
 }
+
+
+//implements Worker --> 워커 인터페이스를 구현한다는 선언이 없기때문에 사용 X

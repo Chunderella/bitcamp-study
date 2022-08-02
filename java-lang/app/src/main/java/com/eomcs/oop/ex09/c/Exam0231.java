@@ -5,7 +5,8 @@ package com.eomcs.oop.ex09.c;
 public class Exam0231 {
 
   interface ProtocolA {
-    void rule0(int a);
+    void rule0(int a); //파라미터가 다르다.
+
     void rule1();
   }
 

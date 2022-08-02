@@ -38,7 +38,7 @@ public class MemberHandler {
 
         displayBlankLine();
 
-      }catch (Exception ex) { 
+      } catch (Exception ex) {
         System.out.printf("예외 발생: %s\n", ex.getMessage());
       }
     } // 게시판 while
@@ -56,7 +56,7 @@ public class MemberHandler {
     System.out.println("[회원 목록]");
     System.out.println("이메일 이름");
 
-    Object[] list = this.memberList.getArray();
+    Object[] list = this.memberList.toArray();
 
     for (Object item : list) {
       Member member = (Member) item;
@@ -66,13 +66,12 @@ public class MemberHandler {
 
   }
 
-  private void onDetail()  {
-
+  private void onDetail() {
     System.out.println("[회원 상세보기]");
 
     String email = Prompt.inputString("조회할 회원 이메일? ");
 
-    Member member = this.memberList.retrieve(email);
+    Member member = this.memberList.get(email);
 
     if (member == null) {
       System.out.println("해당 이메일의 회원이 없습니다!");
@@ -83,7 +82,6 @@ public class MemberHandler {
     System.out.printf("이메일: %s\n", member.email);
     Date date = new Date(member.createdDate);
     System.out.printf("등록일: %tY-%1$tm-%1$td %1$tH:%1$tM\n", date);
-
   }
 
   private void onInput() {
@@ -96,31 +94,29 @@ public class MemberHandler {
     member.password = Prompt.inputString("암호? ");
     member.createdDate = System.currentTimeMillis();
 
-    this.memberList.append(member);
+    this.memberList.add(member);
 
-    System.out.println("회원을 등록했습니다.");
+    System.out.println("회워을 등록했습니다.");
   }
 
-  private void onDelete()  {
-
+  private void onDelete() {
     System.out.println("[회원 삭제]");
 
     String email = Prompt.inputString("삭제할 회원 이메일? ");
 
-    if (memberList.delete(email) != null) {
+    if (memberList.remove(email)) {
       System.out.println("삭제하였습니다.");
     } else {
       System.out.println("해당 이메일의 회원이 없습니다!");
     }
-
   }
 
-  private void onUpdate()  {
+  private void onUpdate() {
     System.out.println("[회원 변경]");
 
     String email = Prompt.inputString("변경할 회원 이메일? ");
 
-    Member member = this.memberList.retrieve(email);
+    Member member = this.memberList.get(email);
 
     if (member == null) {
       System.out.println("해당 이메일의 회원이 없습니다!");
@@ -138,7 +134,6 @@ public class MemberHandler {
     } else {
       System.out.println("변경 취소했습니다.");
     }
-
   }
 }
 
