@@ -14,6 +14,7 @@ interface CarSpec {
 abstract class AbstractCar implements CarSpec {
 
   // 추상 클래스의 목적은 서브 클래스에게 공통 필드와 공통 메서드를 상속해주는 것이다.
+  //<====필드=====>
   String model;
   int cc;
 

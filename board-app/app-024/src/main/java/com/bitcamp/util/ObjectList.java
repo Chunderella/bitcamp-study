@@ -3,11 +3,11 @@ package com.bitcamp.util;
 // List 규격에 따라 메서드를 구현할 것이라고 선언한다!
 // 만약 규격에 따라 메서드를 구현하지 않으면 컴파일을 안 해준다.
 // 
-public class ObjectList implements List {
+public class ObjectList extends AbstractList {
 
   private static final int DEFAULT_CAPACITY = 10;
 
-  private int size;
+  
   private Object[] elementData;
 
   public ObjectList() {
@@ -28,7 +28,7 @@ public class ObjectList implements List {
   }
 
   @Override
-  public Object[] toArray() {
+  public Object[] toArray() {  //배열에서 꺼내서 배열에 담아서 리턴
     Object[] arr = new Object[size];
     for (int i = 0; i < arr.length; i++) {
       arr[i] = elementData[i];
@@ -61,10 +61,7 @@ public class ObjectList implements List {
     return deleted;
   }
 
-  @Override
-  public int size() {
-    return size;
-  }
+ 
 
   private void grow() {
     int newCapacity = elementData.length + (elementData.length >> 1);
@@ -76,7 +73,8 @@ public class ObjectList implements List {
   }
 }
 
-
+//유일하게 동일한건 size 필드와 메서드
+//
 
 
 

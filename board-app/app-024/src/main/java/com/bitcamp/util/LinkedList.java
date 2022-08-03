@@ -3,11 +3,11 @@ package com.bitcamp.util;
 // LinkedList 클래스도 ObjectList 처럼 List 규격에 따라 만든다.
 // 규격에 같으면 두 객체를 서로 교체할 수 있다.
 // 
-public class LinkedList implements List {
+public class LinkedList extends AbstractList {
 
   private Node head; // 첫 노드의 주소를 저장
   private Node tail; // 마지막 노드의 주소를 저장
-  private int size; // 저장된 데이터의 개수
+
 
   @Override
   public void add(Object value) {
@@ -101,11 +101,9 @@ public class LinkedList implements List {
     return deleted; // 메서드를 리턴할 때 삭제된 값을 호출자에게 전달한다.
   }
 
-  @Override
-  public int size() {
-    return size;
-  }
 
+
+//노드를 따라가서 값을 담음 = 구현하는 방법이 다름.
   @Override
   public Object[] toArray() {
     // 값을 담을 배열을 준비

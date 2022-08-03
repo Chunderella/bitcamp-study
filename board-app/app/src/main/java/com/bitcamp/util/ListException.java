@@ -1,6 +1,7 @@
 package com.bitcamp.util;
 
 public class ListException extends RuntimeException {
+  //[상속]
 
   private static final long serialVersionUID = 1L;
 

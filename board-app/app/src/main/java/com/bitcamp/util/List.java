@@ -15,7 +15,8 @@ public interface List {
   Object get(int index); // 목록에서 인덱스에 해당하는 항목을 꺼내는 메서드의 형식
   Object remove(int index); // 목록에서 인덱스에 해당하는 항목을 삭제하는 메서드의 형식
   Object[] toArray(); //목록에 저장된 항목들을 배열에 담아 리턴하는 메서드의 형식
-  int size(); //목록에 저장된 항목의 개수를 리턴하는 메서드의 형식
+  int size();
+  //목록에 저장된 항목의 개수를 리턴하는 메서드의 형식
 
 
 
@@ -23,7 +24,6 @@ public interface List {
 
 
 }
-3
-\
+
 
 
