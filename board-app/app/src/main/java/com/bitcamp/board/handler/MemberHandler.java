@@ -4,81 +4,35 @@
 package com.bitcamp.board.handler;
 
 import java.util.Date;
-import com.bitcamp.board.App;
 import com.bitcamp.board.dao.MemberDao;
 import com.bitcamp.board.domain.Member;
-import com.bitcamp.handler.Handler;
+import com.bitcamp.handler.AbstractHandler;
 import com.bitcamp.util.Prompt;
 
-public class MemberHandler implements Handler {
+public class MemberHandler extends AbstractHandler {
 
   private MemberDao memberDao = new MemberDao();
 
+  //탬플릿 메서드 디자인 패턴:
+  //수퍼클래스의 execute() 동작의 전체적인 흐름을 정의하고(틀을만들고).
+  //서브클래스의 service()에서 각 동작의 구체적인 동작을 정의한다.(세부적인 항목을 구현한다.)
 
-  private  static String[] menus = {"목록", "상세보기", "등록", "삭제", "변경"}; 
+  public MemberHandler() {
+    super(new String[] {"목록", "상세보기", "등록", "삭제", "변경"});
+  }
+  @Override
+  public void service(int menuNo) {
+    switch (menuNo) {
 
-  static void printMenus(String[] menus) {
-    for(int i = 0; i < menus.length; i++) {
-      System.out.printf("  %d: %s\n", i + 1, menus[i]); //(i +1 = 메뉴 번호가 1부터 나오게하기위해 +1 )
+      case 1: this.onList(); break;
+      case 2: this.onDetail(); break;
+      case 3: this.onInput(); break;
+      case 4: this.onDelete(); break;
+      case 5: this.onUpdate(); break;
+
     }
   }
 
-  @Override
-  public void execute() {
-    while (true) {
-
-      System.out.printf("%s:\n", App.breadcrumbMenu);
-      printMenus(menus);
-      System.out.println();
-
-      try {
-        int menuNo = Prompt.inputInt("메뉴를 선택하세요[1..5](0: 이전) ");
-
-        if(menuNo < 0 || menuNo > menus.length) {
-          System.out.println("메뉴 번호가 옳지 않습니다!");
-          continue; //while문의 조건 검사로 보낸다.
-
-        } else if (menuNo == 0) {
-          return; //메인 메뉴로 돌아다ㅓ.
-        }
-
-
-        //메뉴에 진입할 때 breadcrumb 메뉴바에 그 메뉴를 등록한다.
-
-        App.breadcrumbMenu.push(menus[menuNo -1] ); 
-
-        displayHeadline();
-
-        //서브 메뉴의 제목을 출력한다.
-        System.out.printf("%s:\n", App.breadcrumbMenu);
-
-        switch (menuNo) {
-
-          case 1: this.onList(); break;
-          case 2: this.onDetail(); break;
-          case 3: this.onInput(); break;
-          case 4: this.onDelete(); break;
-          case 5: this.onUpdate(); break;
-
-        }
-
-        displayBlankLine();
-
-        App.breadcrumbMenu.pop();
-
-      } catch (Exception ex) {
-        System.out.printf("예외 발생: %s\n", ex.getMessage());
-      }
-    } // 게시판 while
-  }
-
-  private static void displayHeadline() {
-    System.out.println("=========================================");
-  }
-
-  private static void displayBlankLine() {
-    System.out.println(); 
-  }
 
   private void onList() {
 
@@ -92,7 +46,7 @@ public class MemberHandler implements Handler {
     }
 
   }
-
+  //<====================================onDetail>
   private void onDetail() {
 
 
@@ -110,7 +64,7 @@ public class MemberHandler implements Handler {
     Date date = new Date(member.createdDate);
     System.out.printf("등록일: %tY-%1$tm-%1$td %1$tH:%1$tM\n", date);
   }
-
+  //<====================================onInput>
   private void onInput() {
     System.out.println("[회원 등록]");
 
@@ -126,6 +80,7 @@ public class MemberHandler implements Handler {
     System.out.println("회워을 등록했습니다.");
   }
 
+  //<====================================onDelete>
   private void onDelete() {
 
 

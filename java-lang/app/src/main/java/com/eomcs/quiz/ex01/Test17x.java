@@ -32,6 +32,7 @@ public class Test17x {
 
   static int nearestRoundNumber(int value) {
     // 이 메서드를 완성하시오!
+
     //value 보다 큰 수를 찾는다.
     while (value % 10 != 0) { //value의 끝 자리가 0으로 끝날 때까지
       value++;
