@@ -14,29 +14,26 @@ public class BoardHandler extends AbstractHandler {
 
   // 게시글 목록을 관리할 객체 준비
   private BoardDao boardDao = new BoardDao();
-  //모든 인스턴스가 같은 서브 메뉴를 가지기 때문에
-  //메뉴명을 저장할 배열은 클래스 필드로 준비한다.
 
-  //탬플릿 메서드 디자인 패턴:
-  //수퍼클래스의 execute() 동작의 전체적인 흐름을 정의하고(틀을만들고).
-  //서브클래스의 service()에서 각 동작의 구체적인 동작을 정의한다.(세부적인 항목을 구현한다.)
   public BoardHandler() {
+    // 수퍼 클래스의 생성자를 호출할 때 메뉴 목록을 전달한다.
     super(new String[] {"목록", "상세보기", "등록", "삭제", "변경"});
   }
+
+  // 템플릿 메서드 패턴(template method pattern) 
+  //   - 수퍼 클래스의 execute()에서 동작의 전체적인 흐름을 정의하고(틀을 만들고),
+  //   - 서브 클래스의 service()에서 동작을 구제척으로 정의한다.(세부적인 항목을 구현한다)
   @Override
   public void service(int menuNo) {
     switch (menuNo) {
-
       case 1: this.onList(); break;
       case 2: this.onDetail(); break;
       case 3: this.onInput(); break;
       case 4: this.onDelete(); break;
       case 5: this.onUpdate(); break;
-
     }
   }
-
-
+  //<=====================================================>onList
   private void onList() {
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -52,9 +49,9 @@ public class BoardHandler extends AbstractHandler {
     }
 
   }
+  //<=====================================================>onDetail
 
   private void onDetail() {
-
     int boardNo = 0;
     while (true) {
       try {
@@ -85,8 +82,6 @@ public class BoardHandler extends AbstractHandler {
   }
 
   private void onInput() {
-
-
     Board board = new Board();
 
     board.title = Prompt.inputString("제목? ");
@@ -102,8 +97,6 @@ public class BoardHandler extends AbstractHandler {
   }
 
   private void onDelete() {
-
-
     int boardNo = 0;
     while (true) {
       try {
@@ -122,8 +115,6 @@ public class BoardHandler extends AbstractHandler {
   }
 
   private void onUpdate() {
-
-
     int boardNo = 0;
     while (true) {
       try {

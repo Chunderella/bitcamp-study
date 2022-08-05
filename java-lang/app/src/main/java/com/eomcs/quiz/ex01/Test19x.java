@@ -32,6 +32,34 @@ public class Test19x {
 
   static int myMaxOfThree(int a, int b, int c) {
     // 이 메서드를 완성하시오!
-    return a;
+    if(a > b) {
+      if(a > c) {
+        return a;
+      }
+      return c;
+    }
+    if (b > c) {
+      return b;
+    }
+    return c;
   }
 }
+
+
+/*
+if(a > b) {
+  if (a > c) {
+    return a;
+  }
+} else {
+  if(b >c ) {
+    return b;
+  }
+}
+return c;
+}
+}
+
+  }
+}
+ */

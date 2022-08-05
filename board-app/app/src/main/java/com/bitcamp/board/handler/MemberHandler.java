@@ -13,29 +13,22 @@ public class MemberHandler extends AbstractHandler {
 
   private MemberDao memberDao = new MemberDao();
 
-  //탬플릿 메서드 디자인 패턴:
-  //수퍼클래스의 execute() 동작의 전체적인 흐름을 정의하고(틀을만들고).
-  //서브클래스의 service()에서 각 동작의 구체적인 동작을 정의한다.(세부적인 항목을 구현한다.)
-
   public MemberHandler() {
     super(new String[] {"목록", "상세보기", "등록", "삭제", "변경"});
   }
+
   @Override
   public void service(int menuNo) {
     switch (menuNo) {
-
       case 1: this.onList(); break;
       case 2: this.onDetail(); break;
       case 3: this.onInput(); break;
       case 4: this.onDelete(); break;
       case 5: this.onUpdate(); break;
-
     }
   }
 
-
   private void onList() {
-
     System.out.println("이메일 이름");
 
     Member[] members = this.memberDao.findAll();
@@ -46,10 +39,8 @@ public class MemberHandler extends AbstractHandler {
     }
 
   }
-  //<====================================onDetail>
+
   private void onDetail() {
-
-
     String email = Prompt.inputString("조회할 회원 이메일? ");
 
     Member member = this.memberDao.findByEmail(email);
@@ -64,10 +55,8 @@ public class MemberHandler extends AbstractHandler {
     Date date = new Date(member.createdDate);
     System.out.printf("등록일: %tY-%1$tm-%1$td %1$tH:%1$tM\n", date);
   }
-  //<====================================onInput>
-  private void onInput() {
-    System.out.println("[회원 등록]");
 
+  private void onInput() {
     Member member = new Member();
 
     member.name = Prompt.inputString("이름? ");
@@ -80,10 +69,7 @@ public class MemberHandler extends AbstractHandler {
     System.out.println("회워을 등록했습니다.");
   }
 
-  //<====================================onDelete>
   private void onDelete() {
-
-
     String email = Prompt.inputString("삭제할 회원 이메일? ");
 
     if (memberDao.delete(email)) {
@@ -94,8 +80,6 @@ public class MemberHandler extends AbstractHandler {
   }
 
   private void onUpdate() {
-
-
     String email = Prompt.inputString("변경할 회원 이메일? ");
 
     Member member = this.memberDao.findByEmail(email);
