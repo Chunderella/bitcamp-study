@@ -1,7 +1,4 @@
-/*
- * 게시판 관리 애플리케이션
- * 비트캠프-20220704
- */
+
 package com.study.board;
 
 import com.bitcamp.board.handler.BoardHandler;
@@ -12,13 +9,13 @@ import com.bitcamp.util.Stack;
 
 public class App {
 
-  // breadcrumb 메뉴를 저장할 스택을 준비
+
   public static Stack breadcrumbMenu = new Stack();
 
   public static void main(String[] args) {
     welcome();
 
-    // 핸들러를 담을 레퍼런스 배열을 준비한다.
+
     Handler[] handlers = new Handler[] {
         new BoardHandler(), // 게시판
         new BoardHandler(), // 독서록
