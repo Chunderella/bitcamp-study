@@ -1,4 +1,4 @@
-// Iterator 디자인 패턴 : 4) 로컬 클래스로 Iterator 클래스 정의하기
+// Iterator 디자인 패턴 : 5) 익명 클래스로 Iterator 클래스 정의하기
 package com.eomcs.design_pattern.iterator.after5;
 
 import java.util.HashSet;

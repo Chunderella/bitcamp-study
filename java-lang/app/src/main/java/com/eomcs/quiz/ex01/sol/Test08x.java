@@ -11,7 +11,7 @@ package com.eomcs.quiz.ex01.sol;
 // [시간 복잡도]
 // - O(n) : n <= 비트의 개수
 //
-public class Test08 {
+public class Test08x {
   public static void main(String[] args) {
     System.out.println(multiply(5, 3) == 15);
     System.out.println(multiply(17, 13) == 221);

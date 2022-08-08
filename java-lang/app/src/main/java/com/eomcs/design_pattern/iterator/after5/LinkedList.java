@@ -182,14 +182,11 @@ public class LinkedList<E> {
         return index < LinkedList.this.size();
       }
 
-      @SuppressWarnings("unchecked")
       @Override
       public E next() {
-        return (E) LinkedList.this.get(index++);
+        return LinkedList.this.get(index++);
       }
-    }
-
-    return new LinkedListIterator<E>();
+    };
   }
 
 

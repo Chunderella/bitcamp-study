@@ -1,8 +1,8 @@
-package com.eomcs.quiz.ex01.sol;
+package com.eomcs.quiz.ex01;
 // copyright by codefights.com
 // 
 // 숫자와 달의 영어 이름을 연결하라!
-// 단 숫자는 0 이상이다. 
+// 단 숫자는 0 이상이다.   //조건문이 0 이상 / 1-12 사이의 유효한 값이여야함.
 //
 // 1: "Jan"
 // 2: "Feb"
@@ -39,9 +39,9 @@ if the month doesn't exist
  */
 //
 // [시간 복잡도]
-// - O(1) : 시간 복잡도는 일정하다. 
+// - ?
 //
-public class Test22 {
+public class Test22x {
 
   public static void main(String[] args) {
     System.out.println(getMonthName(1) == "Jan");
@@ -50,13 +50,13 @@ public class Test22 {
   }
 
   static String getMonthName(int mo) {
-    mo -= 1; //값을 먼저 빼고 시작.
-    String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
-        "Aug", "Sep", "Oct", "Nov", "Dec"}; //비교할 값을 배열로 준비. ==> 배열의 인덱스 준비
-    if (mo >= 0 && mo < months.length) {
-      return months[mo];
-    } else {
-      return "invalid month";
+    // 이 메서드를 완성하시오!
+
+
+    String[] names = {"Jan","Feb","Mar","Apr","May","Jun", "Jul", "Aug","Sep", "Oct", "Nov","Dec"} ;//스트링 배열을 준비.
+    if(mo < 1 || mo > names.length) { //비교할 데이터를 배열로 준비
+      return "invalid month"; //범위 외
     }
+    return names[mo-1]; //범위 내
   }
 }

@@ -96,9 +96,9 @@ public class ArrayList<E> {
     arr = temp;
   }
 
-  //Iterator 구현체를 제공한다.
+  // Iterator 구현체를 제공한다.
   public Iterator<E> iterator() {
-    return new ArrayListIterator<E>(this); //this는 ArrayList의 객체
+    return new ArrayListIterator<E>(this);
   }
 }
 

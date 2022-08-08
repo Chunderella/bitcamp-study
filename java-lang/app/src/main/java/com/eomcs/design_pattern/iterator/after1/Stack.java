@@ -38,14 +38,10 @@ public class Stack<E> {
   public int size() {
     return this.size;
   }
-  //Iterator 구현체를 제공한다.
+
+  // Iterator 구현체를 제공한다.
   public Iterator<E> iterator() {
-    return new StackIterator<E>(this); //this는 ArrayList의 객체
-
-
-    // 자신이 보유한 데이터를 대신 꺼내주는 일을 하는 객체를 리턴한다.
-
-
+    return new StackIterator<E>(this);
   }
 }
 

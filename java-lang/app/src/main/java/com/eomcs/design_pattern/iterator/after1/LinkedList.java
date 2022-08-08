@@ -1,6 +1,4 @@
-// 제네릭 적용하기
 package com.eomcs.design_pattern.iterator.after1;
-
 
 public class LinkedList<E> {
 
@@ -13,7 +11,6 @@ public class LinkedList<E> {
     tail = head;
     size = 0;
   }
-
 
   public void add(E value) {
     tail.value = value;
@@ -38,7 +35,6 @@ public class LinkedList<E> {
     return size;
   }
 
-
   public E get(int index) {
     if (index < 0 || index >= size)
       return null;
@@ -50,7 +46,8 @@ public class LinkedList<E> {
       cursor = cursor.next;
     }
 
-
+    // cursor가 가리키는 노드의 주소를 리턴?
+    // => 노드의 값을 리턴
     return cursor.value;
   }
 
@@ -85,10 +82,10 @@ public class LinkedList<E> {
     // 값을 변경한다.
     cursor.value = value;
 
-
+    // 이전 값을 리턴한다. 쓰든 안쓰든 호출하는 사람이 알아서 할 일이다.
+    // 다만 변경 전 값을 활용할 경우를 대비해 리턴하는 것이다.
     return old;
   }
-
 
   public int insert(int index, E value) {
     if (index < 0 || index >= size)
@@ -147,7 +144,8 @@ public class LinkedList<E> {
     // 찾은 노드의 다음 노드가 이전 노드를 가리키게 한다.
     cursor.next.prev = cursor.prev;
 
-
+    // JVM(Garbage Collection)이 가비지를 효과적으로 계산할 수 있도록 
+    // 가비지가 된 객체는 다른 객체를 가리키지 않도록 한다.
     E old = cursor.value;
     cursor.value = null;
     cursor.prev = null;
@@ -159,7 +157,6 @@ public class LinkedList<E> {
     // 호출한 쪽에서 필요하면 사용하라고 삭제된 값을 리턴해 준다.
     return old;
   }
-
 
   private static class Node<E> {
 
@@ -175,12 +172,10 @@ public class LinkedList<E> {
     }
   }
 
-  //Iterator 구현체를 제공한다.
+  // Iterator 구현체를 제공한다.
   public Iterator<E> iterator() {
-    return new linkedListIterator<E>(this); //this는 ArrayList의 객체
+    return new LinkedListIterator<E>(this);
   }
-
-  // 자신이 보유한 데이터를 대신 꺼내주는 일을 하는 객체를 리턴한다.
 
 }
 

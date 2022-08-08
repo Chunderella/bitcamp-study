@@ -24,7 +24,7 @@ positive integer
 // [시간 복잡도]
 // - ?
 //
-public class Test21 {
+public class Test21x {
 
   public static void main(String[] args) {
     System.out.println(rectangleArea(5, 9) == 45);
@@ -35,6 +35,24 @@ public class Test21 {
     // 이 메서드를 완성하시오!
 
 
+
+    int result = 0;
+    for (int i = 0; i  < b; i++) {
+      result +=a;
+    }
     return 0;
+
+
+    /*
+    int result = 0;
+    for(int i = 0 ; i < a; i++)  {
+      result +=b ;
+    }
+    return 0;*/
   }
 }
+
+//반목문 연습 (for 문)
+
+
+

@@ -17,21 +17,17 @@ public class Queue<E> extends LinkedList<E> {
   // Iterator 구현체를 제공한다.
   @Override
   public Iterator<E> iterator() {
-    class QueueIterator<T> implements Iterator<T> {
-
+    return new Iterator<E>() {
       @Override
       public boolean hasNext() {
         return !Queue.this.empty();
       }
 
-      @SuppressWarnings("unchecked")
       @Override
-      public T next() {
-        return (T) Queue.this.poll();
+      public E next() {
+        return Queue.this.poll();
       }
-    }
-
-    return new QueueIterator<E>();
+    };
   }
 
 

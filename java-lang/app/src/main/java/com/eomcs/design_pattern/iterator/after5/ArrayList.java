@@ -99,15 +99,14 @@ public class ArrayList<E> {
   // Iterator 구현체를 제공한다.
   public Iterator<E> iterator() {
 
-    // anonymos class(익명 클래스)
-    //=>인스턴스를 한개만 생성하는 클래스를 만들 경우 사용하는 문법
-    //=>문법
-    //  인터페이스명 레퍼런스 = new 인터페이스명() {
-    //  인터페이스에 선언된 메서드 구현
-    //  }
-
-
-    Iterator<E> iterator = new Iterator<>() {//익명클래스를 정의하고 인스턴스를 만들고 생성자를 호출은 슈퍼클래스
+    // anonymous class(익명 클래스)
+    // => 인스턴스를 한 개만 생성하는 클래스를 만들 경우 사용하는 문법이다.
+    // => 문법
+    //      인터페이스명 레퍼런스 = new 인터페이스명() {
+    //        인터페이스에 선언된 메서드 구현
+    //      }
+    // 
+    Iterator<E> iterator = new Iterator<>() {
       int index = 0;
 
       @Override
@@ -115,7 +114,6 @@ public class ArrayList<E> {
         return index < ArrayList.this.size();
       }
 
-      @SuppressWarnings("unchecked")
       @Override
       public E next() {
         return ArrayList.this.get(index++);
