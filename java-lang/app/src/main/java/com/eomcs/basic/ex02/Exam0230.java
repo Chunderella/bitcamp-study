@@ -44,10 +44,10 @@ public class Exam0230 {
     //   즉 가비지가 되지 않는다.
     // - 그러나 heap에 생성된 객체는 주소를 잃어 버리면 가비지가 되기 때문에
     //   메모리를 좀 더 효율적으로 사용할 수 있다.
-    //
-    Integer obj7 = 128;
-    Integer obj8 = 128;
-    Integer obj9 = 128;
+    // 바이트 값만 상수풀에 저장한다!
+    Integer obj7 = 128; //힙 : 주소가 다르다 
+    Integer obj8 = 128; //힙 : 주소가 다르다  
+    Integer obj9 = 128; //힙 : 주소가 다르다  
     System.out.println(obj7 == obj8); // false
     System.out.println(obj7 == obj9); // false
     System.out.println(obj8 == obj9); // false

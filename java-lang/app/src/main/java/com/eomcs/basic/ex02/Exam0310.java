@@ -20,7 +20,8 @@ public class Exam0310 {
     Date d4 = new Date(121, 0, 15);
     System.out.println(d4);
 
-    // java.sql.Date
+    //java.util(슈퍼클래스)
+    // java.sql.Date (서브클래스)
     java.sql.Date d5 = new java.sql.Date(System.currentTimeMillis());
     System.out.println(d5);
 

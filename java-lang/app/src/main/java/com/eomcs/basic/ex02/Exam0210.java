@@ -37,7 +37,7 @@ public class Exam0210 {
     Integer i2 = Integer.valueOf(3000000);
     Long l2 = Long.valueOf(60000000000L);
     Float f2 = Float.valueOf(3.14f);
-    Double d2 = Double.valueOf(3.14159);
+    Double d2 = Double.valueOf(3.14159); 
     Boolean bool2 = Boolean.valueOf(true);
     Character c2 = Character.valueOf((char)0x41);
   }
@@ -48,3 +48,6 @@ public class Exam0210 {
 
 
 
+//primitive 타입을 담는 그릇 역할 : Wrapper 클래스
+//객체처럼 다룰 수 있음.
+//리턴값은 주소

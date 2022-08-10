@@ -29,7 +29,7 @@ public class Exam0224 {
 
     // 위의 코드에서 String이나 Member 처럼
     // primitive type의 값을 객체로 다룰 수 있다.
-    int i = 100;
+    int i = 100; //int 값을 담을 integer.valueOf(i) 
     obj = i; // auto-boxing 규칙에 따라 Integer.valueOf(i) 문장으로 변환한다.
 
     // obj 레퍼런스에 들어 있는 값이

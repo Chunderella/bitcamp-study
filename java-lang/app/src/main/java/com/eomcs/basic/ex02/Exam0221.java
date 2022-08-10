@@ -11,6 +11,7 @@ public class Exam0221 {
     // 즉 primitive data type 값을 Wrapper 클래스의 인스턴스에 바로 할당할 수 있다.
     //
     Integer obj = 100; // ==> Integer.valueOf(100)
+    //내부적으로 Integer.valueOf(100) 박싱코드로 바뀐다.
 
     // obj는 레퍼런스인데 어떻게 가능한가?
     // => 내부적으로 Integer.valueOf(100) 호출 코드로 바뀐다.
