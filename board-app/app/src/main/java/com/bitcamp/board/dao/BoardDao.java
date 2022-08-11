@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import com.bitcamp.board.domain.Board;
+import com.google.gson.Gson;
 
 // 게시글 목록을 관리하는 역할
 //
@@ -19,34 +20,37 @@ public class BoardDao {
   public BoardDao(String filename) {
     this.filename = filename;
   }
-  //<==================================load==============================================>
+  //<=======================================================================>
+
   public void load() throws Exception {
     try (BufferedReader in = new BufferedReader(new FileReader(filename))) {
+      StringBuilder strBuilder = new StringBuilder();
       String str;
       while ((str = in.readLine()) != null) {
-
-        Board board = Board.create(str); //캡슐화시킴.    
-        list.add(board);
-        boardNo = board.no;
+        strBuilder.append(str);
+      }
+      //StringBuilder에 보관된 JSON 문자열을 가지고 Board[]을 생성한다.
+      Board[] arr = new Gson().fromJson(strBuilder.toString(), Board[].class);
+      //Board[] 배열의 저장된 객체를 List로 옮긴다.
+      for (int i = 0; i < arr.length; i++ ) {
+        list.add(arr[i]);
       }
     }
   }
-  //<==================================load==============================================>
-  //<==================================save==============================================>
-
+  //<=======================================================================>
   public void save() throws Exception {
     try (FileWriter out = new FileWriter(filename)) {
-      for (Board board : list) {
-        out.write(board.toCsv() + "\n");
-      }
+      Board[] boards = list.toArray(new Board[0]);
+      out.write(new Gson().toJson(boards));
     }
   }
-  //<==================================save==============================================>
+  //<=======================================================================>
 
   public void insert(Board board) {
     board.no = nextNo();
     list.add(board);
   }
+  //<=======================================================================>
 
   public Board findByNo(int boardNo) {
     for (int i = 0; i < list.size(); i++) {
@@ -57,6 +61,7 @@ public class BoardDao {
     }
     return null;
   }
+  //<=======================================================================>
 
   public boolean delete(int boardNo) {
     for (int i = 0; i < list.size(); i++) {
@@ -67,6 +72,7 @@ public class BoardDao {
     }
     return false;
   }
+  //<=======================================================================>
 
   public Board[] findAll() {
 
@@ -82,6 +88,7 @@ public class BoardDao {
     }
     return arr;
   }
+  //<=======================================================================>
 
   private int nextNo() {
     return ++boardNo;

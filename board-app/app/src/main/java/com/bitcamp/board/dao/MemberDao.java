@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import com.bitcamp.board.domain.Member;
+import com.google.gson.Gson;
 
 // 회원 목록을 관리하는 역할
 //
@@ -18,27 +19,41 @@ public class MemberDao {
   public MemberDao(String filename) {
     this.filename = filename;
   }
+  //<=======================================================================>
 
   public void load() throws Exception {
     try (BufferedReader in = new BufferedReader(new FileReader(filename))) {
+
+      StringBuilder strBuilder = new StringBuilder();
       String str;
       while ((str = in.readLine()) != null) {
-        list.add(Member.create(str));
+        strBuilder.append(str);
+      }
+      //StringBuilder에 보관된 JSON 문자열을 가지고 Board[]을 생성한다.
+      Member[] arr = new Gson().fromJson(strBuilder.toString(), Member[].class);
+      //Board[] 배열의 저장된 객체를 List로 옮긴다.
+      for (int i = 0; i < arr.length; i++ ) {
+        list.add(arr[i]);
+
       }
     }
   }
+  //<=======================================================================>
 
   public void save() throws Exception {
     try (FileWriter out = new FileWriter(filename)) {
-      for (Member member : list) {
-        out.write(member.toCsv() + "\n");
-      }
+
+      Member[] member = list.toArray(new Member[0]);
+      out.write(new Gson().toJson(member));
     }
   }
+
+  //<=======================================================================>
 
   public void insert(Member member) {
     list.add(member);
   }
+  //<=======================================================================>
 
   public Member findByEmail(String email) {
     for (int i = 0; i < list.size(); i++) {
@@ -49,6 +64,7 @@ public class MemberDao {
     }
     return null;
   }
+  //<=======================================================================>
 
   public boolean delete(String email) {
     for (int i = 0; i < list.size(); i++) {
@@ -59,6 +75,7 @@ public class MemberDao {
     }
     return false;
   }
+  //<=======================================================================>
 
   public Member[] findAll() {
     Iterator<Member> iterator = list.iterator();
@@ -72,4 +89,17 @@ public class MemberDao {
     return arr;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 

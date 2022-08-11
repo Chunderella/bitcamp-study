@@ -12,8 +12,8 @@ public class Member implements Serializable {
   public long createdDate;
 
   //GoF의 Factory Method 패턴
-  // -> 객체 생성 과정이 복잡할 때 별도의 메서드로 캡슐화 한다.
-
+  // - 객체 생성 과정이 복잡할 때 별도의 메서드로 캡슐화 한다.
+  // 
   public static Member create(String csv) {
     String[] values = csv.split(",");
 
@@ -38,5 +38,3 @@ public class Member implements Serializable {
         this.createdDate);
   }
 }
-
-
