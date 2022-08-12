@@ -22,7 +22,7 @@ true if n is a lucky number, false otherwise
 // [시간 복잡도]
 // - ? 
 //
-public class Test10 {
+public class Test10xx {
 
   public static void main(String[] args) {
     System.out.println(isLuckyNumber(4744) == true);

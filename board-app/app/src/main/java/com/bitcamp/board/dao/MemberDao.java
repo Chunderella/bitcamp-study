@@ -17,7 +17,7 @@ public class MemberDao {
   String filename;
 
   public MemberDao(String filename) {
-    this.filename = filename;
+    this.filename = filename; 
   }
   //<=======================================================================>
 
