@@ -20,7 +20,7 @@ myReverse([1, 3, 2]) = [2, 3, 1]
 // [시간 복잡도]
 // - O(n/2) : n은 배열의 개수이다. 
 //
-public class Test09 {
+public class Test09xx {
 
   public static void main(String[] args) {
     int[] reverseList = myReverse(new int[]{9,8,7,6,5,4,3,2,1});

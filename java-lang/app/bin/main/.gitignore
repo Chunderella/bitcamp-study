@@ -1,6 +1,7 @@
 /META-INF/
 /README-resources.md
 /com/
+/log4j2.xml
 /A.class
 /B.class
 /C.class
