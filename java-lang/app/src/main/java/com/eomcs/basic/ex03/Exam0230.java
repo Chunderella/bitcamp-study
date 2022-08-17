@@ -62,6 +62,9 @@ public class Exam0230 {
     // ArrayList의 값을 꺼내주는 일을 할 객체를 얻는다.
     Iterator<Member> iterator = list.iterator();
 
+    //hasNext
+
+
     // Iterator(데이터 꺼내주는 일을 하는 객체)에게 데이터를 달라고 요청한다.
     while (iterator.hasNext()) {
       Member m = iterator.next();

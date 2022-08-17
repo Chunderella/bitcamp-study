@@ -1,4 +1,4 @@
-package com.eomcs.quiz.ex02;
+package com.eomcs.quiz.ex02.sol;
 
 // 출처: codefights.com
 // 
@@ -30,7 +30,7 @@ array of two integers representing a fraction A[0] / A[1]
  */
 //
 // [시간 복잡도]
-// - ?
+// - O(1) : 시간 복잡도는 일정하다.
 //
 public class Test06 {
   public static void main(String[] args) {
@@ -40,7 +40,9 @@ public class Test06 {
   }
 
   static String properOrImproper(int[] A) {
-    // 이 메서드를 완성하시오!
+    if (Math.abs(A[0] / A[1]) < 1) {
+      return "Proper";
+    }
     return "Improper";
   }
 

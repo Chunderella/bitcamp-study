@@ -58,9 +58,16 @@ public class Exam0221 {
     list.add(m2);
     list.add(m3);
 
-    Member[] arr = list.toArray(new Member[list.size()]); // 파라미터로 받은 배열 그래도 리턴
-    // Member[] arr = list.toArray(new Member[0]); // 새로 배열을 만들어 리턴
 
+    Member[] arr = new Member[0];
+    Member[] arr2 = list.toArray(arr); //새로 배열을 만들어 리턴
+    System.out.println(arr==arr2);
+
+    //    Member[] arr = new Member[list.size()]; // 새로 배열을 만들어 리턴
+    //    Member[] arr = list.toArray(new Member[list.size()]); // 파라미터로 받은 배열 그래도 리턴
+
+
+    // 리턴된 값을 사용하는게 좋다!
     for (Member m : arr) {
       System.out.printf("이름: %s, 나이: %d\n", m.name, m.age);
     }

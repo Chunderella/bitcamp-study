@@ -21,10 +21,10 @@ public class Exam0110 {
     //   - 새배열에 기존 배열의 값을 복사하기 때문에 속도가 느린 문제도 있다.
     //
     //
-    ArrayList list = new ArrayList();
-    list.add("Hello");
-    list.add(Integer.valueOf(100));
-    list.add(100);
+    ArrayList list = new ArrayList(); //어떤 값이나 담을 수 있음 
+    list.add("Hello"); //add 라는 메소드 호출
+    list.add(Integer.valueOf(100)); 
+    list.add(100);//auto-boxing => list.add(Integer.valueOf(100)으로 바뀐다.
     list.add(new Date());
 
     // ArrayList는 제네릭이 적용되어 있기 때문에

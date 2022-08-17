@@ -39,6 +39,7 @@ public class Test05 {
     System.out.println(maxFraction(
         new int[]{2, 4, 5, 16, 56}, 
         new int[]{3, 5, 6, 22, 99}) == 2);
+
   }
 
   static int maxFraction(int[] numerators, int[] denominators) {

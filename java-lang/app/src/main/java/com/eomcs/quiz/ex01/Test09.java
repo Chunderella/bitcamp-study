@@ -27,7 +27,7 @@ n-th element of the arithmetic progression
  */
 //
 // [시간 복잡도]
-// - ?
+// - O(1) : 일정하다.
 //
 public class Test09 {
   public static void main(String[] args) {
@@ -36,12 +36,10 @@ public class Test09 {
   }
 
   static int arithmeticProgression(int element1, int element2, int n) {
-
-    int diff = element2 - element1; //  두 수의 차를 구한다.
-
-    return element1 + diff * (n - 1); //첫 번째 항목 * (n-1)개의 차를 곱한다.
-
+    // 이 메서드를 완성하시오!
+    return 0; 
   }
 }
 
-//시간 복잡도 ==> 0(1) : 일정하다.
+
+

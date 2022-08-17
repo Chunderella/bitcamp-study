@@ -22,7 +22,7 @@ public class Exam0120 {
 
     // ArrayList는 같은 인스턴스를 중복해서 추가할 수 있다.
     list.add(null);
-    list.add("aaa");
+    list.add("aaa"); //문자열 리터럴은 스트림풀에 담겨짐
     list.add("bbb");
     System.out.println(list); // [aaa, bbb, ccc, ddd, null, eee, null, aaa, bbb]
 

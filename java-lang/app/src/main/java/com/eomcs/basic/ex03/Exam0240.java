@@ -1,4 +1,5 @@
 // 목록 조회: java.util.Collection의 forEach() 사용법
+//*흔한 메서드
 package com.eomcs.basic.ex03;
 
 import java.util.ArrayList;
@@ -64,9 +65,9 @@ public class Exam0240 {
     // => List 보관된 객체를 반복문을 통해 꺼낼 때 마다 
     //    Consumer 규칙에 따라 accept()를 호출할 것이다.
     // 
-    class MyConsumer implements Consumer<Member> {
+    class MyConsumer implements Consumer<Member> { //멤버를 다루는 메서드
       @Override
-      public void accept(Member m) {
+      public void accept(Member m) {  //accept에 멤버객체를 받는다.
         // forEach() 에서 반복문을 돌릴 때
         // Consumer 규칙에 따라 
         // 각 항목에 대해 이 메서드를 호출한다.
@@ -84,6 +85,14 @@ public class Exam0240 {
   }
 }
 
+//      forEach 메서드의 내부
+//      void forEash(Consumer<com.eomcs.basic.ex03.Exam0244.Member> consumer) {
+//      for (Member m : list ) {
+//      consumer.accept(m);
+//       }
+//      }
+
+// 리스트에서 한개씩 꺼낼 때마다 accept를 호출 -> 맴버 파라메터에서 받아서 호출
 
 
 

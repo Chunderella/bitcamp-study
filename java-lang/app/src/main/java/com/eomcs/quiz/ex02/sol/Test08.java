@@ -1,4 +1,4 @@
-package com.eomcs.quiz.ex02;
+package com.eomcs.quiz.ex02.sol;
 // 출처: codefights.com
 // 
 // 장애물들의 x 좌표(양의 좌표)가 배열로 주어질 때,
@@ -30,7 +30,7 @@ the desired length
  */
 //
 // [시간 복잡도]
-// - ?
+// - O(kn) = O(n^2) : k는 배열의 개수. n은 배열에서 가장 큰 수.
 //
 public class Test08 {
 
@@ -39,7 +39,16 @@ public class Test08 {
   }
 
   static int avoidObstacles(int[] inputArray) {
-    // 이 메서드를 완성하시오!
-    return 0;
+
+    for (int i = 1; ; i++) {
+      for (int j = 0; j < inputArray.length; j++) {
+        if (inputArray[j] % i == 0) {
+          break;
+        }
+        if (j == inputArray.length - 1) {
+          return i;
+        }
+      }
+    }  
   }
 }

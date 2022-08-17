@@ -50,9 +50,9 @@ public class Test22 {
   }
 
   static String getMonthName(int mo) {
-    mo -= 1; //값을 먼저 빼고 시작.
+    mo -= 1;
     String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
-        "Aug", "Sep", "Oct", "Nov", "Dec"}; //비교할 값을 배열로 준비. ==> 배열의 인덱스 준비
+        "Aug", "Sep", "Oct", "Nov", "Dec"};
     if (mo >= 0 && mo < months.length) {
       return months[mo];
     } else {

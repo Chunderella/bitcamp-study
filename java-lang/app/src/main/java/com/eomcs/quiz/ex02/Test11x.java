@@ -1,5 +1,8 @@
 package com.eomcs.quiz.ex02;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 // copyright by codefights.com
 // 
 // 삼각형의 세변 길이가 주어질 때,
@@ -12,7 +15,7 @@ package com.eomcs.quiz.ex02;
 // - 세변의 길이를 정렬할 때 자바 컬렉션 API를 사용하라!
 //   - Arrays.asList()
 //   - Collections.sort()
-// 
+// `
 /*
 For a given triangle determine if it is a right triangle.
 
@@ -35,6 +38,29 @@ public class Test11x {
 
   static boolean rightTriangle(int[] sides) {
     // 이 메서드를 완성하시오!
-    return false;
+    ArrayList<Integer> list = new ArrayList() ;
+    for (int i : sides) {
+      list.add(i);
+    }
+    Collections.sort(list);
+    //
+    //    for(int value : list) {
+    //      System.out.println(value);
+    //  }
+
+    return list.get(0) * list.get(0) + list.get(1) * list.get(1) == list.get(2)*list.get(2); 
+
+
+    //    return false;
   }
 }
+
+//1)  먼저 int 배열을 가지고 List를 만든다.
+//방법 1: 
+//Arraylist<Integer> list = new ArrayList<>();
+//for (int i : sides) {
+// list.add(i);
+//}
+//
+// 방법2
+//List<Integer> list = Array.asList

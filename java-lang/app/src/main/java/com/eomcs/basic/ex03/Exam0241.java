@@ -59,7 +59,7 @@ public class Exam0241 {
     list.add(m2);
     list.add(m3);
 
-    Consumer<Member> action = new Consumer<>() {
+    Consumer<Member> action = new Consumer<>() { 
       @Override
       public void accept(Member m) {
         System.out.printf("이름: %s, 나이: %d\n", m.name, m.age);

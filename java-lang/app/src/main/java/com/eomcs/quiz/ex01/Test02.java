@@ -22,8 +22,6 @@ public class Test02 {
 
   static int parity(int value) {
     int r = 0;
-
-    while (value != 0);
     // 이 메서드를 완성하시오!
     return r;
   }

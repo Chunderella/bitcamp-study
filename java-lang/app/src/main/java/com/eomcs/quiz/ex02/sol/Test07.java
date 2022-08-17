@@ -1,4 +1,4 @@
-package com.eomcs.quiz.ex02;
+package com.eomcs.quiz.ex02.sol;
 // 출처: codefights.com
 // 
 // 주어진 양의 정수 배열에서 가장 큰 짝수를 찾아라!
@@ -22,17 +22,21 @@ maximal even element of inputArray
  */
 //
 // [시간 복잡도]
-// - ?
+// - O(n) : n은 배열의 개수이다.
 //
 public class Test07 {
 
   public static void main(String[] args) {
-    System.out.println(maximalEven(new int[]{9, 3, 6, 7, 2, 4}) == 6);
+    System.out.println(maximalEven(new int[]{4, 3, 6, 8, 2, 4}) == 8);
   }
 
   static int maximalEven(int[] inputArray) {
-    int answer = 0; // 양의 정수만 고려하기에 시작 값을 0으로 설정한다.
-    // 이 메서드를 완성하시오!
+    int answer = 0;
+    for (int i = 1; i < inputArray.length; i++) {
+      if (inputArray[i] % 2 == 0 && inputArray[i] > answer) {
+        answer = inputArray[i];
+      }
+    }
     return answer;
   }
 }

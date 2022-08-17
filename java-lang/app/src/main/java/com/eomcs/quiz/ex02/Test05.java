@@ -43,19 +43,7 @@ public class Test05 {
   }
 
   static int maxFraction(int[] numerators, int[] denominators) {
-    int maxFractionIndex = 0; //가장 큰 분수가 0번째라고 가정하고 시작한다.
-
-    //양쪽에 상대편의 분모를 곱했을때 결과가 같다. 라는 전제를 이해하고 시작해야한다.
-
-    // 0번째 다음 항목인 1번째 부터 비교를 시작한다.
-    for (int i = 1; i < numerators.length; i++) {
-      //maxFractionIndex 가 가르키는 현재의 분수보다 i번째 분수가 더 큰 수라면
-      if (numerators[i] *denominators[maxFractionIndex] >
-      numerators[maxFractionIndex] * denominators[i]) {
-        maxFractionIndex = i;//maxfractionIndex의 값을 i로 바꾼다.
-      }
-    }
-
+    int maxFractionIndex = 0;
     // 이 메서드를 완성하시오!
     return maxFractionIndex;
   }
