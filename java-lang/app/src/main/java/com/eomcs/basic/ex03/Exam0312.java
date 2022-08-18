@@ -52,6 +52,8 @@ public class Exam0312 {
 
     Object[] arr = list.toArray();
 
+    //    toArray => object 레퍼런스 배열을 리턴하는 것임
+
     for (Object item : arr) {
       Member m = (Member) item;
       System.out.printf("이름: %s, 나이: %d\n", m.name, m.age);

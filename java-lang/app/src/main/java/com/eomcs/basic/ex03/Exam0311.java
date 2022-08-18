@@ -28,13 +28,13 @@ public class Exam0311 {
     public Member(String name, int age) {
       this.name = name;
       this.age = age;
-    }
+    }   
   }
 
   public static void main(String[] args) {
 
     Member m1 = new Member("홍길동", 20);
-    Member m2 = new Member("임꺽정", 30);
+    Member m2 = new Member("임꺽정", 30); 
     Member m3 = new Member("유관순", 17);
 
     MyList<Member> list = new MyList<>();
@@ -49,3 +49,6 @@ public class Exam0311 {
     }
   }
 }
+
+
+//형변환을 할 필요가 없어서 편하다. (제네릭 문법)

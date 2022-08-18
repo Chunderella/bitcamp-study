@@ -65,7 +65,13 @@ public class Exam0313 {
     list.add(m2);
     list.add(m3);
 
-    Member[] arr = list.toArray(new Member[list.size()]);
+
+    Member[] arr0 =new Member[list.size()];
+    list.toArray(arr0);
+    //배열을 만들때 리스트의 수와, 호출하기 전에 수가 다를 수 있기때문에 새로만든 배열에 담는다.
+
+    Member[] arr = list.toArray(new Member[list.size()]); //리턴하는 주소나 넘기는 주소나 같은 배열이다.
+    //toArray를 쓸때는 가능하면 toArray의 리턴값을 받아서 써라
 
     for (Member m : arr) {
       System.out.printf("이름: %s, 나이: %d\n", m.name, m.age);

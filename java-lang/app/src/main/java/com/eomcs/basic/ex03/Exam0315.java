@@ -11,9 +11,17 @@ public class Exam0315 {
     int size;
 
     @Override
+    //Iterator을 만든다.
     public Iterator<E> iterator() {
       class MyListIterator implements Iterator<E> {
+        //로컬클래스
+        //        MyList<E> $0this; (바깥 클래스의 생성자가 자동 생성)
         int cursor;
+
+        //public MyListIterator(MyList<E> $0this) //자동으로생성된다.
+        //로컬클래스 문법 아무것도 안주면 this 값이 들어가고
+        //필드와 생성자가 자동으로 생성된다.
+
 
         @Override
         public boolean hasNext() {

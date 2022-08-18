@@ -24,7 +24,7 @@ public class Exam0316 {
           return MyList.this.get(cursor++);
         }
       };
-      return obj;
+      return obj; //객체를 리턴
     }
 
     public void add(E value) {
