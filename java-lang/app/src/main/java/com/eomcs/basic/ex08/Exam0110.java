@@ -5,17 +5,19 @@ import java.util.HashMap;
 
 public class Exam0110 {
   public static void main(String[] args) {
-    // java.util.Map 구현체
+    // java.util.Map 구현체 - 인터페이스의 구현체
     // - HashMap, Hashtable 이 있다.
     // - key를 가지고 value을 저장하고 꺼낸다.
     //
+    //hashtable은null값을 넣을수 없음
+
     HashMap<String,Member> map = new HashMap<>();
 
     // put(key,value) : 맵에 값 저장하기
     // - key 객체에 대해 hashCode()를 호출하여 정수 값을 얻는다.
     // - 이 해시값을 가지고 저장할 위치를 결정한다.
     //
-    map.put("s01", new Member("홍길동", 20));
+    map.put("s01", new Member("홍길동", 20)); //맵에 값을 저장
     // 1) "s01" String 객체에 대해 hashCode()를 호출하여 해시 값을 얻는다.
     // 2) 그 해시 값을 사용하여 저장할 위치를 결정한다.
     // 3) 해당 위치에 Member 객체(의 주소)를 저장한다.

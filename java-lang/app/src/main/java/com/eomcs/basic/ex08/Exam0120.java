@@ -48,7 +48,7 @@ public class Exam0120 {
     MyKey k6 = new MyKey("컴공", 3);
 
     System.out.println(k3 == k6);
-    System.out.printf("equals(): %b\n", k3.equals(k6));
+    System.out.printf("equals(): %b\n", k3.equals(k6)); //object에서 받은 코드 
     System.out.printf("hashCode(): %d, %d\n", k3.hashCode(), k6.hashCode());
     System.out.println("-----------------------------------");
 

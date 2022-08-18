@@ -28,7 +28,9 @@ public class Exam0110 {
 
     list.add(s4); // aaa, ccc, ddd
     list.add(1, s5); // aaa, eee, ccc, ddd
+
     print(list);
+
 
     list.add(0, s2); // bbb, aaa, eee, ccc, ddd
     print(list);
@@ -63,7 +65,7 @@ public class Exam0110 {
 //    => 인덱스를 이용하여 특정 항목을 찾을 때 리스트의 처음부터 찾아야 하기 때문에 속도가 느리다.
 //    => 삭제할 때 이전 항목과 다음 항목을 바로 연결하면 되기 때문에 속도가 빠르다.
 //    => 삽입할 때 현재항목과 다음 항목을 새 항목과 연결하면 되기 때문에 속도가 빠르다.
-
+//== 노드를 따라가기때문에 찾기가 느림
 
 
 

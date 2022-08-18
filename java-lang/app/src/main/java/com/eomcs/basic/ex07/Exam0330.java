@@ -24,8 +24,12 @@ public class Exam0330 {
     @Override
     public int hashCode() {
       return Objects.hash(age, name);
+      //hash = 가변 파라미터 (문자열과 정수)
+      //수학공식에 따라서 문자열과 숫자를 가지고 해쉬값을 계산해서 리턴함
     }
   }
+
+
 
   public static void main(String[] args) {
 
@@ -40,6 +44,9 @@ public class Exam0330 {
     System.out.println(v3.hashCode());
     System.out.println(v4.hashCode());
     System.out.println(v5.hashCode());
+
+    System.out.println(v3.equals(v5));
+    System.out.println(v3.hashCode()==(v5.hashCode()));
 
     HashSet<Member> set = new HashSet<>();
     set.add(v1);

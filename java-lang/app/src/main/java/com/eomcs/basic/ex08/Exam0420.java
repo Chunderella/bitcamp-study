@@ -17,6 +17,8 @@ public class Exam0420 {
     // Hashtable 에서는 value 목록을 뽑아주는 values() 외에
     // elements() 도 있다.
     // 사용법은 Iterator 와 유사하다.
+
+    //Enumeration  ==>  hasMoreElements ==> 해쉬테이블에서 벨류를 꺼내주는 것
     Enumeration<Member> values = table.elements();
     while (values.hasMoreElements()) {
       System.out.println(values.nextElement());

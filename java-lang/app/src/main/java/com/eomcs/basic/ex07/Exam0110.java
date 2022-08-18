@@ -18,7 +18,18 @@ import java.util.HashSet;
 //
 public class Exam0110 {
   public static void main(String[] args) {
+
+
+    //    String s1 = new String("Hello");
+    //    String s2 = new String("Hello");
+    //    System.out.println(s1 == s2);
+    //    System.out.println(s1.hashCode() == s2.hashCode());
+    //    System.out.println(s1.equals(s2));
+    //    인스턴스가 달라도 같은 문자열을 가지고 있다면 true
+
+
     HashSet<String> set = new HashSet<>();
+
 
     // Set에 값 추가하기
     set.add(new String("aaa"));
@@ -28,6 +39,7 @@ public class Exam0110 {
     // Set은 집합의 특성을 따른다.
     // 같은 값을 중복해서 넣을 수 없다.
     set.add(new String("aaa")); // 위에서 입력한 "aaa"와 인스턴스가 달라도 중복된 것으로 간주.
+    //해시코드&값이 동일해서 같은 인스턴스로 인식 중복된 것으로 간주
     set.add(new String("bbb")); // 위에서 입력한 "bbb"와 인스턴스가 달라도 중복된 것으로 간주.
 
     // null을 넣을 수 있다. 단 중복해서 넣을 수 없다.
@@ -38,6 +50,7 @@ public class Exam0110 {
     // 출력 결과를 보면 입력 순서와 다르다.
     // 이유?
     // - 저장할 때 각 인스턴스의 hashCode() 리턴 값으로 위치를 정하기 때문이다.
+
   }
 }
 

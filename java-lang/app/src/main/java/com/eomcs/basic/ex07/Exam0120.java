@@ -17,6 +17,8 @@ public class Exam0120 {
     list.add("aaa"); // 위에서 입력한 "aaa"와 같은 인스턴스라도 중복 저장.
     list.add("bbb"); // 위에서 입력한 "bbb"와 같은 인스턴스라도 중복 저장.
 
+    //상수 문자열의 경우 같은 객체 (Stringpool)
+
     // null을 넣을 수 있다.
     // 여러 번 넣을 수 있다.
     list.add(null);

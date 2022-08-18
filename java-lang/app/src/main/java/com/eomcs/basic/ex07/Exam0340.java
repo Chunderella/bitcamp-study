@@ -37,6 +37,8 @@ public class Exam0340 {
       Member other = (Member) obj;
       return age == other.age && Objects.equals(name, other.name);
     }
+
+    //해시코드가 같고, equals 결과가 true 일때 동일한 것으로 간주할 수 있다.
   }
 
   public static void main(String[] args) {
