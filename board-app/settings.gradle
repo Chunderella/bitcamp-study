@@ -11,3 +11,6 @@ rootProject.name = 'board-app'
 //include('app')
 include('app-client')
 include('app-server')
+include('app-common')
+
+
