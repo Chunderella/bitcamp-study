@@ -1,4 +1,4 @@
-// 클라이언트와 입출력 테스트 - byte stream
+// 클라이언트와 입출력 테스트 - byte stream : 문자열 주고 받기
 package com.eomcs.net.ex03;
 
 import java.io.PrintStream;
@@ -14,12 +14,14 @@ public class Server0150 {
       System.out.println("클라이언트의 연결을 기다리고 있음.");
 
       try (Socket socket = serverSocket.accept();
-          Scanner in = new Scanner(socket.getInputStream());
-          PrintStream out = new PrintStream(socket.getOutputStream())) {
+          Scanner in = new Scanner(socket.getInputStream()); //문자열을 읽을 수 있고
+          PrintStream out = new PrintStream(socket.getOutputStream())) { //문자열을 출력할 수 있음
+        //>>outputstream과 연결 가능
+
 
         System.out.println("클라이언트가 보낸 한 줄의 문자열을 기다리고 있음!");
 
-        String str = in.nextLine();
+        String str = in.nextLine(); //스캐너 객체는 클라이언트에서한 줄을 읽을때까지 대기.
         System.out.println(str);
 
         // 서버가 데이터를 보내지 않으면 클라이언트의 read()는 리턴하지 않는다.
@@ -27,7 +29,7 @@ public class Server0150 {
         System.out.print(">");
         keyboard.nextLine();
 
-        out.println(str);
+        out.println(str); 
         // out.flush();
         // byte stream 을 사용할 때는 바로 출력한다.
         // 따라서 flush()를 호출하지 않아도 된다.

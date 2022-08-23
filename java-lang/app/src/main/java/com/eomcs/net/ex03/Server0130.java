@@ -24,6 +24,7 @@ public class Server0130 {
 
         System.out.println("read() 호출: 클라이언트가 보낸 int 값을 기다리고 있음!");
         int value = in.readInt(); // 랜카드에 있는 메모리에서 수신된 4바이트를 읽을 때까지 기다린다.
+        //입출력 스트림에 데코레이터(int면 4바이트로 짤라서 인트로 리턴)하는 가공하는 역할을 추가
         System.out.println(value);
 
 

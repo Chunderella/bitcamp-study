@@ -1,6 +1,6 @@
 // stateful 방식의 이점 활용 - 계산기 서버 만들기
 package com.eomcs.net.ex04.stateful2;
-
+//연결이 끊어질때까지 작업 결과를 계속 유지할 수 있음.
 import java.io.DataInputStream;
 import java.io.PrintStream;
 import java.net.ServerSocket;
@@ -25,6 +25,8 @@ public class CalcServer {
     // ss.close();
   }
 
+  //순차적으로 실행되기때문에 한번에 한클라이언트만 가능하다.
+
   static void processRequest(Socket socket) throws Exception {
     try (Socket socket2 = socket;
         DataInputStream in = new DataInputStream(socket.getInputStream());
@@ -32,7 +34,7 @@ public class CalcServer {
 
       // 작업 결과를 유지할 변수
       int result = 0;
-
+      //기존값에 추가적으로 입력받아서 계산해서 result 변수에 저장
       loop: while (true) {
         String op = in.readUTF();
         int a = in.readInt();

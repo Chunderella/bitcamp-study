@@ -22,7 +22,7 @@ public class Client0120 {
 
       // 서버에 보낼 바이트 배열을 준비한다.
       // => 0 ~ 99 의 값을 가진 배열이다.
-      byte[] bytes = new byte[100];
+      byte[] bytes = new byte[100]; //0-100까지 바이트 배열에 담는다
       for (int i = 0; i < 100; i++) {
         bytes[i] = (byte) i;
       }

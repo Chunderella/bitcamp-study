@@ -9,7 +9,7 @@ import java.net.Socket;
 
 public class CalcServer {
 
-  // 클라이언트와 통신하는 부분을 별도의 분리하여
+  // 클라이언트와 통신하는 부분을 별도의 스레드(실행흐름)으로 분리하여
   // 독립적으로 실행하게 한다.
   static class RequestHandler extends Thread {
 
@@ -46,7 +46,7 @@ public class CalcServer {
               break;
             case "/":
               result /= a;
-              break;
+              break; 
             case "quit":
               break loop;
             default:
@@ -67,7 +67,7 @@ public class CalcServer {
     }
   }
 
-  public static void main(String[] args) throws Exception {
+  public static void    main(String[] args) throws Exception {
     System.out.println("서버 실행 중...");
 
     ServerSocket ss = new ServerSocket(8888);
@@ -85,6 +85,7 @@ public class CalcServer {
       // 해결책?
       // 클라이언트와 대화하는 부분을 스레드로 분리하여 실행하라!
       RequestHandler requestHandler = new RequestHandler(socket);
+      //스레드 객체 생성 -> 소켓
       requestHandler.start();
       // 스레드를 실행하려면 start() 를 호출하라.
       // start()에 내부에서 run()을 호출할 것이다.

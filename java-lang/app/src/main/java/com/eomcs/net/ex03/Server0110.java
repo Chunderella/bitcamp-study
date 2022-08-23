@@ -34,7 +34,7 @@ public class Server0110 {
         out = socket.getOutputStream();
 
         // => 입력 스트림 객체를 준비하기
-        in = socket.getInputStream();
+        in = socket.getInputStream(); 
         System.out.println("클라이언트와 통신할 입출력 스트림이 준비되었음.");
 
         // Client와 Server의 통신 규칙에 따라 순서대로 입출력 해야 한다.

@@ -16,7 +16,9 @@ public class Server0110 {
       System.out.println("서버 실행!");
 
       try (Socket socket = serverSocket.accept();
-          BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+          BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));  //버퍼드리더 객체에는 리더객체만 올 수 있다.
+          //InputStream을 바로사용하지 못하기때문에 리더를 붙임
+
           PrintWriter out = new PrintWriter(socket.getOutputStream())) {
 
         System.out.println("클라이언트가 연결되었음!");

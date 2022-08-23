@@ -24,6 +24,8 @@ public class CalcClient {
       out.writeInt(Integer.parseInt(keyScan.nextLine()));
       out.flush();
 
+      //byte는 flush 안해도 보내짐
+
       String str = in.nextLine();
       System.out.println(str);
 

@@ -56,5 +56,6 @@ public class CalcServer {
     }
   }
 }
+//반복하지 않는다. => 연결 종료
 
 

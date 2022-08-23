@@ -15,7 +15,7 @@ public class Client0110 {
     // => 서버와의 연결이 이루어지면 Socket 객체를 리턴한다.
     // => 클라이언트 측의 포트 번호는 OS가 자동으로 부여한다.
     //    서버 측은 개발자가 명시적으로 부여해야 한다.
-    Socket socket = new Socket(
+    Socket socket = new Socket(  //서버와 연결되면 소켓 객체를 리턴한다.
         // 서버 IP 주소(ex: 234.3.4.56) 또는 도메인명(ex: www.daum.net)
         "localhost", 
         // 특수 IP : 127.0.0.1 - 로컬 컴퓨터를 가리킨다.
