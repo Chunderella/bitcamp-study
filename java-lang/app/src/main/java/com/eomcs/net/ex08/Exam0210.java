@@ -12,13 +12,14 @@ public class Exam0210 {
   public static void main(String[] args) throws Exception {
 
     // => URL 주소를 준비한다.
-    URL url = new URL("http://itempage3.auction.co.kr/DetailView.aspx?itemno=C204190906");
+    URL url = new URL("https://sports.news.naver.com/index");
 
     // => URL 정보를 가지고 HTTP 요청을 수행할 객체를 얻는다.
     URLConnection con = url.openConnection();
-
+    //좀 더 복잡한 요청을 실행할때.
     // => 웹서버와 연결한 후 HTTP 요청한다.
-    con.connect();
+
+    con.connect(); //응답헤어값을상세하게 알아낼수있다.
 
     // URL.openStream()을 사용하는 것 보다 이점?
     // - 응답 헤더의 다양한 값을 추출할 수 있다.

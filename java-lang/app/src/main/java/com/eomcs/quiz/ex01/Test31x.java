@@ -26,7 +26,7 @@ a positive integer greater than or equal to 3
 // [시간 복잡도]
 // - ?
 //
-public class Test31 {
+public class Test31x {
 
   public static void main(String[] args) {
     System.out.println(sumOfTheAngles(3) == 180);

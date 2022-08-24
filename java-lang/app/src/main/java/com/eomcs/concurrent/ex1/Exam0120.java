@@ -8,7 +8,7 @@ public class Exam0120 {
   // 다음과 같이 Thread를 상속 받아
   // run() 메서드에 그 코드를 두어라!
   //
-  static class MyThread extends Thread {
+  static class MyThread extends Thread {  //쓰레드를 상속받은 후
     @Override
     public void run() {
       // 기존 실행 흐름과 분리하여 따로 실행시킬 코드를

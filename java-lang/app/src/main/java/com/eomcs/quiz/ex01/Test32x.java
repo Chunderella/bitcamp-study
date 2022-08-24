@@ -37,16 +37,27 @@ true if score1 : score2 represents a possible score for an ended set, false othe
 // [시간 복잡도]
 // - ?
 //
-public class Test32 {
+public class Test32x {
 
   public static void main(String[] args) {
     System.out.println(tennisSet(3, 6) == true);
     System.out.println(tennisSet(8, 5) == false);
     System.out.println(tennisSet(6, 5) == false);
+    System.out.println(tennisSet(6, 7) == true);
+
   }
 
   static boolean tennisSet(int score1, int score2) {
+    if(score1 < score2) {
+      int temp = score1;
+      score1 = score2;
+      score2 = temp;
+    }
     // 이 메서드를 완성하시오!
+    if((score1 == 6 && score2 < 5) || (score1 == 7 && score2 < 7)) {
+      return true;
+    }
     return false;
   }
+
 }

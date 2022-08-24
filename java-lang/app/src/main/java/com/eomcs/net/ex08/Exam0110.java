@@ -18,11 +18,11 @@ public class Exam0110 {
 
     // => 서버와 연결하고 HTTP 요청을 수행한다.
     // => 그런 후에 웹서버의 응답 데이터를 읽어들일 도구를 준비한다.
-    InputStream in = url.openStream();
-
+    InputStream in = url.openStream(); //스트림을 연결하라. InputStream을 리턴함.
+    //바이트스트림
     // => 서버가 보낸 데이터를 한 줄씩 읽기 위해 데코레이터를 붙인다.
     BufferedReader in2 = new BufferedReader(new InputStreamReader(in));
-
+    //캐릭터스트림  ==> 데코레이터 사용필요 InputStreamReader
     while (true) {
       String str = in2.readLine();
       if (str == null)

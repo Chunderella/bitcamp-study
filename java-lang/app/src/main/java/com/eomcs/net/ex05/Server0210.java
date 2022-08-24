@@ -30,7 +30,7 @@ public class Server0210 {
     // 받은 데이터를 저장할 버퍼 준비
     byte[] buf = new byte[8196];
 
-    // 빈 패킷 준비
+    // 빈 패킷 준비 => 버퍼를 패킷에 담는다.
     DatagramPacket emptyPacket = new DatagramPacket(buf, buf.length);
 
     System.out.println("데이터를 읽기 전에 잠깐 멈춤>");
@@ -49,6 +49,9 @@ public class Server0210 {
 
     // 1) 패킷 객체에 보관된 바이트 배열을 꺼낸다.
     byte[] bytes = emptyPacket.getData();
+
+    //getData()가 리턴한 배열은 DatagramPacket을 만들 당시 넘겨준 배열이다.
+    System.out.println(buf == bytes);
 
     // 2) 바이트 배열에 보관된 데이터의 개수를 알아낸다.
     int len = emptyPacket.getLength();

@@ -17,7 +17,11 @@ public class CalcServer {
 
 
   // 클라이언트와 대화하는 부분을 별도의 코드로 분리하여 실행한다.
-  static class RequestHandler extends Thread {
+  static class RequestHandler extends Thread { 
+    //메인 실행흐름과 분리해서
+    //독립적으로 별도의 실행흐름을 만듬.
+    //쓰레드를 상속 받은 후 런이라는 메소드안에 둬라
+    //별도로 동시에 실행할 수 있다.
 
     Socket socket;
 
@@ -66,7 +70,7 @@ public class CalcServer {
             result *= value;
             break;
           case "/":
-            Thread.sleep(10000);
+            Thread.sleep(30000);
             result /= value;
             break;
         }

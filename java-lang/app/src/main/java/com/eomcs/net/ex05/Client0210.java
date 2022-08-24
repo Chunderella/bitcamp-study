@@ -26,7 +26,10 @@ public class Client0210 {
     //    String message = new String("Hello"); // Heap에 String 객체 생성
     //    String message = "Hello"; // constant pool에 String 객체 생성
     //    byte[] bytes = message.getBytes("UTF-8");
-    byte[] bytes = "Hello".getBytes("UTF-8");
+
+    byte[] bytes = "Hello".getBytes("UTF-8"); 
+    //1.상수풀에 스트링 객체 생성 -> 스트링 인스턴스 주소가 리턴됨 
+    //2.스트링객체("Hello") = 문자열을 가지고 있는 스트링 객체
 
     // 보낼 데이터를 패킷에 담는다.
     // => 패킷 = 데이터 + 데이터크기 + 받는이의 주소 + 받는이의 포트번호
@@ -34,11 +37,13 @@ public class Client0210 {
         bytes, // 데이터가 저장된 바이트 배열
         bytes.length, // 전송할 데이터 개수
         InetAddress.getByName("localhost"), // 데이터를 받을 상대편 주소
+        //        InetAddress 객체를 만듬
+
         port // 포트번호
         );
 
     // 데이터 전송
-    socket.send(packet);
+    socket.send(packet); //실행여부와 상관없이 전송함.
     System.out.println("데이터 전송 완료!");
 
     // 자원해제
