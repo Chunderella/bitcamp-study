@@ -5,7 +5,7 @@ public class Exam0180 {
 
   public static void main(String[] args) {
     // JVM의 최상위 스레드 그룹인 system의 계층도 출력하기
-    Thread mainThread = Thread.currentThread();
+    Thread mainThread = Thread.currentThread(); 
     ThreadGroup mainGroup = mainThread.getThreadGroup();
     ThreadGroup systemGroup = mainGroup.getParent();
 
@@ -17,7 +17,7 @@ public class Exam0180 {
 
     // 현재 스레드 그룹에 소속된 스레드들 출력하기
     Thread[] threads = new Thread[10];
-    int size = tg.enumerate(threads, false);
+    int size = tg.enumerate(threads, false); 
     for (int i = 0; i < size; i++) {
       System.out.println(indent + "  ==> " + threads[i].getName() + "(T)");
     }

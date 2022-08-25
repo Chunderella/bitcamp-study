@@ -10,6 +10,9 @@ public class Exam0140 {
     // 스레드 그룹에 소속된 하위 그룹을 알고 싶다면?
     ThreadGroup[] groups = new ThreadGroup[100];
     int count = mainGroup.enumerate(groups, false);
+
+    //    enumerate 하위의 하위 폴더는 x 메인의 직계 하위 폴더만 보자!
+
     // 두 번째 파라미터 값을 false로 지정하면,
     // 하위 그룹에 소속된 그룹들은 제외한다.
     // 즉, 현재 그룹에 소속된 하위 그룹의 목록만 가져오라는 뜻!

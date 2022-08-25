@@ -12,6 +12,9 @@ public class Exam0150 {
     System.out.printf("main 스레드 그룹의 부모: %s\n", parentGroup.getName());
 
 
+    //getParent ===> 부모그룹을 알 수 있음.
+    //grandparentGroup ==> 조부모를 알 수 있음.
+
     // "system" 그룹의 부모 그룹은?
     ThreadGroup grandparentGroup = parentGroup.getParent();
     if (grandparentGroup != null) {

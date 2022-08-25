@@ -26,6 +26,8 @@ public class Exam0120 {
     // 왔다갔다 하면서 처리할 것이다.
     new MyThread().start();
 
+
+
     for (int i = 0; i < 1000; i++) {
       System.out.println(">>> " + i);
     }

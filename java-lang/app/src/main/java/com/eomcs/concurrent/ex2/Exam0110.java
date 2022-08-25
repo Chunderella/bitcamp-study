@@ -11,7 +11,9 @@ public class Exam0110 {
     // 이 순간 실행 중인 흐름이 무엇인지 알고 싶다면?
     Thread t = Thread.currentThread();
 
+
     System.out.println("실행 흐름명 = " + t.getName());
+    //이름을 꺼내기 위해 getName 사용
 
     // 실행 흐름을 전문적인 용어로 "Thread(실 타래)"라 부른다.
     // JVM이 실행될 때 main() 메서드를 호출하는 실행 흐름(스레드)의 이름은 "main"이다.

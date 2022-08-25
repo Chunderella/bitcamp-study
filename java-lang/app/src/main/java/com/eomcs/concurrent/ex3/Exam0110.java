@@ -10,12 +10,14 @@ public class Exam0110 {
     // => 그런데 다중 상속이 불가능하기 때문에 다른 클래스를 상속 받을 수 없다.
     // => 즉 MyThread가 다른 클래스를 상속 받으면서 스레드가 될 순 없다.
     //
+
     class MyThread extends Thread {
       // 기존의 스레드에서 분리해서 새 스레드에서 실행하고픈 코드가 있다면,
       // run()을 재정의하여 그 메서드에 해당 코드를 두어라!
       @Override
-      public void run() {
+      public void run() { //런이라는 메서드를 오버라이딩
         // 별도로 분리해서 병행으로 실행할 코드를 두는 곳!
+
         for (int i = 0; i < 1000; i++) {
           System.out.println("===> " + i);
         }
@@ -24,8 +26,10 @@ public class Exam0110 {
 
     // 스레드 실행
     // => Thread의 서브 클래스는 그냥 인스턴스를 만들어 start()를 호출한다.
-    MyThread t = new MyThread();
-    t.start(); // 실행 흐름을 분리한 후 즉시 리턴한다. 비동기로 동작한다.
+    MyThread t = new MyThread(); //스레드 객체를 만든 후에 start를 함.
+
+    t.start(); // 실행 흐름을 분리한 후 즉시 리턴한다. 비동기로 동작한다. 
+    //런 메서드가 호출됨.(런 메서드가 종료될때까지 실행됨)
 
     // "main" 스레드는 MyThread와 상관없이 병행하여 실행한다.
     for (int i = 0; i < 1000; i++) {
