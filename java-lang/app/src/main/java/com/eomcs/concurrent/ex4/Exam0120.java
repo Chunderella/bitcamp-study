@@ -13,10 +13,10 @@ public class Exam0120 {
 
     t.start(); // 스레드를 생성하고 시작시킨다.
 
-    //    t.join(); // t 스레드가 종료될 때까지 "main" 스레드는 기다린다.
+    t.join(); // t 스레드가 종료될 때까지 "main" 스레드는 기다린다. ==> 자식 스레드와 연결한다.
 
     // 즉 t 스레드가 종료된 후 다음 코드를 실행한다.
-    System.out.println("스레드 종료 후");
+    System.out.println("스레드 종료 후"); //자식 스레드가 끝나면 이어서 부모스레드가 실행된다.
 
     // 스레드 종료 후 다시 시작시킨다면?
     // => IllegalThreadStateException 발생!

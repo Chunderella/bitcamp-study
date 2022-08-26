@@ -5,8 +5,8 @@ public class Exam0140 {
   public static void main(String[] args) throws Exception {
 
     class MyThread extends Thread {
-      public MyThread(String name) {
-        super(name);
+      public MyThread(String name) { //생성자에서 이름을 받아 저장
+        super(name); //생성자에서 설정할 수 있음 (스레드클래스의)
       }
       @Override
       public void run() {
@@ -32,7 +32,7 @@ public class Exam0140 {
     t3.start();
 
     for (int i = 0; i < 1000; i++)
-      System.out.printf("main 스레드: %d\n", i);
+      System.out.printf("main 스레드: %d\n", i); //메인스레드
   }
 
 }

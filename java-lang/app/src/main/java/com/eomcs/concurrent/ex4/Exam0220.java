@@ -13,6 +13,7 @@ public class Exam0220 {
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < 100000000; i++)
           Math.asin(38.567); // 시간 끌기 용. 왜? 부동소수점 연산은 시간을 많이 소요.
+        //메인쓰레드 , 자식스레드를 왔다갔다 실행 
         long endTime = System.currentTimeMillis();
         System.out.printf("MyThread = %d\n", endTime - startTime);
       }

@@ -12,7 +12,7 @@ public class Exam0210 {
       this.balance = balance;
     }
 
-    public long withdraw(long money) {
+    public long withdraw(long money) { //여러메소드가 사용하기때문에 문제가 발생 가능 : 크리티컬 섹션/리전
 
       // 이 메서드처럼 여러 스레드가 같은 메모리(balance 필드)의 값을 
       // 동시에 변경할 때 문제가 발생할 수 있는 코드를 
@@ -71,7 +71,7 @@ public class Exam0210 {
   }
 
   public static void main(String[] args) {
-    Account account = new Account("111-11-1111-111", 100_0000);
+    Account account = new Account("111-11-1111-111", 100_0000); 
 
     ATM 강남 = new ATM("강남", account);
     ATM 서초 = new ATM("서초", account);
