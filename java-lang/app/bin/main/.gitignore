@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 /com/
+=======
+>>>>>>> c9dc2015b8f6d5f0044961f39d913e58e13be821
 /A.class
 /B.class
 /C.class
@@ -16,4 +19,12 @@
 /Exam13.class
 /Hello.class
 /Hello2.class
+<<<<<<< HEAD
 /Test.class
+=======
+/META-INF/
+/README-resources.md
+/Test.class
+/com/
+/log4j2.xml
+>>>>>>> c9dc2015b8f6d5f0044961f39d913e58e13be821
