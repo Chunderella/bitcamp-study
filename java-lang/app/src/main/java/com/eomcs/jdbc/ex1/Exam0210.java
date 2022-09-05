@@ -7,7 +7,7 @@ public class Exam0210 {
 
   public static void main(String[] args) throws Exception {
 
-    java.sql.Connection con = null;
+    java.sql.Connection con = null; //인터페이스 규칙에 따라 만든 구현체를 리턴한다.
 
     try {
       // JVM에서 jdbc driver 파일(.jar/META-INF/services/java.sql.Driver 파일)을 뒤져서 
@@ -26,7 +26,7 @@ public class Exam0210 {
       // password : DBMS 사용자 암호
       //
       con = DriverManager.getConnection(
-          "jdbc:mariadb://localhost:3306/studydb", // jdbcURL
+          "jdbc:mariadb://localhost:3306/studydb", // jdbcURL  //드라이브 정보 : 주소
           "study", // username
           "1111" // password
           );
@@ -47,7 +47,14 @@ public class Exam0210 {
       // ..|............................|..........return............|
       // ..|........return..............|<---------------------------|
       // ..|<---------------------------|............................|
+      //드라이버는 파라미터 정보를 보고
+      //어떤 드라이브를 쓰고 어떤 드라이브에게 맡길지 결정한다.
       //
+      //상호작용 다이어그램
+      //콜라보레이션 다이어그램
+      //시퀀스 다이어그램
+
+
       System.out.println("DBMS와 연결됨!");
 
       // MariaDB의 Driver 구현체가 리턴한 Connection 객체는

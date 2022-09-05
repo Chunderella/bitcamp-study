@@ -1,4 +1,5 @@
 // JDBC 드라이버 준비 - DriverManager가 Driver 구현체를 자동 로딩 II
+//실무에서 가장 많이 쓰는 방법
 package com.eomcs.jdbc.ex1;
 
 import java.sql.DriverManager;
@@ -60,3 +61,8 @@ public class Exam0141 {
 }
 
 
+
+
+//서비스 제공자가 원하는 것을 자동으로 로딩하는 것.
+//JDBC 라이브러리 파일을 넣게 되면 정보가 들어가 있고
+//실행명령을 하면 그 파일을 뒤져서 실행함.
