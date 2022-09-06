@@ -27,10 +27,10 @@ public class Exam0130 {
       no = keyScan.nextLine();
     }
 
-    try (Connection con = DriverManager.getConnection( //
+    try (Connection con = DriverManager.getConnection( //커넥션 객체 준비
         "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
-        Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery( //
+        Statement stmt = con.createStatement(); //스테이트먼트 준비
+        ResultSet rs = stmt.executeQuery( //셀렉트문 실행
             "select * from x_board where board_id = " + no)) {
 
       if (rs.next()) {

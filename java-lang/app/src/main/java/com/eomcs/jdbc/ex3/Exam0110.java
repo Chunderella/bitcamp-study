@@ -34,6 +34,8 @@ public class Exam0110 {
       int count = stmt.executeUpdate( 
           "insert into x_board(title, contents) values('" + title + "','" + contents + "')");
 
+      //contents 에 들어갈 값을 sql을 변형시키는 코드를 삽입할 수 있음.
+
       // 위에서 사용자가 입력한 값을 가지고 SQL 문장을 만들면 다음과 같다.
       //
       // insert into x_board(title, contents) values('aaaa','bbbb'), ('haha', 'hoho'), ('hehe', 'puhul')

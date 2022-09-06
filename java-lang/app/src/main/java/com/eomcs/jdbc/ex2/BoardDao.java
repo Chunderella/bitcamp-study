@@ -32,9 +32,12 @@ public class BoardDao {
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("select * from x_board order by board_id desc")) {
 
+      //받은 다음에 보드 객체에 담고 리스트에 담는다.
+
       ArrayList<Board> list = new ArrayList<>();
       while (rs.next()) {
         Board board = new Board();
+        //새로운 보드객체를 만들어서 담아야함. *덮어쓰기 방지
         board.setNo(rs.getInt("board_id"));
         board.setTitle(rs.getString("title"));
         board.setContent(rs.getString("contents"));
@@ -56,16 +59,16 @@ public class BoardDao {
           board.getTitle(),
           board.getContent());
 
-      return stmt.executeUpdate(sql);
+      return stmt.executeUpdate(sql); //서버에 보내 리턴
     }
   }
-
+  //보드객체를 파라미터로 받고
   public int update(Board board) throws Exception {
     try (Connection con = DriverManager.getConnection(
         "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         Statement stmt = con.createStatement()) {
 
-      String sql = String.format(
+      String sql = String.format(//업데이트에 해당되는 sql문을 준비
           "update x_board set title='%s', contents='%s' where board_id=%d", 
           board.getTitle(),
           board.getContent(),
@@ -79,7 +82,9 @@ public class BoardDao {
     try (Connection con = DriverManager.getConnection(
         "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("select * from x_board where board_id = " + no)) {
+        ResultSet rs = stmt.executeQuery("select * from x_board where board_id = " + no)) { //특정 게시글 번호의 데이터를 서버에 질의하고 리절트 셋을 리턴받음
+      //이를 통해 서버에 생성된 결과를 가져온다.
+      //가져오면 보드객체에 담아서 리턴하고 가져오지 않으면 null 리턴
 
       if (rs.next()) {
         Board board = new Board();

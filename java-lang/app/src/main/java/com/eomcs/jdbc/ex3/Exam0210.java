@@ -24,6 +24,8 @@ public class Exam0210 {
         "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         PreparedStatement stmt = con.prepareStatement("insert into x_board(title,contents) values(?,?)")) {
 
+      //[?,?] > (인파라미터를 설정(이자리에 값이온다 : 당장 설정하진 않는다.)
+
       // SQL 삽입 공격
       // => 입력 문자열에 SQL 명령을 삽입하여 프로그램의 의도와 다르게 데이터를 조작하는 행위.
       // => 사용자가 입력한 값을 가지고 SQL 문장을 만들 때 이런 문제가 발생한다.
@@ -40,9 +42,10 @@ public class Exam0210 {
       stmt.setString(2, contents);
 
       // => 이미 SQL 을 준비한 상태이기 때문에 실행할 때는 SQL를 줄 필요가 없다.
-      // => 서버에 SQL을 전달할 때 
-      //    SQL과 값을 분리해서 보내고 서버에서 분리된 값을 따로 처리할 것이기 때문에
-      //    SQL 삽입 공격이 불가능한다.
+      // => setXxx()로 설정된 값은 단순한 텍스트로 처리한 후
+      //    SQL을 실행할 때 파라미터로 전달되기 때문에 
+      //    SQL 삽입 공격이 불가능하다.
+
       int count = stmt.executeUpdate();
 
       System.out.println(count + " 개를 입력하였습니다.");

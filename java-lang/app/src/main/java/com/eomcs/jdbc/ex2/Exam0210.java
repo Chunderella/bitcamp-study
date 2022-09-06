@@ -7,7 +7,7 @@ public class Exam0210 {
 
   public static void main(String[] args) throws Exception {
 
-    Board board = new Board();
+    Board board = new Board(); // 입력받은 값을 객체에 담는다.
 
     try (Scanner keyScan = new Scanner(System.in)) {
 
@@ -26,6 +26,9 @@ public class Exam0210 {
         return;
       }
     }
+
+    //BoardDao 객체를 만들어서
+    //객체를 통해 insert를 호출하기
 
     try {
       BoardDao boardDao = new BoardDao();

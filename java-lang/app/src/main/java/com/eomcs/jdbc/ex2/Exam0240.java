@@ -23,7 +23,7 @@ public class Exam0240 {
       BoardDao boardDao = new BoardDao();
       int count = boardDao.update(board);
 
-      if (count == 0) {
+      if (count == 0) { //리턴값이 0이면 찾지 못한 것이기 때문에 
         System.out.println("해당 번호의 게시물이 존재하지 않습니다.");
       } else {
         System.out.println("변경하였습니다.");

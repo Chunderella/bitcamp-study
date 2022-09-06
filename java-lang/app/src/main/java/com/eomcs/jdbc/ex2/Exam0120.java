@@ -20,7 +20,11 @@ public class Exam0120 {
         "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(
-            "select * from x_board order by board_id desc")) {
+            //            "select * from x_board order by board_id desc")) {
+            //비추천
+            //사용하지 않는 컨텐트까지 가져오기때문
+
+            "select board_id, title, created_date, view_count from x_board order by board_id desc")) {
 
       System.out.println("번호, 제목, 등록일, 조회수");
       while (rs.next()) {

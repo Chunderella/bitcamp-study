@@ -20,7 +20,7 @@ public class Exam0310 {
       // Statement 객체 사용법:
       //
       // 1) INSERT/UPDATE/DELETE 등 DML 관련 SQL문 전송
-      // => executeUpdate()
+      // => executeUpdate() --> 데이터 베이스를 변경하겠다. (데이터 추가, 수정, 삭제 등)
       // => 리턴값: 변경(insert/update/delete)된 데이터의 개수
       //
       // 2) SELECT 등 DQL 관련 SQL문 전송

@@ -9,14 +9,14 @@ import java.util.Scanner;
 public class Exam0120 {
 
   public static void main(String[] args) throws Exception {
-    String no = null;
+    String no = null; 
     String title = null;
     String contents = null;
 
     try (Scanner keyboard = new Scanner(System.in)) {
       System.out.print("번호? ");
       no = keyboard.nextLine();
-
+      //Integer.parseInt -->인트로 바꾸는 코드를 삽입해야함.(숫자)
       System.out.print("제목? ");
       title = keyboard.nextLine();
 
@@ -39,7 +39,7 @@ public class Exam0120 {
       int count = stmt.executeUpdate( 
           "update x_board set title = '" + title + 
           "', contents = '" + contents + 
-          "' where board_id = " + no);
+          "' where board_id = " + no); //<==no 변수가 스트링이다.
 
       // 위에서 사용자가 입력한 값을 가지고 SQL 문장을 만들면 다음과 같다.
       //

@@ -43,6 +43,7 @@ public class Exam0110 {
         "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         Statement stmt = con.createStatement();) {
 
+      //사용자가 입력한 값으로 스트링 포맷으로 만듬
       String sql = String.format(
           "insert into x_board(title,contents) values('%s','%s')",
           title, contents);

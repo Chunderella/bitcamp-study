@@ -33,7 +33,7 @@ public class Exam0111 {
         //
         PreparedStatement stmt = con.prepareStatement( 
             "insert into x_board(title,contents) values(?,?)", 
-            Statement.RETURN_GENERATED_KEYS);) {
+            Statement.RETURN_GENERATED_KEYS);) { //자동으로 생성된 키값을 꺼내겠다.
 
       stmt.setString(1, title);
       stmt.setString(2, contents);

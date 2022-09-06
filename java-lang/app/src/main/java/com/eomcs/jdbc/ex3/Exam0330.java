@@ -20,7 +20,10 @@ public class Exam0330 {
         "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         PreparedStatement stmt = con.prepareStatement(
             "select * from x_board where board_id = ?")) {
-
+      //커넥션 객체를 만들고
+      //프리페어드 스테이트먼트 준비
+      //문장을 select에 넣을수없음
+      //autoclose 기능이 있는 것만 넣을 수 있음.
       stmt.setString(1, no);
 
       try (ResultSet rs = stmt.executeQuery()) {
@@ -31,7 +34,7 @@ public class Exam0330 {
           System.out.printf("조회수: %d\n", rs.getInt("view_count"));
         } else {
           System.out.println("해당 번호의 게시물이 존재하지 않습니다.");
-        }
+        }//ResultSet을 닫아줘야함.
       }
     }
   }

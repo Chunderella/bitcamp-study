@@ -30,7 +30,7 @@ public class Exam0120 {
         if (filename.length() == 0) {
           break;
         }
-        files.add(filename);
+        files.add(filename); //컨텐츠에서 받은 어레이리스트
       }
     }
 
@@ -52,8 +52,8 @@ public class Exam0120 {
       System.out.printf("%d 개 게시글 입력 성공!\n", count);
 
       // 위에서 입력한 게시글의 PK 값을 알아내기
-      ResultSet keyRS = boardStmt.getGeneratedKeys();
-      keyRS.next(); // PK가 들어있는 레코드를 한 개 가져온다.
+      ResultSet keyRS = boardStmt.getGeneratedKeys();//
+      keyRS.next(); // PK가 들어있는 레코드를 한 개 가져온다. //리턴값 next
       //      int boardId = keyRS.getInt("board_id"); // PK 값이 들어있는 레코드에서 컬럼 값을 꺼낸다. MariaDB에서 오류 발생!
       int boardId = keyRS.getInt(1); 
 

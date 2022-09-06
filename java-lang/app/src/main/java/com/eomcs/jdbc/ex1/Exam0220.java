@@ -11,7 +11,7 @@ public class Exam0220 {
     // try 블록을 벗어날 때 close()가 자동 호출된다.
     //
     try (java.sql.Connection con = DriverManager.getConnection(
-        "jdbc:mariadb://localhost:3306/studydb", // jdbcURL
+        "jdbc:mariadb://localhost:3306/studydb", // jdbcURL //어느 주소를 사용할 것인지.
         "study", // username
         "1111" // password
         );) {

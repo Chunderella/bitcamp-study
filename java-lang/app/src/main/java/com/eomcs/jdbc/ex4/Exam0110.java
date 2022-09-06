@@ -39,6 +39,7 @@ public class Exam0110 {
         // 게시글 입력 처리 객체
         PreparedStatement boardStmt = con.prepareStatement(
             "insert into x_board(title,contents) values(?,?)");
+        //번호는 자동증가 - AutoI~
 
         // 첨부파일 입력 처리 객체
         PreparedStatement fileStmt = con.prepareStatement(
@@ -52,7 +53,7 @@ public class Exam0110 {
 
       // 첨부파일 입력
       int fileCount = 0;
-      for (String filename : files) {
+      for (String filename : files) { //어레이리스트에서 파일을 꺼낸다.
         fileStmt.setString(1, filename);
         fileStmt.setInt(2, /* 어? 앞에서 입력한 게시글의 번호가 뭐지? */ 0);
         // 첨부파일 테이블에 데이터를 입력하려면,

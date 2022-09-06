@@ -17,7 +17,7 @@ public class BoardDao {
     try (Connection con = DriverManager.getConnection(
         "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         PreparedStatement stmt = con.prepareStatement(
-            "delete from x_board where board_id=?")) {
+            "delete from x_board where board_id=?")) { //SQL문
 
       stmt.setInt(1, no);
       return stmt.executeUpdate();
@@ -28,7 +28,7 @@ public class BoardDao {
     try (Connection con = DriverManager.getConnection(
         "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         PreparedStatement stmt = con.prepareStatement(
-            "select * from x_board order by board_id desc");
+            "select * from x_board order by board_id desc"); //select문 준비
         ResultSet rs = stmt.executeQuery()) {
 
       ArrayList<Board> arr = new ArrayList<>();
@@ -64,11 +64,13 @@ public class BoardDao {
         PreparedStatement stmt = con.prepareStatement(
             "update x_board set title = ?, contents = ? where board_id = ?")) {
 
+
       stmt.setString(1, board.getTitle());
       stmt.setString(2, board.getContent());
       stmt.setInt(3, board.getNo());
 
       return stmt.executeUpdate();
+      //stmt 
     }
   }
 
