@@ -72,17 +72,17 @@ public class MemberHandler extends AbstractHandler {
   }
 
   private void onDelete() throws Exception {
-    int no = Prompt.inputInt("삭제할 회원 이메일? ");
+    int no = Prompt.inputInt("삭제할 회원 번호? ");
 
-    if (memberDao.delete(no)==1) {
+    if (memberDao.delete(no) == 1) {
       System.out.println("삭제하였습니다.");
     } else {
-      System.out.println("해당 이메일의 회원이 없습니다!");
+      System.out.println("해당 번호의 회원이 없습니다!");
     }
   }
 
   private void onUpdate() throws Exception {
-    int no  = Prompt.inputInt("변경할 회원 번호? ");
+    int no = Prompt.inputInt("변경할 회원 번호? ");
 
     Member member = memberDao.findByNo(no);
 
@@ -95,11 +95,10 @@ public class MemberHandler extends AbstractHandler {
     member.email = Prompt.inputString("이메일?(" + member.email + ") ");
     member.password = Prompt.inputString("암호?");
 
-
     String input = Prompt.inputString("변경하시겠습니까?(y/n) ");
 
     if (input.equals("y")) {
-      if (memberDao.update(member) ==1) {
+      if (memberDao.update(member) == 1) {
         System.out.println("변경했습니다.");
       } else {
         System.out.println("변경 실패입니다!");

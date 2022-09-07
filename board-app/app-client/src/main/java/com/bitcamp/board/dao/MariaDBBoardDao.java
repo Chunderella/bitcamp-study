@@ -14,7 +14,7 @@ public class MariaDBBoardDao {
     try (Connection con = DriverManager.getConnection(
         "jdbc:mariadb://localhost:3306/studydb","study","1111");
         PreparedStatement pstmt = con.prepareStatement(
-            "insert into app_board(title,cont,mno) values(?,?,?)")){
+            "insert into app_board(title,cont,mno) values(?,?,?)")) {
       pstmt.setString(1, board.title);
       pstmt.setString(2, board.content);
       pstmt.setInt(3, board.memberNo);
@@ -22,9 +22,7 @@ public class MariaDBBoardDao {
     }
   }
 
-
   public Board findByNo(int no) throws Exception {
-
     try (Connection con = DriverManager.getConnection(
         "jdbc:mariadb://localhost:3306/studydb","study","1111");
         PreparedStatement pstmt = con.prepareStatement(
@@ -36,7 +34,7 @@ public class MariaDBBoardDao {
       }
 
       Board board = new Board();
-      board.no = rs.getInt("bno");
+      board.no = rs.getInt("mno");
       board.title = rs.getString("title");
       board.content = rs.getString("cont");
       board.memberNo = rs.getInt("mno");

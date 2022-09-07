@@ -14,6 +14,8 @@ public class BoardHandler extends AbstractHandler {
   private MariaDBBoardDao boardDao;
 
   public BoardHandler() {
+
+    // 수퍼 클래스의 생성자를 호출할 때 메뉴 목록을 전달한다.
     super(new String[] {"목록", "상세보기", "등록", "삭제", "변경"});
 
     boardDao = new MariaDBBoardDao();
@@ -45,7 +47,6 @@ public class BoardHandler extends AbstractHandler {
   }
 
   private void onDetail() throws Exception {
-
     int boardNo = 0;
     while (true) {
       try {
@@ -67,8 +68,8 @@ public class BoardHandler extends AbstractHandler {
     System.out.printf("제목: %s\n", board.title);
     System.out.printf("내용: %s\n", board.content);
     System.out.printf("조회수: %d\n", board.viewCount);
-    System.out.printf("작성자: %s\n", board.memberNo);
-    System.out.printf("등록일: %s\n",board.createdDate);
+    System.out.printf("작성자: %d\n", board.memberNo);
+    System.out.printf("등록일: %s\n", board.createdDate);
   }
 
   private void onInput() throws Exception {
@@ -82,7 +83,6 @@ public class BoardHandler extends AbstractHandler {
     System.out.println("게시글을 등록했습니다.");
   }
 
-
   private void onDelete() throws Exception {
     int boardNo = 0;
     while (true) {
@@ -94,7 +94,7 @@ public class BoardHandler extends AbstractHandler {
       }
     }
 
-    if (boardDao.delete(boardNo) == 1) { //삭제한 갯수 리턴
+    if (boardDao.delete(boardNo) == 1) {
       System.out.println("삭제하였습니다.");
     } else {
       System.out.println("해당 번호의 게시글이 없습니다!");

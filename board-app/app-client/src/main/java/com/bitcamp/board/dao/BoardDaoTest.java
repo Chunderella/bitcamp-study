@@ -13,29 +13,28 @@ public class BoardDaoTest {
     }
     System.out.println("----------------------------");
 
-    //    //    Board board = new Board();
-    //    //    board.name = "홍길동";
-    //    //    board.email = "hong@test.com";
-    //    //    board.password = "1111";
-    //    //    dao.insert(board);
-    //
-    //    //    dao.delete(6);
-    //
     //    Board board = new Board();
-    //    board.no = 1;
-    //    board.name = "xxxx";
-    //    board.email = "xxxx@test.com";
-    //    board.password = "2222";
-    //    dao.update(board);
-    //
-    //    Board board2 = dao.findByNo(1);
-    //    System.out.println(board2);
-    //
-    //    //    list = dao.findAll();
-    //    //    for (Board m : list) {
-    //    //      System.out.println(m);
-    //    //    }
-    //    //    System.out.println("----------------------------");
+    //    board.title = "aaaaa";
+    //    board.content = "bbbbb";
+    //    board.memberNo = 2;
+    //    dao.insert(board);
+
+    //    dao.delete(21);
+
+    Board board = new Board();
+    board.no = 12;
+    board.title = "xxxx";
+    board.content = "okokok";
+    dao.update(board);
+
+    Board board2 = dao.findByNo(12);
+    System.out.println(board2);
+
+    list = dao.findAll();
+    for (Board b : list) {
+      System.out.println(b);
+    }
+    System.out.println("----------------------------");
   }
 
 }

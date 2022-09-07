@@ -34,7 +34,6 @@ public class ClientApp {
       printMenus(menus);
       System.out.println();
 
-
       try {
         int mainMenuNo = Prompt.inputInt(String.format(
             "메뉴를 선택하세요[1..%d](0: 종료) ", handlers.size()));
@@ -63,8 +62,9 @@ public class ClientApp {
     } // while
     Prompt.close();
 
-    System.out.println("연결을 끊었음!");
+    System.out.println("종료!");
   }
+
   static void welcome() {
     System.out.println("[게시판 애플리케이션]");
     System.out.println();
