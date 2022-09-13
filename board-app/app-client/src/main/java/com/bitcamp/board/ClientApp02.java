@@ -5,40 +5,40 @@ import java.io.DataOutputStream;
 import java.net.Socket;
 import com.bitcamp.util.Prompt;
 
-//1)서버에 접속
-//4)사용자 입력을 서버에 전송
-//5)요청/응답을 무한 반복한다.
 
-public class ClientApp {
+public class ClientApp02 {
 
   public static void main(String[] args) {
 
     System.out.println("[게시글 관리 클라이언트]");
 
+    //서버에 접속하기
+    //1. 서버와 통신할 소켓 준비하기
     try(Socket socket = new Socket("localHost",8888);
 
+
+        //2.주고 받는 값은 문자열로 주고 받아야함. 이떄 사용하는 것이 Scanner        
         DataInputStream in = new DataInputStream(socket.getInputStream());
         DataOutputStream out = new DataOutputStream(socket.getOutputStream())){
-
-      String response = null;
-      //요청/응답을 무한 반복
-
-      while(true) {
-        response = in.readUTF();
-        System.out.println(response);
-
-        String input = Prompt.inputString(">");
-        out.writeUTF(input);
+      //입출력을 하는데 처음에 Scanner을 넣어서 인트값, 문자열 한줄 출력이 가능하나
+      //한 덩어리의 문자열을 주고 받아야하기 때문에 
+      //데코레이터(Scanner)로 기능을 설계하면 붙였다가 때고 수정하는 기능 확장이 가능하다.
+      //Date(input/Out)Stream 으로 기능 확장 - 생성자에 붙인다.
 
 
-        if(input.equals("quit")) {
-          break;
-        }
-      }
-    } catch (Exception e) {
+      //서버가 보낸 문자열을 읽기(1줄씩)
+      String line = null;
+
+      line = in.readUTF();
+      System.out.println(line);
+
+    }catch (Exception e) {
       System.out.println("서버와 통신 중 오류 발생!");
       e.printStackTrace();
+
     }
+    //
+
 
     //    loop: while (true) {
     //

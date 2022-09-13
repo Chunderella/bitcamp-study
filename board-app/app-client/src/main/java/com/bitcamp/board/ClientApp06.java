@@ -9,7 +9,7 @@ import com.bitcamp.util.Prompt;
 //4)사용자 입력을 서버에 전송
 //5)요청/응답을 무한 반복한다.
 
-public class ClientApp {
+public class ClientApp06 {
 
   public static void main(String[] args) {
 
@@ -22,14 +22,12 @@ public class ClientApp {
 
       String response = null;
       //요청/응답을 무한 반복
-
       while(true) {
         response = in.readUTF();
         System.out.println(response);
 
         String input = Prompt.inputString(">");
         out.writeUTF(input);
-
 
         if(input.equals("quit")) {
           break;
