@@ -71,6 +71,7 @@ public abstract class AbstractHandler implements Handler {
     while (true) {
       String request = in.readUTF();
       if(request.equals("0")) {
+
         break;
 
 
@@ -85,7 +86,7 @@ public abstract class AbstractHandler implements Handler {
         //클라리언트가 선택한 메뉴를 처리한다.
         int menuNo = Integer.parseInt(request);
 
-        if (menuNo < 0 || menuNo > menus.length) { //0미만이면 메뉴번호가 옳지 않음.
+        if (menuNo < 1 || menuNo > menus.length) { //0미만이면 메뉴번호가 옳지 않음.
           throw new Exception("메뉴 번호가 옳지 않습니다.");
         }
         // 메뉴에 진입할 때 breadcrumb 메뉴바에 그 메뉴를 등록한다.
@@ -113,6 +114,8 @@ public abstract class AbstractHandler implements Handler {
         ex.printStackTrace();
       }*/
     } // while
+
+
   }
 
 

@@ -6,7 +6,13 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.ArrayList;
+import com.bitcamp.board.dao.BoardDao;
+import com.bitcamp.board.dao.MariaDBBoardDao;
+import com.bitcamp.board.dao.MariaDBMemberDao;
+import com.bitcamp.board.dao.MemberDao;
 import com.bitcamp.board.handler.BoardHandler;
 import com.bitcamp.board.handler.MemberHandler;
 import com.bitcamp.handler.Handler;
@@ -40,15 +46,28 @@ public class ServerApp {
 
 
   public static void main(String[] args) {
-    ServerApp app = new ServerApp(8888);
-    app.execute();
+    try {
+      ServerApp app = new ServerApp(8888);
+      app.execute();
+    }catch (Exception e) {
+      System.out.println("서버 실행 오류");
+
+    }
   }
 
-  public ServerApp(int port) { //생성자에서 초기화
+  public ServerApp(int port) throws Exception { //생성자에서 초기화
     this.port = port;
 
-    handlers.add(new BoardHandler(null));
-    handlers.add(new MemberHandler(null));
+    //DAO가 사용할 커넥션 객체 준비
+    Connection con = DriverManager.getConnection(
+        "jdbc:mariadb://localhost:3306/studydb","study","1111");
+
+    //DAO 객체를 준비한다.
+    BoardDao boardDao = new MariaDBBoardDao(con);
+    MemberDao memberDao = new MariaDBMemberDao(con);
+
+    handlers.add(new BoardHandler(boardDao));
+    handlers.add(new MemberHandler(memberDao));
   }
 
   public void execute() { //client와 통신할 소켓 준비
@@ -72,17 +91,11 @@ public class ServerApp {
   /* =================== main2 메서드 통째로 주석처리==========================
   public static void main2(String[] args) {
 
-    try (//DAO가 사용할 커넥션 객체 준비
-        Connection con = DriverManager.getConnection(
-            "jdbc:mariadb://localhost:3306/studydb","study","1111");
-        ) {
+
       System.out.println("[게시글 관리 클라이언트]");
 
       welcome();
 
-      //DAO 객체를 준비한다.
-      MariaDBMemberDao memberDao = new MariaDBMemberDao(con);
-      MariaDBBoardDao boardDao = new MariaDBBoardDao(con);
 
 
       //기존에는 생성자 내부에서 받았지만 보드핸들러는 외부에서 '주입' 받는다 = 교체가 용이함
@@ -172,7 +185,7 @@ public class ServerApp {
 
     try {
       int menuNo = Integer.parseInt(request);
-      if(menuNo <= 1 || menuNo > menus.length) {
+      if (menuNo < 1 || menuNo > menus.length) {
         throw new Exception("메뉴 번호가 옳지 않습니다.");
       }
 
@@ -186,6 +199,11 @@ public class ServerApp {
 
       //다시 메인 메뉴로 돌아 왔다면 breadcrumb 메뉴에서 한 단계 위로 올라간다.
       breadcrumb.pickUp();
+
+
+      //하위 메뉴에서 빠져나오면 현재의 경로를 출력한다.
+      out.writeUTF(breadcrumb.toString());
+
 
     } catch(Exception e) {
       error(out,e);
@@ -227,6 +245,7 @@ public class ServerApp {
 
           }else {
             processMainMenu(in, out, request);
+            printMainMenus(out);
           }
         }
         System.out.println("클라이언트와 접속 종료!");
