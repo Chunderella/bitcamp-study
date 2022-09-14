@@ -7,10 +7,10 @@ import java.io.StringWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Stack;
 import com.bitcamp.board.handler.BoardHandler;
 import com.bitcamp.board.handler.MemberHandler;
 import com.bitcamp.handler.Handler;
+import com.bitcamp.util.BreadCrumb;
 
 
 //1.클라이언트 접속시 환영 메세지 전송
@@ -24,100 +24,41 @@ import com.bitcamp.handler.Handler;
 //9.메인 메뉴 선택에 따라 핸들러를 실행하여 클라이언트에게 하위 메뉴를 출력한다.
 // ->handler 인터페이스 변경
 // ->AbstractHanler 추상 클래스의 execute() 변경
-//10.하위 메뉴를 처리한다.
+//10.breadcrumb 기능을 객체로 분리한다.
+//  -breadcramb 클래스를 정의한다. 
+//11. 코드 리팩토링
+//- execute() 메서드 정의하고 main() 메서드의 코드를 옮긴다.
 
 
 public class ServerApp {
 
-  // breadcrumb 메뉴를 저장할 스택을 준비
-  public static Stack<String> breadcrumbMenu = new Stack<>();
 
-  // 메뉴명을 저장할 배열을 준비한다.
-  static String[] menus = {"게시판", "회원"};
+  //[메인 메뉴 목록 준비]] = 인스턴스필드
+  private String[] menus = {"게시판", "회원"};
+  private int port;
+  ArrayList<Handler> handlers = new ArrayList<>();
+
 
   public static void main(String[] args) {
-    //client와 통신할 소켓 준비
-    try(ServerSocket serverSocket = new ServerSocket(8888)) {
+    ServerApp app = new ServerApp(8888);
+    app.execute();
+  }
+
+  public ServerApp(int port) { //생성자에서 초기화
+    this.port = port;
+
+    handlers.add(new BoardHandler(null));
+    handlers.add(new MemberHandler(null));
+  }
+
+  public void execute() { //client와 통신할 소켓 준비
+    try(ServerSocket serverSocket = new ServerSocket(this.port)) {
       System.out.println("서버 실행중 ...");
 
-      // 핸들러를 담을 컬렉션을 준비한다.
-      ArrayList<Handler> handlers = new ArrayList<>();
-      handlers.add(new BoardHandler(null));
-      handlers.add(new MemberHandler(null));
-
-
-      //클라이언트가 대기하고 있다가 즉시 리턴해서 소켓을 만듬    
-
       while(true) {
-        Socket socket = serverSocket.accept();
-
-
-
-        //러너블 구현체에 담기
-        new Thread(() -> {
-          //스레드를 시작하는 순간, 별도의 실행흐름에서 병행으로 수행된다.
-
-          try (
-              DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-              DataInputStream in = new DataInputStream(socket.getInputStream())) {
-
-            System.out.println("클라이언트 접속!");
-
-
-            boolean first = true;
-            String errorMessage = null;
-
-            while(true) {
-
-
-              //접속 후 환영 메세지와 메인 메뉴를 출력한다.
-              try(StringWriter strOut = new StringWriter();
-                  PrintWriter tempOut = new PrintWriter(strOut);){
-                if(first) { //최초 접속이면 환영 메세지도 출력한다.
-                  welcome(tempOut);
-                  first = false;
-                }
-
-                if(errorMessage != null) {
-                  tempOut.println(errorMessage);
-                  errorMessage = null;
-                }
-                printMainMenus(tempOut);
-                out.writeUTF(strOut.toString());
-              }
-
-              //클라이언트가 보낸 요청을 읽는다.
-              String request = in.readUTF();
-              if(request.equals("quit")) {
-                break;
-              }
-              try {
-                int mainMenuNo = Integer.parseInt(request); //클라이언트가 입력한게 숫자가 아니라면 예외 발생
-                if (mainMenuNo >= 1 && mainMenuNo <= menus.length) {
-                  handlers.get(mainMenuNo - 1).execute(in, out); //숫자를 찾아서 실행하고
-                }else {
-                  throw new Exception("해당 번호의 메뉴가 없습니다.");
-                }
-              } catch(Exception e) {
-                errorMessage = String.format("실행 오류:%s", e.getMessage());
-              }
-            }
-
-            System.out.println("클라이언트와 접속 종료!");
-
-          } catch (Exception e) {
-            System.out.println("클라이언트와 통신하는 중 오류 발생");
-            e.printStackTrace();
-          }
-
-
-        }).start();
-
-        //기본생성자 호출(Runnable()
-
+        new Thread(new ServiceProcessor(serverSocket.accept())).start();
+        System.out.println("클라이언트 접속!");
       }
-
-      //      System.out.println("서버 종료");
 
     }catch(Exception e) {
       System.out.println("서버 실행 중 오류 발생!");
@@ -188,31 +129,112 @@ public class ServerApp {
 
   //출력 스트림을 받아서 출력한다.
   //PrintWriter을 사용하면 기존에 쓰던 print() 사용가능하다.
-  static void welcome(PrintWriter out) throws Exception {
-    out.println("[게시판 애플리케이션]");
-    out.println();
-    out.println("환영합니다!");
-    out.println();
-  }
+  static void welcome(DataOutputStream out) throws Exception {
 
-  static void printMainMenus(PrintWriter out) {
-
-    //메뉴 목록 출력
-    for (int i = 0; i < menus.length; i++) {
-      out.printf("  %d: %s\n", i + 1, menus[i]);
+    try (StringWriter strOut = new StringWriter();
+        PrintWriter tempOut = new PrintWriter(strOut)) {
+      //진짜 클라이언트와 연결된 스트림으로 출력한다.
+      tempOut.println("[게시판 애플리케이션]");
+      tempOut.println();
+      tempOut.println("환영합니다!");
+      tempOut.println();
+      out.writeUTF(strOut.toString());
     }
-    //메뉴 번호를 입력을 요구하는 문장 출력
-    out.printf( "메뉴를 선택하세요[1..%d](quit: 종료) ",menus.length);
+  }
+  static void error(DataOutputStream out, Exception e)  {
+
+    try (StringWriter strOut = new StringWriter();
+        PrintWriter tempOut = new PrintWriter(strOut)) {
+      //진짜 클라이언트와 연결된 스트림으로 출력한다.
+
+      tempOut.printf("실행 오류:%s\n",e.getMessage());
+      out.writeUTF(strOut.toString());
+    }catch(Exception e2) {
+      e2.printStackTrace();
+    }
   }
 
-  protected static void printTitle() {
-    StringBuilder builder = new StringBuilder();
-    for (String title : breadcrumbMenu) {
-      if (!builder.isEmpty()) {
-        builder.append(" > ");
+  private void printMainMenus(DataOutputStream out) throws Exception {
+    try (StringWriter strOut = new StringWriter();
+        PrintWriter tempOut = new PrintWriter(strOut)) {
+
+      tempOut.println(BreadCrumb.getBreadCrumbOfCurrentThread().toString());
+
+      for (int i = 0; i < menus.length; i++) {
+        tempOut.printf("  %d: %s\n", i + 1, menus[i]);
       }
-      builder.append(title);
+      tempOut.printf("메뉴를 선택하세요[1..%d](quit: 종료) ", menus.length);
+      out.writeUTF(strOut.toString());
     }
-    System.out.printf("%s:\n", builder.toString());
+  }
+
+  void processMainMenu(DataInputStream in,DataOutputStream out, String request) {
+
+    try {
+      int menuNo = Integer.parseInt(request);
+      if(menuNo <= 1 || menuNo > menus.length) {
+        throw new Exception("메뉴 번호가 옳지 않습니다.");
+      }
+
+      //현재 스레드가 사용하는 breadcrumb을 꺼낸다.
+      BreadCrumb breadcrumb = BreadCrumb.getBreadCrumbOfCurrentThread();
+
+      //핸들러에 들어가기 전에 BreadCrumb 메뉴에 하위 메뉴 이름을 추가한다.
+      breadcrumb.put(menus[menuNo-1]);
+
+      handlers.get(menuNo - 1).execute(in, out); //숫자를 찾아서 실행하고
+
+      //다시 메인 메뉴로 돌아 왔다면 breadcrumb 메뉴에서 한 단계 위로 올라간다.
+      breadcrumb.pickUp();
+
+    } catch(Exception e) {
+      error(out,e);
+    }
+  }
+
+  private class ServiceProcessor implements Runnable {
+
+    Socket socket;
+
+    public ServiceProcessor(Socket socket) {
+      this.socket = socket;
+    }
+    @Override
+    public void run() {
+      try (Socket s = this.socket;
+          DataOutputStream out = new DataOutputStream(s.getOutputStream());
+          DataInputStream in = new DataInputStream(s.getInputStream())) {
+
+        //스레드를 시작하는 순간, 별도의 실행흐름에서 병행으로 수행된다.
+        // 접속한 클라이언트의 이동 경로를 보관할 breadcrumb 객체 준비
+        BreadCrumb breadcrumb = new BreadCrumb(); // 현재 스레드 보관소에 저장된다.
+        breadcrumb.put("메인");
+
+        //클라이언트에게 환영 메세지를 보낸다.
+        // 메인 메뉴를 출력한다.
+        welcome(out);
+
+        while(true) {
+          //클라이언트가 보낸 요청 정보를 읽는다.
+
+          String request = in.readUTF();
+
+          if(request.equals("quit")) {
+            break;
+
+          }else if (request.equals("menu")) {
+            printMainMenus(out);
+
+          }else {
+            processMainMenu(in, out, request);
+          }
+        }
+        System.out.println("클라이언트와 접속 종료!");
+
+      } catch (Exception e) {
+        System.out.println("클라이언트와 통신하는 중 오류 발생");
+        e.printStackTrace();
+      }
+    }
   }
 }
