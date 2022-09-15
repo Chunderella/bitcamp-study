@@ -1,3 +1,6 @@
+/*
+ * 키보드 입력을 받는 도구를 구비하고 있다.
+ */
 package com.bitcamp.util;
 
 import java.io.DataInputStream;
@@ -15,10 +18,10 @@ public class Prompt {
 
   public int inputInt() throws Exception {
     String str = in.readUTF();
-    return Integer.parseInt(str); //"123" ==> 123, "5" ==> 5, "ok" ==> 실행 오류!
+    return Integer.parseInt(str); 
   }
 
-  public  int inputInt(String title) throws Exception {
+  public int inputInt(String title) throws Exception {
     out.writeUTF(title);
     String str = in.readUTF();
     return Integer.parseInt(str);
@@ -33,3 +36,7 @@ public class Prompt {
     return in.readUTF();
   }
 }
+
+
+
+

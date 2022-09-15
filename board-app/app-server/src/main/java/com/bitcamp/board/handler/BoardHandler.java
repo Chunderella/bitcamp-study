@@ -17,7 +17,7 @@ public class BoardHandler extends AbstractHandler {
 
   private BoardDao boardDao;
 
-  public BoardHandler(BoardDao boardDao)  {
+  public BoardHandler(BoardDao boardDao) {
 
     // 수퍼 클래스의 생성자를 호출할 때 메뉴 목록을 전달한다.
     super(new String[] {"목록", "상세보기", "등록", "삭제", "변경"});
@@ -41,26 +41,24 @@ public class BoardHandler extends AbstractHandler {
   }
 
   private void onList(DataInputStream in, DataOutputStream out) throws Exception {
-
-    Prompt prompt = new Prompt(in,out);
-
-    //try~out.writeutf로 묶어서 한방에 클라이언트에 보냄
     try (StringWriter strOut = new StringWriter();
         PrintWriter tempOut = new PrintWriter(strOut)) {
+
       List<Board> boards = boardDao.findAll();
 
       tempOut.println("번호 제목 조회수 작성자 등록일");
       for (Board board : boards) {
         tempOut.printf("%d\t%s\t%d\t%d\t%s\n",
             board.no, board.title, board.viewCount, board.memberNo, board.createdDate);
-        out.writeUTF(strOut.toString());
       }
+
+      out.writeUTF(strOut.toString());
     }
   }
 
   private void onDetail(DataInputStream in, DataOutputStream out) throws Exception {
 
-    Prompt prompt = new Prompt(in,out);
+    Prompt prompt = new Prompt(in, out);
 
     int boardNo = 0;
     while (true) {
@@ -71,8 +69,6 @@ public class BoardHandler extends AbstractHandler {
         out.writeUTF("입력 값이 옳지 않습니다!");
       }
     }
-
-
 
     Board board = boardDao.findByNo(boardNo);
 
@@ -95,9 +91,10 @@ public class BoardHandler extends AbstractHandler {
       out.writeUTF(strOut.toString());
     }
   }
+
   private void onInput(DataInputStream in, DataOutputStream out) throws Exception {
 
-    Prompt prompt = new Prompt(in,out);
+    Prompt prompt = new Prompt(in, out);
 
     Board board = new Board();
 
@@ -106,12 +103,12 @@ public class BoardHandler extends AbstractHandler {
     board.memberNo = prompt.inputInt("작성자? ");
 
     boardDao.insert(board);
-    System.out.println("게시글을 등록했습니다.");
+    out.writeUTF("게시글을 등록했습니다.");
   }
 
   private void onDelete(DataInputStream in, DataOutputStream out) throws Exception {
 
-    Prompt prompt = new Prompt(in,out);
+    Prompt prompt = new Prompt(in, out);
 
     int boardNo = 0;
     while (true) {
@@ -119,20 +116,20 @@ public class BoardHandler extends AbstractHandler {
         boardNo = prompt.inputInt("삭제할 게시글 번호? ");
         break;
       } catch (Exception ex) {
-        System.out.println("입력 값이 옳지 않습니다!");
+        out.writeUTF("입력 값이 옳지 않습니다!");
       }
     }
 
     if (boardDao.delete(boardNo) == 1) {
-      System.out.println("삭제하였습니다.");
+      out.writeUTF("삭제하였습니다.");
     } else {
-      System.out.println("해당 번호의 게시글이 없습니다!");
+      out.writeUTF("해당 번호의 게시글이 없습니다!");
     }
   }
 
   private void onUpdate(DataInputStream in, DataOutputStream out) throws Exception {
 
-    Prompt prompt = new Prompt(in,out);
+    Prompt prompt = new Prompt(in, out);
 
     int boardNo = 0;
     while (true) {
@@ -140,13 +137,13 @@ public class BoardHandler extends AbstractHandler {
         boardNo = prompt.inputInt("변경할 게시글 번호? ");
         break;
       } catch (Throwable ex) {
-        System.out.println("입력 값이 옳지 않습니다!");
+        out.writeUTF("입력 값이 옳지 않습니다!");
       }
     }
 
     Board board = boardDao.findByNo(boardNo);
     if (board == null) {
-      System.out.println("해당 번호의 게시글이 없습니다!");
+      out.writeUTF("해당 번호의 게시글이 없습니다!");
       return;
     }
 
@@ -157,13 +154,13 @@ public class BoardHandler extends AbstractHandler {
 
     if (input.equals("y")) {
       if (boardDao.update(board) == 1) {
-        System.out.println("변경했습니다.");
+        out.writeUTF("변경했습니다.");
       } else {
-        System.out.println("변경 실패입니다!");
+        out.writeUTF("변경 실패입니다!");
       }
 
     } else {
-      System.out.println("변경 취소했습니다.");
+      out.writeUTF("변경 취소했습니다.");
     }
   }
 }

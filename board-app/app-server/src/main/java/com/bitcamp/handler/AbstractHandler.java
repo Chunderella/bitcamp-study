@@ -48,20 +48,15 @@ public abstract class AbstractHandler implements Handler {
     out.println(); // 메뉴를 처리한 후 빈 줄 출력
   }
 
-  static void error(DataOutputStream out, Exception e)  {
-
+  static void error(DataOutputStream out, Exception e) {
     try (StringWriter strOut = new StringWriter();
         PrintWriter tempOut = new PrintWriter(strOut)) {
-      //진짜 클라이언트와 연결된 스트림으로 출력한다.
-
-      tempOut.printf("실행 오류:%s\n",e.getMessage());
+      tempOut.printf("실행 오류:%s\n", e.getMessage());
       out.writeUTF(strOut.toString());
-    }catch(Exception e2) {
+    } catch (Exception e2) {
       e2.printStackTrace();
     }
   }
-
-
 
   @Override
   public void execute(DataInputStream in, DataOutputStream out) throws Exception {
@@ -70,54 +65,38 @@ public abstract class AbstractHandler implements Handler {
 
     while (true) {
       String request = in.readUTF();
-      if(request.equals("0")) {
-
+      if (request.equals("0")) {
         break;
 
-
-
-      }else if(request.equals("menu")) {
+      } else if (request.equals("menu")) {
         printMenus(out);
         continue;
       }
 
+
       try {
-
-        //클라리언트가 선택한 메뉴를 처리한다.
         int menuNo = Integer.parseInt(request);
-
-        if (menuNo < 1 || menuNo > menus.length) { //0미만이면 메뉴번호가 옳지 않음.
+        if (menuNo < 1 || menuNo > menus.length) {
           throw new Exception("메뉴 번호가 옳지 않습니다.");
         }
+
         // 메뉴에 진입할 때 breadcrumb 메뉴바에 그 메뉴를 등록한다.
         BreadCrumb.getBreadCrumbOfCurrentThread().put(menus[menuNo - 1]);
 
-        service(menuNo,in,out);
-
-        //메뉴에서 나올 때 breadcrumb 메뉴바에서 그 메뉴를 제거한다.
-        BreadCrumb.getBreadCrumbOfCurrentThread().pickUp();
+        // 사용자가 입력한 메뉴 번호에 대해 작업을 수행한다.
+        service(menuNo, in, out);
 
       } catch (Exception e) {
-        error(out,e);
+        error(out, e);
+
+      } finally {
+        // 성공하든 실패하든
+        // 메뉴에서 나올 때 breadcrumb 메뉴바에 그 메뉴를 제거한다.
+        BreadCrumb.getBreadCrumbOfCurrentThread().pickUp();
       }
 
-      /*
-
-              // 사용자가 입력한 메뉴 번호에 대해 작업을 수행한다.
-
-        printBlankLine();
-
-        ServerApp.breadcrumbMenu.pop();
-
-      } catch (Exception ex) {
-        System.out.printf("예외 발생: %s\n", ex.getMessage());
-        ex.printStackTrace();
-      }*/
     } // while
-
-
   }
-
 
   // 서브 클래스가 반드시 만들어야 할 메서드
   // => 메뉴 번호를 받으면 그 메뉴에 해당하는 작업을 수행한다.
