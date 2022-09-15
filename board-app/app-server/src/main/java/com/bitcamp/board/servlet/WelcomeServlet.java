@@ -1,8 +1,8 @@
-package com.bitcamp.handler;
+package com.bitcamp.board.servlet;
 
 import java.io.PrintWriter;
 
-public class WelcomeHandler {
+public class WelcomeServlet {
   public void service(PrintWriter out) {
 
     out.println(" <!DOCTYPE html>");
