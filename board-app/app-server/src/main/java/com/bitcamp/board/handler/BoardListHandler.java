@@ -11,16 +11,9 @@ import com.bitcamp.board.domain.Board;
 import com.bitcamp.servlet.Servlet;
 import com.bitcamp.servlet.annotation.WebServlet;
 
-<<<<<<< HEAD
 @WebServlet(value="/board/list")
 public class BoardListHandler implements Servlet {
 
-=======
-
-@WebServlet(value="/board/list")
-public class BoardListHandler implements Servlet {
-
->>>>>>> f3a826ff53cf1d41a6a6b22c879dec163ed7daf7
   private BoardDao boardDao;
 
   public BoardListHandler(BoardDao boardDao) {

@@ -1,9 +1,5 @@
 #
-<<<<<<< HEAD
-#Mon Sep 19 10:15:35 KST 2022
-=======
-#Fri Sep 16 16:21:44 KST 2022
->>>>>>> f3a826ff53cf1d41a6a6b22c879dec163ed7daf7
+#Mon Sep 19 10:55:20 KST 2022
 org.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode=enabled
 org.eclipse.jdt.core.compiler.problem.assertIdentifier=error
 org.eclipse.jdt.core.compiler.codegen.targetPlatform=11

@@ -10,11 +10,7 @@ import com.bitcamp.board.domain.Board;
 import com.bitcamp.servlet.Servlet;
 import com.bitcamp.servlet.annotation.WebServlet;
 
-<<<<<<< HEAD
-@WebServlet(value="/board/add") //이 핸들러의 경로
-=======
 @WebServlet(value="/board/add")
->>>>>>> f3a826ff53cf1d41a6a6b22c879dec163ed7daf7
 public class BoardAddHandler implements Servlet {
 
   private BoardDao boardDao;

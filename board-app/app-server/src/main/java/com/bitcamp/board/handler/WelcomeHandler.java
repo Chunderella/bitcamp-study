@@ -5,17 +5,9 @@ import java.util.Map;
 import com.bitcamp.servlet.Servlet;
 import com.bitcamp.servlet.annotation.WebServlet;
 
-<<<<<<< HEAD
 @WebServlet(value="/")
 public class WelcomeHandler implements Servlet {
 
-=======
-@WebServlet(value="/")//범위를 지정해놨기 때문에 클래스 위에만 붙일 수 있다.
-//(뽑아쓰기위함)
-public class WelcomeHandler implements Servlet {
-
-
->>>>>>> f3a826ff53cf1d41a6a6b22c879dec163ed7daf7
   @Override
   public void service(Map<String,String> paramMap, PrintWriter out) {
     out.println("<!DOCTYPE html>");
