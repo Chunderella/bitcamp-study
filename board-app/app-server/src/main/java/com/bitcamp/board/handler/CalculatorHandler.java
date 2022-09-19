@@ -8,6 +8,8 @@ import com.bitcamp.servlet.annotation.WebServlet;
 @WebServlet(value="/calc")
 public class CalculatorHandler implements Servlet {
 
+  //클래스에 생성자가 없으면 컴파일러는 파라미터가 없는 기본 생성자을 자동으로 만든다.
+
   @Override
   public void service(Map<String,String> paramMap, PrintWriter out) {
     out.println("<!DOCTYPE html>");

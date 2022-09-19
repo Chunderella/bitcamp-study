@@ -10,6 +10,10 @@ import com.bitcamp.board.domain.Member;
 import com.bitcamp.servlet.Servlet;
 import com.bitcamp.servlet.annotation.WebServlet;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f3a826ff53cf1d41a6a6b22c879dec163ed7daf7
 @WebServlet(value="/member/add")
 public class MemberAddHandler implements Servlet {
 

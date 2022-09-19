@@ -9,6 +9,10 @@ import com.bitcamp.board.dao.MemberDao;
 import com.bitcamp.servlet.Servlet;
 import com.bitcamp.servlet.annotation.WebServlet;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f3a826ff53cf1d41a6a6b22c879dec163ed7daf7
 @WebServlet(value="/member/delete")
 public class MemberDeleteHandler implements Servlet {
 

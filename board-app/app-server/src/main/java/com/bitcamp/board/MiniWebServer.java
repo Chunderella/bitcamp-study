@@ -70,6 +70,35 @@ public class MiniWebServer {
 
   }
 
+  public static void main2(String[] args) throws Exception {
+    // 클래스를 찾아주는 도구를 준비
+    Reflections reflections = new Reflections("com.bitcamp.board");
+
+    /*
+    // 지정된 패키지에서 @WebServlet 애노테이션이 붙은 클래스를 모두 찾는다.
+    // 검색필터 1) WebServlet 애노테이션이 붙어 있는 클래스의 이름들을 모두 찾아라!
+    QueryFunction<Store,String> 검색필터1 = TypesAnnotated.with(WebServlet.class);
+
+    // 검색필터 2) 찾은 클래스 이름을 가지고 클래스를 Method Area 영역에 로딩하여
+    //             Class 객체 목록을 리턴하라!
+    QueryFunction<Store,Class<?>> 검색필터2 = 검색필터1.asClass();
+
+    // 위의 두 검색 조건으로 클래스를 찾는다.
+    Set<Class<?>> 서블릿클래스들 = reflections.get(검색필터2);
+
+    for (Class<?> 서블릿클래스정보 : 서블릿클래스들) {
+      System.out.println(서블릿클래스정보.getName());
+    }
+     */
+
+    Set<Class<?>> servlets = reflections.get(TypesAnnotated.with(WebServlet.class).asClass());
+    for (Class<?> servlet : servlets) {
+      WebServlet anno = servlet.getAnnotation(WebServlet.class);
+      System.out.printf("%s ---> %s\n", anno.value(), servlet.getName());
+    }
+    System.out.println();
+  }
+
   public static void main(String[] args) throws Exception {
     Connection con = DriverManager.getConnection(
         "jdbc:mariadb://localhost:3306/studydb","study","1111");
@@ -90,7 +119,11 @@ public class MiniWebServer {
       String servletPath = servlet.getAnnotation(WebServlet.class).value();
 
       // 생성자의 파라미터의 타입을 알아내, 해당 객체를 주입한다.
+<<<<<<< HEAD
       Constructor<?> constructor = servlet.getConstructors()[0]; //생성자를 달라고함
+=======
+      Constructor<?> constructor = servlet.getConstructors()[0];
+>>>>>>> f3a826ff53cf1d41a6a6b22c879dec163ed7daf7
       Parameter[] params = constructor.getParameters();
 
       if (params.length == 0) { // 생성자의 파라미터가 없다면 

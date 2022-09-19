@@ -13,8 +13,12 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.9.1'
     implementation project(':app-common')
     implementation 'org.mariadb.jdbc:mariadb-java-client:3.0.7'
+<<<<<<< HEAD
         implementation 'org.reflections:reflections:0.10.2'
     
+=======
+    implementation 'org.reflections:reflections:0.10.2'
+>>>>>>> f3a826ff53cf1d41a6a6b22c879dec163ed7daf7
 }
 application {
     mainClass = 'com.bitcamp.board.ServerApp'

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /A.class
 /B.class
 /C.class
@@ -20,3 +21,26 @@
 /Test.class
 /com/
 /log4j2.xml
+=======
+/META-INF/
+/README-resources.md
+/com/
+/A.class
+/B.class
+/C.class
+/Exam02.class
+/Exam03.class
+/Exam04.class
+/Exam05.class
+/Exam06.class
+/Exam07.class
+/Exam08.class
+/Exam09.class
+/Exam10.class
+/Exam11.class
+/Exam12.class
+/Exam13.class
+/Hello.class
+/Hello2.class
+/Test.class
+>>>>>>> f3a826ff53cf1d41a6a6b22c879dec163ed7daf7
