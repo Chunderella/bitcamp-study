@@ -17,12 +17,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import org.reflections.Reflections;
-import com.bitcamp.board.dao.BoardDao;
-import com.bitcamp.board.dao.MariaDBBoardDao;
-import com.bitcamp.board.dao.MariaDBMemberDao;
-import com.bitcamp.board.dao.MemberDao;
 import com.bitcamp.board.handler.ErrorHandler;
 import com.bitcamp.servlet.Servlet;
+import com.bitcamp.servlet.annotation.Repository;
 import com.bitcamp.servlet.annotation.WebServlet;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
@@ -73,21 +70,24 @@ public class MiniWebServer {
     Connection con = DriverManager.getConnection(
         "jdbc:mariadb://localhost:3306/studydb","study","1111");
 
-    BoardDao boardDao = new MariaDBBoardDao(con);
-    MemberDao memberDao = new MariaDBMemberDao(con);
-
     // 객체(DAO, 서블릿)를 보관할 맵을 준비
     Map<String,Object> objMap = new HashMap<>();
 
-    // DAO 객체를 맵에 보관한다.
-    objMap.put("boardDao", boardDao);
-    objMap.put("memberDao", memberDao);
+    // DAO 객체를 찾아 맵에 보관한다.
+    Reflections reflections = new Reflections("com.bitcamp.board"); //리플렉션이라는 도구를 사용하면 객체를 뉴말고 자동 생성할 수 있음.(패키지 지정)
+    Set<Class<?>> classes = reflections.get(TypesAnnotated.with(Repository.class).asClass()); //조건에 해당되는 클래스를 찾아준다.(리파지토리:dao를 자동으로 찾아서 생성한다.)
+    for (Class<?> clazz : classes) { //애노테이션/컨스트럭터도 추출할 수 있다./인스턴스를 만들수도있다.
+      String objName = clazz.getAnnotation(Repository.class).value();
+      Constructor<?> constructor = clazz.getConstructor(Connection.class);
+      objMap.put(objName, constructor.newInstance(con));
+    }
+
+
 
     // WebServlet 애노테이션이 붙은 클래스를 찾아 객체를 생성한 후 맵에 저장한다.
     // 맵에 저장할 때 사용할 key는 WebServlet 애노테이션에 설정된 값이다.
     //
-    Reflections reflections = new Reflections("com.bitcamp.board");
-    Set<Class<?>> servlets = reflections.get(TypesAnnotated.with(WebServlet.class).asClass());
+    Set<Class<?>> servlets = reflections.get(TypesAnnotated.with(WebServlet.class).asClass()); //서블릿이라는 객체를 찾아서 자동 생성한다.
     for (Class<?> servlet : servlets) {
       // 서블릿 클래스의 붙은 WebServlet 애노테이션으로부터 path 를 꺼낸다.
       String servletPath = servlet.getAnnotation(WebServlet.class).value();
