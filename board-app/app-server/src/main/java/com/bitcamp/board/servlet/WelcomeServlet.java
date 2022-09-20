@@ -10,7 +10,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 
 
-@WebServlet(value="/")
+@WebServlet(value="/welcome")
 public class WelcomeServlet implements Servlet {
 
 
@@ -32,7 +32,7 @@ public class WelcomeServlet implements Servlet {
     out.println("</head>");
     out.println("<body>");
     out.println("<h1>환영합니다!2</h1>");
-    out.println("<p>비트캠프 게시판 관리 시스템 프로젝트입니다.</p>");
+    out.println("<p>비트캠프 게시판 관리 시스템 프로젝트입니다.</p>"); 
     out.println("<ul>");
     out.println("  <li><a href='/board/list'>게시글</a></li>");
     out.println("  <li><a href='/member/list'>회원</a></li>");
