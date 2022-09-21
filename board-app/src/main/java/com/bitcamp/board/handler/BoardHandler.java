@@ -3,185 +3,161 @@
  */
 package com.bitcamp.board.handler;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.PrintWriter;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import com.bitcamp.board.dao.BoardDao;
 import com.bitcamp.board.domain.Board;
+import com.bitcamp.handler.AbstractHandler;
 import com.bitcamp.util.Prompt;
 
-public class BoardHandler {
+public class BoardHandler extends AbstractHandler {
+
+  // 게시글 목록을 관리할 객체 준비
   private BoardDao boardDao;
 
-  public BoardHandler(BoardDao boardDao) {
-    this.boardDao = boardDao;
+  public BoardHandler(String filename) {
+    // 수퍼 클래스의 생성자를 호출할 때 메뉴 목록을 전달한다.
+    super(new String[] {"목록", "상세보기", "등록", "삭제", "변경"});
+
+    boardDao = new BoardDao(filename);
+
+    try {
+      boardDao.load();
+    } catch (Exception e) {
+      System.out.printf("%s 파일 로딩 중 오류 발생!\n", filename);
+      //      e.printStackTrace();
+    }
   }
 
-  public void list(Map<String, String> paramMap, PrintWriter out) throws Exception {
+  // 템플릿 메서드 패턴(template method pattern) 
+  //   - 수퍼 클래스의 execute()에서 동작의 전체적인 흐름을 정의하고(틀을 만들고),
+  //   - 서브 클래스의 service()에서 동작을 구제척으로 정의한다.(세부적인 항목을 구현한다)
+  @Override
+  public void service(int menuNo) {
+    try {
+      switch (menuNo) {
+        case 1: this.onList(); break;
+        case 2: this.onDetail(); break;
+        case 3: this.onInput(); break;
+        case 4: this.onDelete(); break;
+        case 5: this.onUpdate(); break;
+      }
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
 
-    out.println("<!DOCTYPE html>");
-    out.println("<html>");
-    out.println("<head>");
-    out.println("<meta charset=\"UTF-8\">");
-    out.println("<title>bitcamp</title>");
-    out.println("</head>");
-    out.println("<body>");
-    out.println("<h1>게시글</h1>");
-    out.println("<table border='1'>");
-    out.println("  <tr>");
-    out.println("    <th>번호</th>");
-    out.println("    <th>제목</th>");
-    out.println("    <th>조회수</th>");
-    out.println("    <th>작성자</th>");
-    out.println("    <th>등록일</th>");
-    out.println("  </tr>");
+  private void onList() {
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
-    List<Board> boards = boardDao.findAll();
+    System.out.println("번호 제목 조회수 작성자 등록일");
+
+    Board[] boards = this.boardDao.findAll();
+
     for (Board board : boards) {
-      out.println("<tr>");
-      out.printf("  <td>%d</td>", board.no);
-      out.printf("  <td><a href='detail?no=%d'>%s</td>",board.no, board.title);
-      out.printf("  <td>%d</td>", board.viewCount);
-      out.printf("  <td>%d</td>", board.memberNo);
-      out.printf("  <td>%s</td>", board.createdDate);
-      out.println("</tr>");
+      Date date = new Date(board.createdDate);
+      String dateStr = formatter.format(date); 
+      System.out.printf("%d\t%s\t%d\t%s\t%s\n",
+          board.no, board.title, board.viewCount, board.writer, dateStr);
     }
 
-    out.println("</table>");
-    out.println("</body>");
-    out.println("</html>");
   }
 
-
-  public void detail(Map<String, String> paramMap, PrintWriter out) throws Exception {
-
-    out.println("<!DOCTYPE html>");
-    out.println("<html>");
-    out.println("<head>");
-    out.println("<meta charset=\"UTF-8\">");
-    out.println("<title>bitcamp</title>");
-    //====================================================
-    out.println("</head>");
-    out.println("<body>");
-    out.println("<h1>게시글 상세 정보</h1>");
-
-    int boardNo = Integer.parseInt(paramMap.get("no"));
-    Board board = boardDao.findByNo(boardNo);  
-
-    if(board == null) {
-      out.println("<p>해당 번호의 게시글이 없습니다.</p>");
-    } else {
-      out.println("<form action='update'>"); //'update' < 여기의 주소로 폼을 제출.
-      out.println("<table border='1'>");
-      //====================================================
-      out.println("  <tr>");
-      out.printf("    <th>번호</th><td><input name='no' type='number' value='%d' readonly </td>",board.no);
-      out.println("  </tr>");
-      //====================================================
-      out.println("  <tr>");
-      out.printf("    <th>제목</th><td><input name='title' type='text' value='%s' size='60'></td>",board.title);
-      out.println("  </tr>");
-      //====================================================
-      out.println("  <tr>");
-      out.printf("    <th>내용</th><td><textarea name='content' rows = '10' cols='60'>%s</textarea></td>",board.content);
-      out.println("  </tr>");
-      //====================================================
-      out.println("  <tr>");
-      out.printf("    <th>조회수</th><td>%d</td>",board.viewCount);
-      out.println("  </tr>");
-      //====================================================
-      out.println("  <tr>");
-      out.printf("    <th>작성자</th><td>%d</td>",board.memberNo);
-      out.println("  </tr>");
-      //====================================================
-      out.println("  <tr>");
-      out.printf("    <th>등록일</th><td>%s</td>",board.createdDate);
-      out.println("  </tr>");
-      //====================================================
-      out.println("</table>");
-      out.println("<p>");
-      out.println(" <button type='submit'>변경</button>");
-      out.printf(" <a href='delete?no=%d'>삭제</a>",board.no);
-      out.println("  </p>");
-      out.println("  </form>");
+  private void onDetail() {
+    int boardNo = 0;
+    while (true) {
+      try {
+        boardNo = Prompt.inputInt("조회할 게시글 번호? ");
+        break;
+      } catch (Exception ex) {
+        System.out.println("입력 값이 옳지 않습니다!");
+      }
     }
-    //====================================================
-    out.println("</body>");
-    out.println("</html>");
-    //====================================================
+
+    // 해당 번호의 게시글이 몇 번 배열에 들어 있는지 알아내기
+    Board board = this.boardDao.findByNo(boardNo);
+
+    // 사용자가 입력한 번호에 해당하는 게시글을 못 찾았다면
+    if (board == null) {
+      System.out.println("해당 번호의 게시글이 없습니다!");
+      return;
+    }
+
+    System.out.printf("번호: %d\n", board.no);
+    System.out.printf("제목: %s\n", board.title);
+    System.out.printf("내용: %s\n", board.content);
+    System.out.printf("조회수: %d\n", board.viewCount);
+    System.out.printf("작성자: %s\n", board.writer);
+    Date date = new Date(board.createdDate);
+    System.out.printf("등록일: %tY-%1$tm-%1$td %1$tH:%1$tM\n", date);
+
   }
 
-  private void onInput(DataInputStream in, DataOutputStream out) throws Exception {
-
-    Prompt prompt = new Prompt(in, out);
-
+  private void onInput() throws Exception {
     Board board = new Board();
 
-    board.title = prompt.inputString("제목? ");
-    board.content = prompt.inputString("내용? ");
-    board.memberNo = prompt.inputInt("작성자? ");
+    board.title = Prompt.inputString("제목? ");
+    board.content = Prompt.inputString("내용? ");
+    board.writer = Prompt.inputString("작성자? ");
+    board.password = Prompt.inputString("암호? ");
+    board.viewCount = 0;
+    board.createdDate = System.currentTimeMillis();
 
-    boardDao.insert(board);
-    out.writeUTF("게시글을 등록했습니다.");
+    this.boardDao.insert(board);
+    this.boardDao.save();
+
+    System.out.println("게시글을 등록했습니다.");
   }
 
-  public void Delete(Map<String, String> paramMap, PrintWriter out) throws Exception {
+  private void onDelete() throws Exception {
+    int boardNo = 0;
+    while (true) {
+      try {
+        boardNo = Prompt.inputInt("삭제할 게시글 번호? ");
+        break;
+      } catch (Exception ex) {
+        System.out.println("입력 값이 옳지 않습니다!");
+      }
+    }
 
-    out.println("<!DOCTYPE html>");
-    out.println("<html>");
-    out.println("<head>");
-    out.println("<meta charset=\"UTF-8\">");
-    out.println("<title>bitcamp</title>");
-    out.println("<meta http-equiv='refresh' content='3; url=list'>");
-    //====================================================
-    out.println("</head>");
-    out.println("<body>");
-    out.println("<h1>게시글 삭제</h1>");
-
-    int no  = Integer.parseInt(paramMap.get("no"));
-
-    if (boardDao.delete(no) == 0) {
-      out.println("<p>해당 게시물이 없습니다.</p>");
+    if (boardDao.delete(boardNo)) {
+      this.boardDao.save();
+      System.out.println("삭제하였습니다.");
     } else {
-      out.println("<p>해당 게시물이 없습니다.</p>");
+      System.out.println("해당 번호의 게시글이 없습니다!");
     }
   }
 
-
-  public void Update(Map<String, String> paramMap, PrintWriter out) throws Exception {
-
-    out.println("<!DOCTYPE html>");
-    out.println("<html>");
-    out.println("<head>");
-    out.println("<meta charset=\"UTF-8\">");
-    out.println("<title>bitcamp</title>");
-    out.println("<meta http-equiv='refresh' content='3; url=list'>");
-    //====================================================
-    out.println("</head>");
-    out.println("<body>");
-    out.println("<h1>게시글 변경</h1>");
-
-    Board board = new Board();
-    board.no  = Integer.parseInt(paramMap.get("no"));
-    board.title = paramMap.get("title");
-    board.content = paramMap.get("content");
-
-
-
-    if(boardDao.update(board) == 0) {
-      out.println("<p>해당 번호의 게시글이 없습니다.</p>");
-
-    } else {
-      out.println("<p>해당 게시글을 변경했습니다.</p>");
+  private void onUpdate() throws Exception {
+    int boardNo = 0;
+    while (true) {
+      try {
+        boardNo = Prompt.inputInt("변경할 게시글 번호? ");
+        break;
+      } catch (Throwable ex) {
+        System.out.println("입력 값이 옳지 않습니다!");
+      }
     }
-    //====================================================
-    out.println("</body>");
-    out.println("</html>");
-    //====================================================
 
+    Board board = this.boardDao.findByNo(boardNo);
 
+    if (board == null) {
+      System.out.println("해당 번호의 게시글이 없습니다!");
+      return;
+    }
+
+    String newTitle = Prompt.inputString("제목?(" + board.title + ") ");
+    String newContent = Prompt.inputString(String.format("내용?(%s) ", board.content));
+
+    String input = Prompt.inputString("변경하시겠습니까?(y/n) ");
+    if (input.equals("y")) {
+      board.title = newTitle;
+      board.content = newContent;
+      this.boardDao.save();
+      System.out.println("변경했습니다.");
+    } else {
+      System.out.println("변경 취소했습니다.");
+    }
   }
 }
 
