@@ -1,5 +1,3 @@
-/*
- */
 package com.bitcamp.board.servlet;
 
 import java.io.IOException;
@@ -14,7 +12,6 @@ import com.bitcamp.board.domain.Member;
 @WebServlet(value="/member/update")
 public class MemberUpdateServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
-
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)

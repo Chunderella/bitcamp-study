@@ -1,5 +1,3 @@
-/*
- */
 package com.bitcamp.board.servlet;
 
 import java.io.IOException;
@@ -19,7 +17,8 @@ public class BoardAddServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-    resp.setContentType("text/html;charset=UTF-8");
+
+    resp.setContentType("text/html; charset=UTF-8");
     PrintWriter out = resp.getWriter();
 
     out.println("<!DOCTYPE html>");
@@ -32,13 +31,13 @@ public class BoardAddServlet extends HttpServlet {
     out.println("<body>");
     out.println("<h1>게시글 입력</h1>");
 
-    Board board = new Board();
-    board.title = req.getParameter("title");
-    board.content = req.getParameter("content");
-    board.memberNo = Integer.parseInt(req.getParameter("writerNo"));
-
     try {
-      if ( AppInitServlet.boardDao.insert(board) == 0) {
+      Board board = new Board();
+      board.title = req.getParameter("title");
+      board.content = req.getParameter("content");
+      board.memberNo = Integer.parseInt(req.getParameter("writerNo"));
+
+      if (AppInitServlet.boardDao.insert(board) == 0) {
         out.println("<p>게시글을 등록할 수 없습니다!</p>");
 
       } else {
@@ -50,7 +49,9 @@ public class BoardAddServlet extends HttpServlet {
 
     out.println("</body>");
     out.println("</html>");
+
   }
+
 
 }
 

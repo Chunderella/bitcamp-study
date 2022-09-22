@@ -1,22 +1,22 @@
-/*
- */
 package com.bitcamp.board.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.bitcamp.servlet.annotation.WebServlet;
 
 @WebServlet(value="/board/delete")
 public class BoardDeleteServlet extends HttpServlet {
+
   private static final long serialVersionUID = 1L;
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
+
     resp.setContentType("text/html;charset=UTF-8");
     PrintWriter out = resp.getWriter();
 
@@ -30,8 +30,9 @@ public class BoardDeleteServlet extends HttpServlet {
     out.println("<body>");
     out.println("<h1>게시글 삭제</h1>");
 
-    int no = Integer.parseInt(req.getParameter("no"));
     try {
+      int no = Integer.parseInt(req.getParameter("no"));
+
       if (AppInitServlet.boardDao.delete(no) == 0) {
         out.println("<p>해당 번호의 게시글이 없습니다.</p>");
 
@@ -44,6 +45,7 @@ public class BoardDeleteServlet extends HttpServlet {
 
     out.println("</body>");
     out.println("</html>");
+
   }
 }
 

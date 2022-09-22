@@ -1,16 +1,14 @@
-/*
- */
 package com.bitcamp.board.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.bitcamp.board.domain.Board;
-import com.bitcamp.servlet.annotation.WebServlet;
 
 @WebServlet(value="/board/list")
 public class BoardListServlet extends HttpServlet {
@@ -65,7 +63,7 @@ public class BoardListServlet extends HttpServlet {
     } catch (Exception e) {
       out.println("<p>실행 중 오류 발생!</p>");
     }
-    out.println("<p><a href='/'>메인</a></p>");
+    out.println("<p><a href='../welcome'>메인</a></p>");
     out.println("</body>");
     out.println("</html>");
   }

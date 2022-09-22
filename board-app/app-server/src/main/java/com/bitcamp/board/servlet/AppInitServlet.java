@@ -12,7 +12,7 @@ import com.bitcamp.board.dao.MariaDBMemberDao;
 // 이 서블릿은 다른 서블릿이 사용할 객체를 준비하는 일을 한다.
 //
 @WebServlet(
-    value="/init",
+    value="/init", 
     loadOnStartup=1)
 public class AppInitServlet extends HttpServlet {
 
@@ -20,31 +20,35 @@ public class AppInitServlet extends HttpServlet {
 
   @Override
   public void init() throws ServletException {
-    //톰캣서버 --> init(ServletConfig) --> init()
-    super.init();
-
+    // 톰캣서버 --> init(ServletConfig) --> init()
     System.out.println("공유 자원을 준비 중!");
     try {
       Class.forName("org.mariadb.jdbc.Driver");
-      Connection con = DriverManager.getConnection
-          ("jdbc:mariadb://localhost:3306/studydb","study","1111");
+      Connection con = DriverManager.getConnection(
+          "jdbc:mariadb://localhost:3306/studydb","study","1111");
 
-      //생성자에서 getservletContext()를 호출하면 오류 발생!
-      //왜 ? 아직 ServletContext 객체가 준비되지 않았기 때문이다.
-      //그래서 생성자 다음에 호출되는 init()에서 getServletContext()를 호출해야 한다.
-      //
-
-      //서블릿을 초기화 할 일이있다면 init에서 초기화한다.
+      // 생성자에서 getServletContext()를 호출하면 오류 발생!
+      // 왜?
+      //      ServletContext는 ServletConfig 객체를 통해 꺼낼 수가 있는데,
+      //      ServletConfig는 아직 주입되지 않은 상태이다.
+      //  ServletConfig 객체가 언제 주입되는가?
+      //    생성자 다음에 호출되는 init()가 호출될 때 ServletConfig 객체가 주입된다.
+      // 
 
       ServletContext ctx = this.getServletContext();
       ctx.setAttribute("boardDao", new MariaDBBoardDao(con));
       ctx.setAttribute("memberDao", new MariaDBMemberDao(con));
-    }catch (Exception e){   
+    } catch (Exception e) {
       throw new ServletException(e);
     }
   }
 
-  // 이 서블릿의 역할은 다른 서블릿이 사용할 자원을 준비하는 것이기 때문에 
+  // 이 서블릿의 역할은 다른 서블릿이 사용할 자원을 준비하는 것이기 때문에
   // 굳이 요청을 처리하는 메서드를 정의할 필요가 없다.
-
 }
+
+
+
+
+
+
