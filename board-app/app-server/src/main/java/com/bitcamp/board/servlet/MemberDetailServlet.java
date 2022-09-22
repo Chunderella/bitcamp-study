@@ -7,11 +7,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.bitcamp.board.dao.MemberDao;
 import com.bitcamp.board.domain.Member;
 
 @WebServlet(value="/member/detail")
 public class MemberDetailServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
+
+  MemberDao memberDao; //필드
+
+  @Override
+  public void init() throws ServletException { //Init -> ServletConfig가 주입된 후에 해야함.
+    memberDao = (MemberDao)this.getServletContext().getAttribute("memberDao");
+  }
+
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -31,7 +40,7 @@ public class MemberDetailServlet extends HttpServlet {
 
     try {
       int no = Integer.parseInt(req.getParameter("no"));
-      Member member = AppInitServlet.memberDao.findByNo(no);
+      Member member = memberDao.findByNo(no);
 
       if (member == null) {
         out.println("<p>해당 번호의 회원이 없습니다.</p>");

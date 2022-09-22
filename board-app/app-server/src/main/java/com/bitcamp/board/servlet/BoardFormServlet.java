@@ -7,11 +7,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.bitcamp.board.dao.BoardDao;
 
 @WebServlet(value="/board/form")
 public class BoardFormServlet extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
+
+
+  BoardDao boardDao; //필드
+
+  @Override
+  public void init() throws ServletException { //Init -> ServletConfig가 주입된 후에 해야함.
+    boardDao = (BoardDao)this.getServletContext().getAttribute("boardDao");
+  }
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)

@@ -8,11 +8,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.bitcamp.board.dao.MemberDao;
 import com.bitcamp.board.domain.Member;
 
 @WebServlet(value="/member/list")
 public class MemberListServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
+
+  MemberDao memberDao; //필드
+
+  @Override
+  public void init() throws ServletException { //Init -> ServletConfig가 주입된 후에 해야함.
+    memberDao = (MemberDao)this.getServletContext().getAttribute("memberDao");
+  }
+
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -46,7 +55,7 @@ public class MemberListServlet extends HttpServlet {
       out.println("    <th>이메일</th>");
       out.println("  </tr>");
 
-      List<Member> members = AppInitServlet.memberDao.findAll();
+      List<Member> members = memberDao.findAll();
       for (Member member : members) {
         out.println("<tr>");
         out.printf("  <td>%d</td>", member.no);
