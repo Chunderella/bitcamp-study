@@ -10,6 +10,17 @@
       게시판 웹 애플리케이션
     </description>
     
+    <servlet>
+    <servlet-name>board/list</servlet-name>
+    <jsp-file>/board/list.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+    <servlet-name>board/list</servlet-name>
+    <url-pattern>/board/list</url-pattern>
+            </servlet-mapping>
+    
+    
+    
     <display-name>board-app</display-name>
 
 </web-app>
