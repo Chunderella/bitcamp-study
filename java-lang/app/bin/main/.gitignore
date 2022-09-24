@@ -1,3 +1,6 @@
+/META-INF/
+/README-resources.md
+/com/
 /A.class
 /B.class
 /C.class
@@ -15,8 +18,4 @@
 /Exam13.class
 /Hello.class
 /Hello2.class
-/META-INF/
-/README-resources.md
 /Test.class
-/com/
-/log4j2.xml
