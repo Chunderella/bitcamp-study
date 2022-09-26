@@ -9,21 +9,18 @@ import javax.servlet.annotation.WebListener;
 import com.bitcamp.board.dao.MariaDBBoardDao;
 import com.bitcamp.board.dao.MariaDBMemberDao;
 
-//웹애플리케이션이 시작되었을 때 공유할 자원을 준비시키거나 해제하는 일을 한다.
+// 웹애플리케이션이 시작되었을 때 공유할 자원을 준비시키거나 해제하는 일을 한다.
 //
-
 @WebListener
-public class ContextLoaderListener implements ServletContextListener  {
-
+public class ContextLoaderListener implements ServletContextListener {
   @Override
-  public void contextInitialized(ServletContextEvent sce) { //파라미터로 받은 값을 1)
+  public void contextInitialized(ServletContextEvent sce) {
     System.out.println("공유 자원을 준비 중!!");
     try {
       Class.forName("org.mariadb.jdbc.Driver");
       Connection con = DriverManager.getConnection(
           "jdbc:mariadb://localhost:3306/studydb","study","1111");
-
-      ServletContext ctx = sce.getServletContext(); //넣어서 구현 2)
+      ServletContext ctx = sce.getServletContext();
       ctx.setAttribute("boardDao", new MariaDBBoardDao(con));
       ctx.setAttribute("memberDao", new MariaDBMemberDao(con));
     } catch (Exception e) {
@@ -31,4 +28,3 @@ public class ContextLoaderListener implements ServletContextListener  {
     }
   }
 }
-
