@@ -35,7 +35,7 @@ public class BoardDetailController extends HttpServlet{
       request.setAttribute("board", board);
 
       response.setContentType("text/html;charset=UTF-8"); // JSP가 출력할 콘텐트의 MIME 타입 설정
-      response.setHeader("Refresh", "1;url=list"); // 응답 헤더에 refresh 명령 삽입
+      response.setHeader("Refresh", "30 q;url=list"); // 응답 헤더에 refresh 명령 삽입
       request.getRequestDispatcher("/board/detail.jsp").include(request, response); // JSP를 실행한 후 리턴된다.
 
     } catch(Exception e) {
