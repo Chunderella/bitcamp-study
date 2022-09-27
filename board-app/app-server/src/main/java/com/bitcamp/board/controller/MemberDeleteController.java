@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.bitcamp.board.dao.MemberDao;
 
-
 @WebServlet("/member/delete")
 public class MemberDeleteController extends HttpServlet {
   private static final long serialVersionUID = 1L;
@@ -16,25 +15,31 @@ public class MemberDeleteController extends HttpServlet {
   MemberDao memberDao;
 
   @Override
-  public void init() throws ServletException {
+  public void init() {
     memberDao = (MemberDao) this.getServletContext().getAttribute("memberDao");
   }
+
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException { //자기가 받은 것을
-
+      throws ServletException, IOException {
     try {
       int no = Integer.parseInt(request.getParameter("no"));
 
       if (memberDao.delete(no) == 0) {
-        throw new Exception("게시글 등록 실패!");
+        throw new Exception("회원 삭제 오류입니다!");
       }
 
       response.sendRedirect("list");
 
-    } catch (Exception e) { 
-      request.setAttribute("exception",e);
-      request.getRequestDispatcher("/error.jsp").forward(request, response);
+    } catch (Exception e) {
+      request.setAttribute("exception", e);
+      request.getRequestDispatcher("/error.jsp").forward(request, response); 
     }
   }
 }
+
+
+
+
+
+

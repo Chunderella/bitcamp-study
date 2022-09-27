@@ -10,8 +10,7 @@ import com.bitcamp.board.dao.BoardDao;
 import com.bitcamp.board.domain.Board;
 
 @WebServlet("/board/detail")
-public class BoardDetailController extends HttpServlet{
-
+public class BoardDetailController extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   BoardDao boardDao;
@@ -29,18 +28,24 @@ public class BoardDetailController extends HttpServlet{
 
       Board board = boardDao.findByNo(boardNo);
 
-      if(board == null) {
+      if (board == null) {
         throw new Exception("해당 번호의 게시글이 없습니다!");
       }
+
       request.setAttribute("board", board);
 
-      response.setContentType("text/html;charset=UTF-8"); // JSP가 출력할 콘텐트의 MIME 타입 설정
-      response.setHeader("Refresh", "30 q;url=list"); // 응답 헤더에 refresh 명령 삽입
-      request.getRequestDispatcher("/board/detail.jsp").include(request, response); // JSP를 실행한 후 리턴된다.
+      response.setContentType("text/html;charset=UTF-8");
+      request.getRequestDispatcher("/board/detail.jsp").include(request, response);
 
-    } catch(Exception e) {
+    } catch (Exception e) {
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error.jsp").forward(request, response); // JSP를 실행한 후 리턴된다.
+      request.getRequestDispatcher("/error.jsp").forward(request, response);
     }
   }
 }
+
+
+
+
+
+

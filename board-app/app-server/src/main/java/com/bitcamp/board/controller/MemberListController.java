@@ -8,22 +8,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.bitcamp.board.dao.MemberDao;
 
-
 @WebServlet("/member/list")
 public class MemberListController extends HttpServlet {
   private static final long serialVersionUID = 1L;
-  //얘가 BoardList
+
   MemberDao memberDao;
 
   @Override
-  public void init() throws ServletException {
+  public void init() {
     memberDao = (MemberDao) this.getServletContext().getAttribute("memberDao");
   }
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException { //자기가 받은 것을
-
+      throws ServletException, IOException {
     try {
       request.setAttribute("members", memberDao.findAll());
 
@@ -36,3 +34,9 @@ public class MemberListController extends HttpServlet {
     }
   }
 }
+
+
+
+
+
+

@@ -9,23 +9,20 @@ import javax.servlet.http.HttpServletResponse;
 import com.bitcamp.board.dao.MemberDao;
 import com.bitcamp.board.domain.Member;
 
-
 @WebServlet("/member/add")
 public class MemberAddController extends HttpServlet {
   private static final long serialVersionUID = 1L;
-  //얘가 BoardList
 
   MemberDao memberDao;
 
   @Override
-  public void init() throws ServletException {
+  public void init() {
     memberDao = (MemberDao) this.getServletContext().getAttribute("memberDao");
   }
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException { //자기가 받은 것을
-
+      throws ServletException, IOException {
     try {
       Member member = new Member();
       member.name = request.getParameter("name");
@@ -33,15 +30,20 @@ public class MemberAddController extends HttpServlet {
       member.password = request.getParameter("password");
 
       if (memberDao.insert(member) == 0) {
-        throw new Exception("게시글 등록 실패!");
+        throw new Exception("회원 등록 오류입니다!");
       }
 
-      //Redirect    
       response.sendRedirect("list");
 
-    } catch (Exception e) { 
-      request.setAttribute("exception",e);
-      request.getRequestDispatcher("/error.jsp").forward(request, response);
+    } catch (Exception e) {
+      request.setAttribute("exception", e);
+      request.getRequestDispatcher("/error.jsp").forward(request, response); 
     }
   }
 }
+
+
+
+
+
+

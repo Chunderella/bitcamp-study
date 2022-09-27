@@ -10,8 +10,7 @@ import com.bitcamp.board.dao.MemberDao;
 import com.bitcamp.board.domain.Member;
 
 @WebServlet("/member/detail")
-public class MemberDetailController extends HttpServlet{
-
+public class MemberDetailController extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   MemberDao memberDao;
@@ -29,16 +28,23 @@ public class MemberDetailController extends HttpServlet{
       Member member = memberDao.findByNo(no);
 
       if (member == null) {
-        throw new Exception("해당 번호의 게시글이 없습니다!");
+        throw new Exception("해당 번호의 회원이 없습니다.");
       }
+
       request.setAttribute("member", member);
 
-      response.setContentType("text/html;charset=UTF-8"); // JSP가 출력할 콘텐트의 MIME 타입 설정
-      request.getRequestDispatcher("/member/detail.jsp").include(request, response); // JSP를 실행한 후 리턴된다.
+      response.setContentType("text/html;charset=UTF-8");
+      request.getRequestDispatcher("/member/detail.jsp").include(request, response);
 
-    } catch(Exception e) {
+    } catch (Exception e) {
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error.jsp").forward(request, response); // JSP를 실행한 후 리턴된다.
+      request.getRequestDispatcher("/error.jsp").forward(request, response); 
     }
   }
 }
+
+
+
+
+
+
