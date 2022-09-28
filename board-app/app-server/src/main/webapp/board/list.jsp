@@ -16,8 +16,9 @@ tr:hover {
 </head>
 <body>
   <h1>게시글-JSP+Servlet + EL + JSTL</h1>
-  <a href='form'>새 글</a>
-  <table border='1'>
+ <button type='submit'><a href='form'>새 글</a></button>
+  <br>
+    <table border='1'>
     <tr>
       <th>번호</th>
       <th>제목</th>
@@ -31,13 +32,14 @@ tr:hover {
       <td>${board.no}</td>
       <td><a href='detail?no=${board.no}'>${board.title}</a></td>
       <td>${board.viewCount}</td>
-      <td>${board.memberNo}</td>
+      <td>${board.writer.name}</td>
       <td>${board.createdDate}</td>
     </tr>
    </c:forEach>
   </table>
   <p>
-    <a href='../'>메인</a>
+    
+    <button type='submit'><a href='../'>메인</a></button>
   </p>
 </body>
 </html>
