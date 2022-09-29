@@ -4,13 +4,14 @@ import java.sql.Date;
 
 public class Board {
 
-  public int no;
-  public String title;
-  public String content;
-  public String password;
-  public int viewCount;
-  public Date createdDate;
-  public Member writer;
+  private int no;
+  private String title;
+  private String content;
+  private String password;
+  private int viewCount;
+  private Date createdDate;
+  private Member writer;
+
   @Override
   public String toString() {
     return "Board [no=" + no + ", title=" + title + ", content=" + content + ", password="

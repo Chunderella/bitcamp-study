@@ -56,10 +56,10 @@ public class MariaDBBoardDao implements BoardDao {
       board.setViewCount(rs.getInt("vw_cnt"));
 
       Member writer = new Member();
-      writer.no = rs.getInt("mno");
-      writer.name = rs.getString("name");
+      writer.setNo(rs.getInt("mno"));
+      writer.setName(rs.getString("name"));
 
-      board.writer = writer;
+      board.setWriter(writer);
 
       return board;
     }
@@ -70,9 +70,9 @@ public class MariaDBBoardDao implements BoardDao {
     try (PreparedStatement pstmt = con.prepareStatement(
         "update app_board set title=?, cont=? where bno=?")) {
 
-      pstmt.setString(1, board.title);
-      pstmt.setString(2, board.content);
-      pstmt.setInt(3, board.no);
+      pstmt.setString(1, board.getTitle());
+      pstmt.setString(2, board.getContent());
+      pstmt.setInt(3, board.getNo());
 
       return pstmt.executeUpdate();
     }
@@ -98,7 +98,8 @@ public class MariaDBBoardDao implements BoardDao {
             + "    m.mno,"
             + "    m.name"
             + "    from app_board b"
-            + "  join app_member m on b.mno = m.mno");
+            + "  join app_member m on b.mno = m.mno"
+            + " order by bno desc");
         ResultSet rs = pstmt.executeQuery()) {
 
       /*
@@ -127,10 +128,10 @@ public class MariaDBBoardDao implements BoardDao {
         board.setViewCount(rs.getInt("vw_cnt"));
 
         Member writer = new Member();
-        writer.no = rs.getInt("mno");
-        writer.name = rs.getString("name");
+        writer.setNo(rs.getInt("mno"));
+        writer.setName(rs.getString("name"));
 
-        board.writer = writer;
+        board.setWriter(writer);
 
         list.add(board);
       }

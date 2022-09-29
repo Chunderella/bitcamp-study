@@ -22,49 +22,24 @@ public class BoardUpdateController extends HttpServlet {
   }
 
   @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     try {
+      request.setCharacterEncoding("UTF-8");
       Board board = new Board();
-      board.no = Integer.parseInt(request.getParameter("no"));
-      board.title = request.getParameter("title");
-      board.content = request.getParameter("content");
+      board.setNo(Integer.parseInt(request.getParameter("no")));
+      board.setTitle(request.getParameter("title"));
+      board.setContent(request.getParameter("content"));
 
       Member loginMember = (Member) request.getSession().getAttribute("loginMember"); //세션에서 로그인 사용자 정보를 꺼낸다.
-      if(boardDao.findByNo(board.no).getMemberNo() != loginMember.getNo()) { 
+      if(boardDao.findByNo(board.getNo()).getWriter().getNo() != loginMember.getNo()) { 
         throw new Exception("게시글 작성자가 아닙니다.");
       }
+
       if (boardDao.update(board) == 0) {
         throw new Exception("게시글 변경 실패!");
       }
-
-      // Refresh:
-      // - 응답 헤더 또는 HTML 문서에 refresh 명령을 삽입할 수 있다.
-      // - 응답 프로토콜
-      //      HTTP/1.1 200
-      //      Content-Type: text/html;charset=UTF-8
-      //      Refresh: 30;url=list   <=== 응답 헤더에 refresh 명령을 삽입한다.
-      //      Content-Length: 244
-      //      Date: Mon, 26 Sep 2022 05:24:29 GMT
-      //      Keep-Alive: timeout=20
-      //      Connection: keep-alive
-      //
-      //      <!DOCTYPE html>
-      //      <html>
-      //      <head>
-      //      <meta charset="UTF-8">
-      //      <title>bitcamp</title>
-      //      </head>
-      //      <body>
-      //      <h1>게시글 변경-JSP</h1>
-      //      <p>게시글을 변경했습니다.</p>
-      //      </body>
-      //      </html>
-      //
-      // 자바 코드:
-      response.setHeader("Refresh", "1;url=list"); // 응답 헤더에 refresh를 삽입한다.
-      response.setContentType("text/html;charset=UTF-8");
-      request.getRequestDispatcher("/board/update.jsp").include(request, response); 
+      response.sendRedirect("list");
 
     } catch (Exception e) {
       request.setAttribute("exception", e);

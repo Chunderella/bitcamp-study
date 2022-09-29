@@ -9,7 +9,7 @@
 <body>
   <h1>로그인</h1>
 
-  <form action='login'>
+  <form action='login' method="post">
     <table border='1'>
       <tr>
         <th>이메일</th>
@@ -21,6 +21,8 @@
     </table>
 <input type="checkbox" name="saveEmail">이메일 저장<br>   
     <p>
+    
+    
       <button type='submit'>로그인</button>
        <button type='submit'><a href='../'>취소</a></button>
     </p>

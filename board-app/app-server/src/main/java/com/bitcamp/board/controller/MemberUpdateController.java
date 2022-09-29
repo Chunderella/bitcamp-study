@@ -21,14 +21,15 @@ public class MemberUpdateController extends HttpServlet {
   }
 
   @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     try {
+      request.setCharacterEncoding("UTF-8");
       Member member = new Member();
-      member.no = Integer.parseInt(request.getParameter("no"));
-      member.name = request.getParameter("name");
-      member.email = request.getParameter("email");
-      member.password = request.getParameter("password");
+      member.setNo(Integer.parseInt(request.getParameter("no")));
+      member.setName(request.getParameter("name"));
+      member.setEmail(request.getParameter("email"));
+      member.setPassword(request.getParameter("password"));
 
       if (memberDao.update(member) == 0) {
         throw new Exception("회원 변경 오류입니다!");
