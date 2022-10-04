@@ -1,23 +1,24 @@
 package com.bitcamp.board.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import javax.servlet.http.Part;
 import com.bitcamp.board.dao.BoardDao;
 import com.bitcamp.board.domain.AttachedFile;
 import com.bitcamp.board.domain.Board;
 import com.bitcamp.board.domain.Member;
 
+
+@MultipartConfig(maxFileSize = 1024 * 1024 * 10) //최대 10MB까지 업로드 허용
 @WebServlet("/board/update")
 public class BoardUpdateController extends HttpServlet {
   private static final long serialVersionUID = 1L;
@@ -33,57 +34,37 @@ public class BoardUpdateController extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     try {
+      request.setCharacterEncoding("UTF-8");
 
-      DiskFileItemFactory factory = new DiskFileItemFactory(); //임시 폴더에 저장한다.
-      ServletFileUpload upload = new ServletFileUpload(factory);
-      List<FileItem> items = upload.parseRequest(request);
+      Board board = new Board();
+      board.setNo(Integer.parseInt(request.getParameter("no")));
+      board.setTitle(request.getParameter("title"));
+      board.setContent(request.getParameter("content"));
 
-      Board board = new Board(); //가방을 준비해서
-      List<AttachedFile> attachedFiles= new ArrayList<>();
-
-      //첨부파일을 저장할 OS의 파일시스템 경로를 알아낸다.
+      List<AttachedFile> attachedFiles = new ArrayList<>();
       String dirPath = this.getServletContext().getRealPath("/board/files");
+      Collection<Part> parts = request.getParts();
+      for(Part part : parts) {
+        if(!part.getName().equals("files")) continue; 
+        String filename = UUID.randomUUID().toString();
+        part.write(dirPath + "/" + filename); // 바로 스트링으로 전달
+        attachedFiles.add(new AttachedFile(filename)); //새로 저장된 이름을 담는다.
+      }
+      //Board객체에서 파일명 목록을 담고 있는 컬렉션 객체를 저장한다.
+      board.setAttachedFiles(attachedFiles);
 
 
-
-      for(FileItem item : items) { 
-        if(item.isFormField()) {
-          String paramName = item.getFieldName(); //파일아이템의 파라미터 이름과
-          String paranValue = item.getString("UTF-8"); //파라미터 아이템의 값을 꺼낼때 GetString을 호출해서 utf-8로 꺼냄
-          switch(paramName) {
-            case "no": board.setNo(Integer.parseInt(paranValue));
-            case "title": board.setTitle(paranValue);
-            case "content": board.setContent(paranValue);
-
-          }
-
-
-        }else {
-
-          //첨부파일을 저장할 때 사용할 파일명을 생성한다.
-          String filename = UUID.randomUUID().toString();
-
-          //지정한 위치에 생성한 이름으로 첨부파일을 저장한다.
-          item.write(new File(dirPath + "/" + filename));
-
-          //첨부파일의 이름을 DB에 저장할 수 있도록 List에 보관한다.
-          attachedFiles.add(new AttachedFile(filename));
-
-        }
+      // 게시글 작성자인지 검사한다.
+      Member loginMember = (Member) request.getSession().getAttribute("loginMember");
+      if (boardDao.findByNo(board.getNo()).getWriter().getNo() != loginMember.getNo()) {
+        throw new Exception("게시글 작성자가 아닙니다.");
       }
 
-      board.setAttachedFiles(attachedFiles);
-      //게시글 작성자 인지 검사한다.
-      Member loginMember = (Member) request.getSession().getAttribute("loginMember");
-      board.setWriter(loginMember);
-
-
-      if (boardDao.insert(board) == 0) {
-        throw new Exception("게시글 등록 실패!");
+      if (boardDao.update(board) == 0) {
+        throw new Exception("게시글 변경 실패!");
       }
 
       response.sendRedirect("list");
-
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
@@ -91,3 +72,9 @@ public class BoardUpdateController extends HttpServlet {
     }
   }
 }
+
+
+
+
+
+
