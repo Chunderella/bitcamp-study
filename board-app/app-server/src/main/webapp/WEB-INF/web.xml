@@ -20,7 +20,7 @@
       <servlet-name>board/form</servlet-name>
       <url-pattern>/board/form</url-pattern>
     </servlet-mapping>
-          
+    
     
     <servlet>
       <servlet-name>member/form</servlet-name>

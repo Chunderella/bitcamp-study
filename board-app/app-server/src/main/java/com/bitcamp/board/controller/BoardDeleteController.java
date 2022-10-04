@@ -26,9 +26,8 @@ public class BoardDeleteController extends HttpServlet {
     try {
       int no = Integer.parseInt(request.getParameter("no"));
 
-
-      Member loginMember = (Member) request.getSession().getAttribute("loginMember"); //세션에서 로그인 사용자 정보를 꺼낸다.
-      if(boardDao.findByNo(no).getWriter().getNo() != loginMember.getNo()) { 
+      Member loginMember = (Member) request.getSession().getAttribute("loginMember");
+      if (boardDao.findByNo(no).getWriter().getNo() != loginMember.getNo()) {
         throw new Exception("게시글 작성자가 아닙니다.");
       }
 

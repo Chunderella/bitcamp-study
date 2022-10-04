@@ -118,6 +118,7 @@ public class MariaDBMemberDao implements MemberDao {
       return list;
     }
   }
+
   @Override
   public Member findByEmailPassword(String email, String password) throws Exception {
     try (PreparedStatement pstmt = con.prepareStatement(

@@ -25,6 +25,7 @@ public class MemberUpdateController extends HttpServlet {
       throws ServletException, IOException {
     try {
       request.setCharacterEncoding("UTF-8");
+
       Member member = new Member();
       member.setNo(Integer.parseInt(request.getParameter("no")));
       member.setName(request.getParameter("name"));

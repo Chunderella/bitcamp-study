@@ -8,11 +8,7 @@
 <title>bitcamp</title>
 </head>
 <body>
-<h1>회원 상세 정보(JSP + Servlet)</h1>
-<% 
-Member member = (Member) request.getAttribute("member");
-pageContext.setAttribute("member",member); //보관소에 담아야만 EL로 꺼낼 수 있다.
-%>
+<h1>회원 상세 정보(JSP + Servlet + EL)</h1>
 <form action='update' method="post">
 <table border='1'>
   <tr>

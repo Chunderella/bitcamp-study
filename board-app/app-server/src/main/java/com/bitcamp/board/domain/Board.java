@@ -13,7 +13,7 @@ public class Board {
   private Date createdDate;
   private Member writer;
 
-  //첨부파일을 저장할 필드 추가
+  // 첨부파일 정보를 저장할 필드
   private List<AttachedFile> attachedFiles;
 
   @Override
@@ -47,8 +47,6 @@ public class Board {
     this.content = content;
   }
 
-
-
   public String getPassword() {
     return password;
   }
@@ -81,7 +79,6 @@ public class Board {
     this.writer = writer;
   }
 
-  //SETER/GETER 프로퍼티 추가
   public List<AttachedFile> getAttachedFiles() {
     return attachedFiles;
   }
@@ -89,6 +86,7 @@ public class Board {
   public void setAttachedFiles(List<AttachedFile> attachedFiles) {
     this.attachedFiles = attachedFiles;
   }
+
 
 }
 

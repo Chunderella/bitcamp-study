@@ -21,3 +21,6 @@ com.bitcamp.board.domain.AttachedFile 클래스 생성
  - findFileByNo() , deleteFile() 구현
 
  ### 6단계 - 게시글을 변경할 대 첨부파일을 추가할 수 있게 만든다.
+ 
+ - com.bitcamp.board.dao.BoardDao 인터페이스 변경
+ - findFileByNo() , deleteFile() 추가
