@@ -1,28 +1,34 @@
 package com.bitcamp.board.service;
 
-import com.bitcamp.board.dao.BoardDao;
+import java.util.List;
+import com.bitcamp.board.domain.AttachedFile;
 import com.bitcamp.board.domain.Board;
 
-//비지니스 로직을 수행하는 객체
-// - 메서드의 이름은 업무와 관련된 이름을 사용한다.
-// - 
-public class BoardService {
-  BoardDao boardDao;
+// 비즈니스 로직을 수행하는 객체의 사용규칙(호출규칙)
+// - 메서드 이름은 업무와 관련된 이름을 사용한다.
+//
+public interface BoardService {
 
-  public BoardService(BoardDao boardDao) {
-    this.boardDao = boardDao;
-  }
+  void add(Board board) throws Exception ;
 
-  //게시글을 추가하는 기능
-  public void add(Board board) throws Exception {
-    // 1)게시글 등록 
-    if (boardDao.insert(board) == 0) {
-      throw new Exception("게시글 등록 실패!");
-    }
+  boolean update(Board board) throws Exception ;
 
-    // 2)첨부파일 등록
-    boardDao.insertFiles(board);
-  }
+  Board get(int no) throws Exception ;
 
+  boolean delete(int no) throws Exception ;
+
+  List<Board> list() throws Exception ;
+
+  AttachedFile getAttachedFile(int fileNo) throws Exception ;
+
+  boolean deleteAttachedFile(int fileNo) throws Exception ;
 }
+//교체하기 쉽게 만든다.
+
+
+
+
+
+
+
 
