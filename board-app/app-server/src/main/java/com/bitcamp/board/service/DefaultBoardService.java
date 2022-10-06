@@ -1,5 +1,6 @@
 package com.bitcamp.board.service;
 
+import java.sql.Connection;
 import java.util.List;
 import com.bitcamp.board.dao.BoardDao;
 import com.bitcamp.board.domain.AttachedFile;
@@ -7,32 +8,57 @@ import com.bitcamp.board.domain.Board;
 
 public class DefaultBoardService implements BoardService {
   BoardDao boardDao;
+  Connection con;//트랜젝션을 다룰 객체
 
-  public DefaultBoardService(BoardDao boardDao) {
+  public DefaultBoardService(BoardDao boardDao, Connection con) {
+
     this.boardDao = boardDao;
+    this.con = con;
   }
 
   @Override
   public void add(Board board) throws Exception {
-    // 1) 게시글 등록
-    if (boardDao.insert(board) == 0) {
-      throw new Exception("게시글 등록 실패!");
-    }
 
-    // 2) 첨부파일 등록
-    boardDao.insertFiles(board);
+    con.setAutoCommit(false);
+    try {
+      // 1) 게시글 등록
+      if (boardDao.insert(board) == 0) {
+        throw new Exception("게시글 등록 실패!");
+      }
+
+      // 2) 첨부파일 등록
+      boardDao.insertFiles(board);
+      con.commit();
+
+    }catch (Exception e) {
+      con.rollback();
+      throw e;
+
+    } finally { //오류가 뜨나 안뜨나 마지막 문장을 실행시킬수 있다.
+      con.setAutoCommit(true);
+    }
   }
 
   @Override
   public boolean update(Board board) throws Exception {
-    // 1) 게시글 변경
-    if (boardDao.update(board) == 0) {
-      return false;
-    }
-    // 2) 첨부파일 추가
-    boardDao.insertFiles(board);
 
-    return true;
+    con.setAutoCommit(false);
+    try {
+      // 1) 게시글 변경
+      if (boardDao.update(board) == 0) {
+        return false;
+      }
+      // 2) 첨부파일 추가
+      boardDao.insertFiles(board);
+      con.commit();
+      return true;
+    } catch(Exception e) {
+      con.rollback();
+      throw e;
+
+    } finally {
+      con.setAutoCommit(true);
+    }
   }
 
   @Override
@@ -47,11 +73,24 @@ public class DefaultBoardService implements BoardService {
 
   @Override
   public boolean delete(int no) throws Exception {
-    // 1) 첨부파일 삭제
-    boardDao.deleteFiles(no);
+    con.setAutoCommit(false);
 
-    // 2) 게시글 삭제
-    return boardDao.delete(no) > 0;
+    try {
+      // 1) 첨부파일 삭제
+      boardDao.deleteFiles(no);
+
+      // 2) 게시글 삭제
+      boolean  result = boardDao.delete(no) > 0;
+      con.commit();
+      return result;
+
+    }catch (Exception e) {
+      con.rollback();
+      throw e;
+
+    }finally {
+      con.setAutoCommit(true);
+    }
   }
 
   @Override
