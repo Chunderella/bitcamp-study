@@ -257,5 +257,5 @@
 ### 074. 서비스 객체에 트랜젝션 적용하기
 ## 작업내용
 ### 1단계 - 서비스 객체에  connection 객체를 주입한다.
-- com.bitcamp.board.service.
+- com.bitcamp.board.service.DefaultBoard
 ### 2단계 - 게시글 입력과 변경, 삭제에 트랜잭션을 적용한다.
