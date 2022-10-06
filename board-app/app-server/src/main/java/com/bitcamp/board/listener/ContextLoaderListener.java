@@ -12,6 +12,7 @@ import com.bitcamp.board.dao.MemberDao;
 import com.bitcamp.board.service.DefaultBoardService;
 import com.bitcamp.board.service.DefaultMemberService;
 import com.bitcamp.sql.DataSource;
+import com.bitcamp.transaction.TransactionManager;
 
 // 웹애플리케이션이 시작되었을 때 공유할 자원을 준비시키거나 해제하는 일을 한다.
 //
@@ -23,18 +24,18 @@ public class ContextLoaderListener implements ServletContextListener {
         try {
             ServletContext ctx = sce.getServletContext();
 
-
-
-            DataSource ds = new DataSource("org.mariadb.jdbc.Driver", 
-                    "jdbc:mariadb://localhost:3306/studydb", 
-                    "study", 
+            DataSource ds = new DataSource(
+                    "org.mariadb.jdbc.Driver", 
+                    "jdbc:mariadb://localhost:3306/studydb",
+                    "study",
                     "1111");
+
+            TransactionManager txManager = new TransactionManager(ds);
 
             BoardDao boardDao = new MariaDBBoardDao(ds);
             MemberDao memberDao = new MariaDBMemberDao(ds);
 
-
-            ctx.setAttribute("boardService", new DefaultBoardService(boardDao, ds));
+            ctx.setAttribute("boardService", new DefaultBoardService(boardDao, txManager));
             ctx.setAttribute("memberService", new DefaultMemberService(memberDao));
 
         } catch (Exception e) {

@@ -15,3 +15,6 @@
  - MariaDBBoardDao
  - MariaDBMemberDao
  - DefaultBoardService
+
+ ### 076. 트랜잭션 관리자 역할을 별도로 분리하기
+ 
