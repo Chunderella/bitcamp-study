@@ -24,7 +24,7 @@ public class DataSource {
     }
 
     public Connection getConnection() throws Exception {
-        Thread currThread = Thread.currentThread();
+        Thread currThread = Thread.currentThread(); //현재 스레드를 알아내고
         System.out.printf("%s=> getConnection() 호출\n", currThread.getName());
 
         // 현재 스레드의 보관소에서 DB 커넥션 객체를 꺼낸다.
