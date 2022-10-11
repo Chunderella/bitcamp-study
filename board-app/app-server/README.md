@@ -277,7 +277,12 @@
 - com.bitcamp.board.listener.ContextLoaderListener 클래스 변경
 
 
-### 3단계 - 
+### 3단계 - Spring IoC 컨테이너에서 DataSource 객체를 생성한다.
+
+- Spring JDBC 라이브러리 추가한다.
+- search.maven.org에서 spring-jdbc 라이브러리 검색한다.
+
+- createDataSource() : DataSource 구현체를 준비한다.
 
 ### 3단계 - Spring IoC 컨테이너의 설정을 수행하는 자바 클래스를 정의한다.
 - com.bitcamp.board.config.AppConfig 클래스 정의
