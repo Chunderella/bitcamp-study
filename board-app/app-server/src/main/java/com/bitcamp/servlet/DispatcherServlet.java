@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+
 // 역할:
 // - 페이지 컨트롤러의 앞쪽에서 클라이언트 요청을 받는 일을 한다.
 // - 클라이언트가 요청한 경로에 따라 적절한 페이지 컨트롤러를 실행한다.
@@ -17,9 +19,18 @@ import javax.servlet.http.HttpServletResponse;
 public class DispatcherServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
+    ApplicationContext iocContext;
+    //클래스 이름으로 받지말고 인터페이스로 받아라.
+    public DispatcherServlet(ApplicationContext iocContainer) {
+        //Spring IoC 컨테이너를 주입 받는다.
+        this.iocContext = iocContainer;
+    }
+
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+
+
 
         try {
             // 프론트 컨트롤러를 경유해서 실행할 페이지 컨트롤러의 경로를 알아낸다.
