@@ -60,6 +60,12 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jdbc/5.3.23/ee44db01d21753f49dcfe55062befe77d01a07df/spring-jdbc-5.3.23-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jdbc/5.3.23/c859919a644942822e49cb7f2404b2c4d3cba040/spring-jdbc-5.3.23.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/javax.servlet/jstl/1.2/2f5877ef15adb721421e80f5aa2b6fe069eec8ed/jstl-1.2-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/javax.servlet/jstl/1.2/74aca283cd4f4b4f3e425f5820cda58f44409547/jstl-1.2.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
@@ -121,6 +127,12 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/5.3.23/110b4d9a6dc0a3b2dfc98c0c776e69cd1ae16ebf/spring-aop-5.3.23-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/5.3.23/30d0034ba29178e98781d85f51a7eb709a628e9b/spring-aop-5.3.23.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework/spring-tx/5.3.23/53c552e0d614973c51ae6660caddf19ae30868cf/spring-tx-5.3.23-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework/spring-tx/5.3.23/ab313b4028c62e18fe02defdd5050af704778428/spring-tx-5.3.23.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>

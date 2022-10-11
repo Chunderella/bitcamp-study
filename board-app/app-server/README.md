@@ -272,5 +272,14 @@
 ## 작업 내용
 ### 1 단계 -Spring IoC 컨테이너 프레임워크를 프로젝트에 추가한다.
 
-### 2단계 - Spring IoC 컨테이너의 설정을 수행하는 자바 클래스를 정의한다.
+### 2단계 - ContextLoaderListener에서 스프링 IoC 컨테이너를 준비한다.
+- com.bitcamp.board.config.AppConfig 클래스 변경
+- com.bitcamp.board.listener.ContextLoaderListener 클래스 변경
+
+
+### 3단계 - 
+
+### 3단계 - Spring IoC 컨테이너의 설정을 수행하는 자바 클래스를 정의한다.
 - com.bitcamp.board.config.AppConfig 클래스 정의
+### 4단계 - 우리가 만든 Data  Source를 스프링에서 제공하는 DataSource로 변경한다.
+### 5단계 - 우리가 만든 TransactionManager
