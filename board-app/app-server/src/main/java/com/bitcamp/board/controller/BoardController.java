@@ -9,31 +9,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bitcamp.board.domain.AttachedFile;
 import com.bitcamp.board.domain.Board;
 import com.bitcamp.board.domain.Member;
 import com.bitcamp.board.service.BoardService;
-import com.bitcamp.servlet.Controller;
 
-@Component("/board/add")//페이지 컨트롤러 찾을 때 사용할 이름을 지정하라!
-// - 애노테이션을 붙일 때 객체 이름을 명시하면 그 이름으로 저장한다.
-// - 프론트 컨트롤러는 페이지 컨트롤러를 찾을 때 이 이름으로 찾을 것이다.
-public class BoardAddController implements Controller {
 
+//CRUD 요청을 처리하는 페이지 컨트롤러들을 한 개의 클래스로 합친다.
+@Controller 
+public class BoardController {
     BoardService boardService;
 
-    public BoardAddController(BoardService boardService) {
+    public BoardController(BoardService boardService) {
         this.boardService = boardService;
     }
 
-    @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    @PostMapping("/board/add") 
+    public String add(HttpServletRequest request, HttpServletResponse response) throws Exception {
         request.setCharacterEncoding("UTF-8");
 
         Board board = new Board();
-        board.setTitle(request.getParameter("title"));
+        board.setTitle(request.getParameter("title")); 
         board.setContent(request.getParameter("content"));
 
         List<AttachedFile> attachedFiles = new ArrayList<>();
@@ -57,6 +57,13 @@ public class BoardAddController implements Controller {
         // 서비스 객체에 업무를 맡긴다.
         boardService.add(board);
         return "redirect:list";
+    }
+
+    @GetMapping("/board/list")
+    public String list(HttpServletRequest req, HttpServletResponse resp)
+            throws Exception {
+        req.setAttribute("boards", boardService.list());
+        return "/board/list.jsp";
     }
 }
 

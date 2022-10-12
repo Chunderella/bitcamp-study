@@ -3,16 +3,14 @@ package com.bitcamp.board.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
-import com.bitcamp.servlet.Controller;
 
-@Component("/board/form")//페이지 컨트롤러 찾을 때 사용할 이름을 지정하라!
-//- 애노테이션을 붙일 때 객체 이름을 명시하면 그 이름으로 저장한다.
-//- 프론트 컨트롤러는 페이지 컨트롤러를 찾을 때 이 이름으로 찾을 것이다.
-public class BoardFormController implements Controller {
+@Controller //페이지 컨트롤러에 붙이는 애노테이션
+public class BoardFormController {
 
-    @Override
+    @GetMapping("/board/form")
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         return "/board/form.jsp";
     }

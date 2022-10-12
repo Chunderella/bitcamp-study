@@ -54,7 +54,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/5.3.23/96fb2190486a4b0f7087fb15614e6b8986eea8e5/spring-context-5.3.23-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/5.3.23/530b36b2ce2c9e471c6a260c3f181bcd20325a58/spring-context-5.3.23.jar">
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/5.3.23/d77b6c649df29dbc7cb5ced14eed149c82026168/spring-webmvc-5.3.23-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/5.3.23/b163527c275b0374371890c0b76c2a2a09f9804b/spring-webmvc-5.3.23.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
@@ -126,7 +126,19 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/5.3.23/96fb2190486a4b0f7087fb15614e6b8986eea8e5/spring-context-5.3.23-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/5.3.23/530b36b2ce2c9e471c6a260c3f181bcd20325a58/spring-context-5.3.23.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/5.3.23/110b4d9a6dc0a3b2dfc98c0c776e69cd1ae16ebf/spring-aop-5.3.23-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/5.3.23/30d0034ba29178e98781d85f51a7eb709a628e9b/spring-aop-5.3.23.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/5.3.23/94793c1edac695de5dca72844fc41d02eb2822e1/spring-web-5.3.23-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/5.3.23/193f5276092d9cbe3222c63885b47ca7b2cce97/spring-web-5.3.23.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
