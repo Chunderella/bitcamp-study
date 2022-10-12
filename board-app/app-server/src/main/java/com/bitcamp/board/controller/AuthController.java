@@ -8,12 +8,15 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bitcamp.board.domain.Member;
 import com.bitcamp.board.service.MemberService;
 
 
-@Controller //페이지 컨트롤러에 붙이는 애노테이션
+@Controller //페이지 컨트롤러에 붙이는 애노테이션 //스프링 IOC 컨테이너가 관심을 가져서 저장함. 따로 별도의 테이블에 기록을 해놈
+@RequestMapping("/auth/")
+
 public class AuthController {
 
     MemberService memberService;
@@ -21,12 +24,12 @@ public class AuthController {
         this.memberService = memberService;
     }
 
-    @GetMapping("/auth/form")
+    @GetMapping("form")
     public String form(HttpServletRequest request, HttpServletResponse response) throws Exception {
         return "/auth/form.jsp";
     }
 
-    @PostMapping("/auth/login")
+    @PostMapping("login")
     public String login(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -46,10 +49,10 @@ public class AuthController {
         response.addCookie(cookie);
 
         request.setAttribute("member", member);
-        return "/auth/loginResult.jsp";
+        return "/auth/loginResult.jsp"; //프론트컨트롤로에게 보내는 주소
     }
 
-    @GetMapping("/auth/logout")
+    @GetMapping("logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         HttpSession session = request.getSession();

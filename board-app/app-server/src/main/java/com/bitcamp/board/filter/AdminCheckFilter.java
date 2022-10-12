@@ -8,18 +8,17 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bitcamp.board.domain.Member;
 
-@WebFilter("/service/member/*")
+//@WebFilter("/service/member/*")
 public class AdminCheckFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        System.out.println("AdminCheckFilter 실행!");
+        System.out.println("AdminCheckFilter.init 실행!");
     }
 
     @Override
