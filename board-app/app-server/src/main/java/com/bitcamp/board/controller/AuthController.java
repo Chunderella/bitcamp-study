@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bitcamp.board.domain.Member;
@@ -13,17 +14,20 @@ import com.bitcamp.board.service.MemberService;
 
 
 @Controller //페이지 컨트롤러에 붙이는 애노테이션
-public class LoginController {
-
+public class AuthController {
 
     MemberService memberService;
-
-    public LoginController(MemberService memberService) {
+    public AuthController(MemberService memberService) {
         this.memberService = memberService;
     }
 
+    @GetMapping("/auth/form")
+    public String form(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        return "/auth/form.jsp";
+    }
+
     @PostMapping("/auth/login")
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String login(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         Member member = memberService.get(email, password);
@@ -44,4 +48,19 @@ public class LoginController {
         request.setAttribute("member", member);
         return "/auth/loginResult.jsp";
     }
+
+    @GetMapping("/auth/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        HttpSession session = request.getSession();
+        session.invalidate(); // 현재 세션을 무효화시킨다.
+        return "redirect:../../"; // 로그아웃 한 후 메인 페이지를 요청하라고 응답한다.
+    }
+
 }
+
+
+
+
+
+
