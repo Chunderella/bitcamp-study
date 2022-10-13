@@ -14,7 +14,7 @@ import com.bitcamp.board.domain.Member;
 import com.bitcamp.board.service.MemberService;
 
 
-@Controller //페이지 컨트롤러에 붙이는 애노테이션 //스프링 IOC 컨테이너가 관심을 가져서 저장함. 따로 별도의 테이블에 기록을 해놈
+@Controller //페이지 컨트롤러에 붙이는 애노테이션 //스프링 IOC 컨테이너가 관심을 가져서 저장함. 따로 별도의 테이블에 기록을 해놈   
 @RequestMapping("/auth/")
 
 public class AuthController {
