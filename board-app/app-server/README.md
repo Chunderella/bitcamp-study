@@ -82,4 +82,7 @@
 - part 대신 스프링에서 제공하는 MutiPartFile 타입으로 첨부파일을 받는다.
 - 낱개의 파라미터 값을 도메인 객체로 받을 수 있다.
  - 단, multipart/form-data 형식으로 전송된 데이터를 처리하려면 MultipartResolver를 설정해야 한다.
-- ServletRequest 보관소에 작업 결과를 저장할 대 페이지 컨트롤에서 하는 프론트 컨트롤러에서 하기 : ModelAndView 클래스
+- ServletRequest 보관소에 작업 결과를 저장할 대 페이지 컨트롤에서 하는 프론트 컨트롤러에서 하기 : ModelAndView, Model, Map 클래스
+- 기본 ViewResolver를 InternalResourceViewResolver로 교체한다.
+ - 접두사, 접미사를 이용해서 JSP 주소를 완성할 수 있다.
+ - InternalResourceViewResolver를 설정해야 한다.

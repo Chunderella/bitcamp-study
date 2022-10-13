@@ -3,7 +3,9 @@ package com.bitcamp.board.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
@@ -12,12 +14,12 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.bitcamp.board.domain.AttachedFile;
 import com.bitcamp.board.domain.Board;
@@ -40,10 +42,21 @@ public class BoardController {
      * ================================form=========================================
      */
 
+    // InternalResourceViewResolver 사용 전:
+    //
+    //    @GetMapping("form")
+    //    public String form() throws Exception {
+    //        return "board/form";
+    //    }
+
+
+    // InternalResourceViewResolver 사용 전:
     @GetMapping("form")
-    public String form() throws Exception {
-        return "/board/form.jsp";
+    public void form() throws Exception {
     }
+    //요청 URL에서 페이지 컨트롤러 path를 JSP 주소로 사용한다.
+
+
 
     /*
      * ================================add==========================================
@@ -68,7 +81,7 @@ public class BoardController {
      */
     private List<AttachedFile> saveAttachedFiles(Part[] files) throws IOException, ServletException {
         List<AttachedFile> attachedFiles = new ArrayList<>();
-        String dirPath = sc.getRealPath("/board/files");
+        String dirPath = sc.getRealPath("board/files");
 
         for (Part part : files) {
             if (part.getSize() == 0) {
@@ -87,7 +100,7 @@ public class BoardController {
      */
     private List<AttachedFile> saveAttachedFiles(MultipartFile[] files) throws IOException, ServletException {
         List<AttachedFile> attachedFiles = new ArrayList<>();
-        String dirPath = sc.getRealPath("/board/files");
+        String dirPath = sc.getRealPath("board/files");
 
         for (MultipartFile part : files) {
             if (part.isEmpty()) {
@@ -106,29 +119,37 @@ public class BoardController {
      */
 
     @GetMapping("list")
-    public ModelAndView list() throws Exception {
-        ModelAndView mv =new ModelAndView();
-        mv.addObject("boards", boardService.list());
-        mv.setViewName("/board/list.jsp");
-        return mv;
+    public void list(Model model)  throws Exception {
+        model.addAttribute("boards", boardService.list()); 
+
+        /*=====================================================
+        //주소를 알려주지 않고 값만 달았음에도
+        //요청 url에서 페이지 컨트롤러 path를 합성해서 jsp 주소로 사용
+
+
+        "/" + "board/list" + ".jsp" 
+                ↓
+        "/board/list.jsp"   
+
+         =========================================================*/
     }
+
     /*
+     * 
      * ======================================detail=================================
      */
 
     @GetMapping("detail") // 요청이 들어 왔을 때 호출될 메서드에 붙이는 애노테이션
-    public ModelAndView detail(int no) throws Exception {
+    public Map detail(int no) throws Exception {
 
         Board board = boardService.get(no);
         if (board == null) {
             throw new Exception("해당 번호의 게시글이 없습니다!");
         }
 
-        ModelAndView mv = new ModelAndView();
-        mv.addObject("board",board);
-        mv.setViewName("/board/detail.jsp");
-
-        return mv;
+        Map map = new HashMap();
+        map.put("board",board);
+        return map;
     }
 
     /*
