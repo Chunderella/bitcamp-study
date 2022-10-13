@@ -86,3 +86,7 @@
 - 기본 ViewResolver를 InternalResourceViewResolver로 교체한다.
  - 접두사, 접미사를 이용해서 JSP 주소를 완성할 수 있다.
  - InternalResourceViewResolver를 설정해야 한다.
+
+ ### 4단계 - JSP 파일을 /WEB-INF 밑에 두어 직접 접근하지 못하도록 만든다.
+ - /WEB-INF/jsp/ 디렉토리 생성
+  - 기존의 JSP 파일을 이 디렉토리로 옮긴다.

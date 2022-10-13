@@ -60,12 +60,13 @@ public class AppConfig {
     public MultipartResolver createMultipartResolver() {
         return new StandardServletMultipartResolver();
     }
+
     //Spring WebMVC의 기본 ViewResolver를 교체한다.
     @Bean("viewResolver")
     public ViewResolver createViewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setViewClass(JstlView.class); //주어진 URL을 처리할 객체 => JSP를 실행시켜주는 객체
-        viewResolver.setPrefix("/");
+        viewResolver.setPrefix("/WEB-INF/jsp/");
         viewResolver.setSuffix(".jsp");
         return viewResolver;
     }
