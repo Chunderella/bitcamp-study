@@ -1,8 +1,9 @@
 package com.bitcamp.board.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,22 +33,31 @@ public class MemberController {
     }
 
     @GetMapping("list")
-    public String list(HttpServletRequest request) throws Exception {
-        request.setAttribute("members", memberService.list());
+    public String list(Model model) throws Exception {
+        //프론트 컨트롤러가 건네준 Model 객체에 작업 결과를 담아 두면
+        //핸들러 호출이 끝났을 때 JSP를 실행하기 전에
+        //먼저 Model 객체에 담아둔 값을 ServletRequest 보관소에 옮긴다.
+        model.addAttribute("members", memberService.list());
         return "/member/list.jsp";
+
+        /*=========================================================*/
+        //프런트 컨트롤러가 빈그릇을 주면 내용물을 담고,
+        //내용물을 서블릿 리퀘스트로 옮겨 놓고, 얘가 리턴한 JSP를 실행한다.
+        /*=========================================================*/
+
     }
 
     @GetMapping("detail")
-    public String detail(HttpServletRequest request, int no) throws Exception {
+    public String detail(int no, Map map) throws Exception {
         Member member = memberService.get(no);
 
         if (member == null) {
             throw new Exception("해당 번호의 회원이 없습니다.");
         }
 
-        request.setAttribute("member", member);
-        return "/member/detail.jsp";
+        map.put("member", member); //빈그릇에 리턴할 작업내용을 담고 서블릿 리퀘스트 보관소에 옮긴다.
 
+        return "/member/detail.jsp"; 
     }
     @PostMapping("update")
     public String update(Member member) throws Exception {
