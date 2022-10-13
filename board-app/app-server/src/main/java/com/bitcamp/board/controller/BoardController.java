@@ -1,14 +1,14 @@
 package com.bitcamp.board.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
@@ -16,6 +16,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bitcamp.board.domain.AttachedFile;
 import com.bitcamp.board.domain.Board;
@@ -27,40 +29,45 @@ import com.bitcamp.board.service.BoardService;
 @Controller 
 @RequestMapping("/board/")
 public class BoardController {
+
+
+    ServletContext sc;
     BoardService boardService;
 
-    public BoardController(BoardService boardService) {
+
+    public BoardController(BoardService boardService, ServletContext sc) {
         this.boardService = boardService;
+        this.sc = sc; //ServletContext 객체는 생성자를 통해 주입 받는다.
     }
     /*================================form==========================================================*/
 
     @GetMapping("form")
-    public String form(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String form() throws Exception {
         return "/board/form.jsp";
     }
 
     /*================================add==========================================================*/
 
     @PostMapping("add") 
-    public String add(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String add(
+            Board board, //요청 파라미터,도메인 객체의 파라미터가 같아야함.
+            @RequestParam("files") MultipartFile[] files, //여러개가 넘어올때는 배열(files라는 이름으로)
+            HttpSession session) throws Exception {
 
-        Board board = new Board();
-        board.setTitle(request.getParameter("title")); 
-        board.setContent(request.getParameter("content"));
-        board.setAttachedFiles(saveAttachedFiles(request)); //저장된 첨부파일을 담고(setAttachedFiles)
-        board.setWriter((Member) request.getSession().getAttribute("loginMember"));
+        board.setAttachedFiles(saveAttachedFiles(files)); //저장된 첨부파일을 담고(setAttachedFiles)
+        board.setWriter((Member) session.getAttribute("loginMember"));
 
         // 서비스 객체에 업무를 맡긴다.
         boardService.add(board);
         return "redirect:list";
     }
-    private List<AttachedFile> saveAttachedFiles(HttpServletRequest request) throws IOException, ServletException {
+    /*==================================part========================================================*/
+    private List<AttachedFile> saveAttachedFiles(Part[] files) throws IOException, ServletException {
         List<AttachedFile> attachedFiles = new ArrayList<>();
-        String dirPath = request.getServletContext().getRealPath("/board/files");
-        Collection<Part> parts = request.getParts();
+        String dirPath = sc.getRealPath("/board/files");
 
-        for (Part part : parts) {
-            if (!part.getName().equals("files") || part.getSize() == 0) {
+        for (Part part : files) {
+            if (part.getSize() == 0) {
                 continue;
             }
 
@@ -70,10 +77,29 @@ public class BoardController {
         }
         return attachedFiles;
     }
+
+    /*==================================multpart========================================================*/
+    private List<AttachedFile> saveAttachedFiles(MultipartFile[] files) throws IOException, ServletException {
+        List<AttachedFile> attachedFiles = new ArrayList<>();
+        String dirPath = sc.getRealPath("/board/files");
+
+        for (MultipartFile part : files) {
+            if (part.isEmpty()) {
+                continue;
+            }
+
+            String filename = UUID.randomUUID().toString();
+            part.transferTo(new File(dirPath + "/" + filename));
+            attachedFiles.add(new AttachedFile(filename));
+        }
+        return attachedFiles;
+    }
+
+
     /*==================================list========================================================*/
 
     @GetMapping("list")
-    public String list(HttpServletRequest req, HttpServletResponse resp)
+    public String list(HttpServletRequest req)
             throws Exception {
         req.setAttribute("boards", boardService.list());
         return "/board/list.jsp";
@@ -81,10 +107,12 @@ public class BoardController {
     /*======================================detail====================================================*/
 
     @GetMapping("detail") // 요청이 들어 왔을 때 호출될 메서드에 붙이는 애노테이션
-    public String detail(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        int boardNo = Integer.parseInt(request.getParameter("no"));
+    public String detail(
+            int no,            
+            HttpServletRequest request)
+                    throws Exception {
 
-        Board board = boardService.get(boardNo);
+        Board board = boardService.get(no);
         if (board == null) {
             throw new Exception("해당 번호의 게시글이 없습니다!");
         }
@@ -95,18 +123,18 @@ public class BoardController {
     }
 
     /*====================================update======================================================*/
-    @PostMapping("update")
-    public String update(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    @PostMapping("update")      
+    public String update(
+
+            Board board,
+            Part[] files,
+            HttpSession session) throws Exception {
 
         //게시글 정보를 만든다.
-        Board board = new Board();
-        board.setNo(Integer.parseInt(request.getParameter("no")));
-        board.setTitle(request.getParameter("title"));
-        board.setContent(request.getParameter("content"));
-        board.setAttachedFiles(saveAttachedFiles(request));
+        board.setAttachedFiles(saveAttachedFiles(files));
 
         //오너 여부를 검사한다.
-        checkOwner(board.getNo(),request.getSession());
+        checkOwner(board.getNo(),session);
 
         if (!boardService.update(board)) {
             throw new Exception("게시글을 변경할 수 없습니다!");
@@ -126,11 +154,13 @@ public class BoardController {
     /*======================================delete====================================================*/
 
     @GetMapping("delete")
-    public String delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        int no = Integer.parseInt(request.getParameter("no"));
+    public String delete(
+            int no,
+            HttpSession session)
+                    throws Exception {
 
         //오너 여부를 검사한다.
-        checkOwner(no, request.getSession());
+        checkOwner(no,session);
 
         if (!boardService.delete(no)) {
             throw new Exception("게시글을 삭제할 수 없습니다.");
@@ -141,12 +171,14 @@ public class BoardController {
     /*=======================================fileDelete===================================================*/
 
     @GetMapping("fileDelete")
-    public String fileDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        int no = Integer.parseInt(request.getParameter("no"));
+    public String fileDelete(
+            int no,
+            HttpSession session
+            ) throws Exception {
 
         AttachedFile attachedFile = boardService.getAttachedFile(no); 
 
-        Member loginMember = (Member) request.getSession().getAttribute("loginMember");
+        Member loginMember = (Member) session.getAttribute("loginMember");
         Board board = boardService.get(attachedFile.getBoardNo()); 
 
         if (board.getWriter().getNo() != loginMember.getNo()) {
