@@ -23,13 +23,6 @@ public class AuthController {
         this.memberService = memberService;
     }
 
-    //InternalResourceViewResolver 설정 전
-    //    @GetMapping("form")
-    //    public View form() throws Exception {
-    //        return new JstlView("auth/form"); 
-    //        //Jstl에 담아서 리턴해도 된다.
-    //    }
-    //InternalResourceViewResolver 설정 후
     @GetMapping("form")
     public String form() throws Exception {
         return "auth/form"; 

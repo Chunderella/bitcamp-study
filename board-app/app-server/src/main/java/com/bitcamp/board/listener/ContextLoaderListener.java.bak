@@ -24,10 +24,14 @@ import com.bitcamp.board.filter.LoginCheckFilter;
 //
 @MultipartConfig(maxFileSize = 1024 * 1024 * 10) 
 @WebListener
-public class ContextLoaderListener implements ServletContextListener {
+public class ContextLoaderListener implements ServletContextListener { //서블릿 컨테이너가 호출 (가장 우선적으로) : 톰캣서버가 호출
+    //웹 어플리케이션이 사용할 작업
+    //IOC 스프링 컨테이너
+    //    2. 프론트 컨트롤러
+    //    3. 필터 등
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        System.out.println("공유 자원을 준비 중!!");
+        System.out.println("ContextLoaderListener.contextInitialized()");
         try {
 
             //<-------------스프링IoC컨테이너------------->
@@ -40,18 +44,21 @@ public class ContextLoaderListener implements ServletContextListener {
 
             ServletContext ctx = sce.getServletContext();
 
+            //웹 애플리케이션의 루트 경로를 ServletContext 보관소에 저장해 둔다.
+            ctx.setAttribute("contextPath", ctx.getContextPath());
+
 
             //<-------------iocContainer가 주입된 페이지 컨트롤러를 사용한다.------------->
             // 자바 코드로 서블릿 객체를 직접 생성하여 서버에 등록하기
-            DispatcherServlet servlet = new DispatcherServlet(iocContainer);
-            Dynamic config = ctx.addServlet("DispatcherServlet", servlet);
-            config.addMapping("/service/*");
+            DispatcherServlet servlet = new DispatcherServlet(iocContainer); //서블릿 클래스
+            Dynamic config = ctx.addServlet("app", servlet); //서블릿의 별명
+            config.addMapping("/app/*"); //일관성 있게 맞춤
             config.setMultipartConfig(new MultipartConfigElement(
                     this.getClass().getAnnotation(MultipartConfig.class)));
             config.setLoadOnStartup(1); // 웹 애플리케이션을 시작할 때 프론트 컨트롤러를 자동으로 생성한다.            
 
 
-            //  필터 등록
+            //  "app" 이름의 프론트 컨트롤러에 필터를 붙인다.
             /*======================CharacterEncodingFilter===========================================*/
             CharacterEncodingFilter filter = new CharacterEncodingFilter("UTF-8"); //Request.setEncoding~실행
             FilterRegistration.Dynamic filterConfig =  ctx.addFilter("CharacterEncodingFilter", filter); //중첩인터페이스
@@ -61,15 +68,16 @@ public class ContextLoaderListener implements ServletContextListener {
                     //요청이 들어왔을때 실행할꺼면 이 필터를 먼저 사용하라.                    
                     //필터 이름으로 저장했기때문에 다른 필터에는 꽂을 수 없다.
                     false,
-                    "DispatcherServlet");
+                    "app");
 
+            // 특정 URL에 필터를 붙인다.
             /*======================AdminCheckFilter===========================================*/
             AdminCheckFilter adminFilter = new AdminCheckFilter();
             FilterRegistration.Dynamic adminFilterConfig =  ctx.addFilter("AdminCheckFilter", adminFilter); //중첩인터페이스
             adminFilterConfig.addMappingForUrlPatterns( 
                     EnumSet.of(DispatcherType.REQUEST,DispatcherType.FORWARD, DispatcherType.INCLUDE), 
                     false,
-                    "/service/member/*");
+                    "/app/member/*");
 
             /*======================LoginCheckFilter===========================================*/
             LoginCheckFilter loginFilter = new LoginCheckFilter();
@@ -77,7 +85,7 @@ public class ContextLoaderListener implements ServletContextListener {
             loginCheckFilterConfig.addMappingForUrlPatterns( 
                     EnumSet.of(DispatcherType.REQUEST,DispatcherType.FORWARD, DispatcherType.INCLUDE), 
                     false,
-                    "/service/*");
+                    "/app/*");
 
 
             //남이 만든 필터를 설정하고 배치 정보를 넣을때 자바코드로 설정한다.

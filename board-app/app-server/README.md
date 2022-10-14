@@ -1,92 +1,55 @@
-### 080. Spring WebMVC 프론트 컨트롤러 도입하기
-
-## 작업 내용
-
-### 1단계 - Spring WebMVC 프레임워크를 프로젝트에 추가한다.
-
-- search.maven.org 에서 spring-webmvc 라이브러리 검색한다.
-- 빌드 스크립트 파일(build.gradle)에 의존 라이브러리 정보를 추가한다.
-  - 기존의 spring-context 라이브러리를 제거한다.
-  - webmvc 라이브러리가 context 라이브러리를 의존하기 때문에 자동으로 포함된다.
-- `gradle eclipse` 실행한다.
-- 이클립스IDE에서 프로젝트를 갱신한다.
-
-### 2단계 - 스프링에서 제공하는 프론트 컨트롤러를 사용한다.
-
-- com.bitcamp.servlet.DispatcherServlet 클래스 삭제
-- com.bitcamp.board.listener.ContextLoaderListener 클래스 변경
-
-### 3단계 - 페이지 컨트롤러를 스프링 규격에 맞춰서 정의한다.
-
-- com.bitcamp.board.controller.XxxController 클래스 변경
-
-### 4단계 - 서비스,DAO 객체의 역할을 설명하는 애노테이션으로 바꾼다.
-
-- com.bitcamp.board.*Dao 클래스 변경
-- com.bitcamp.board.*Service 클래스 변경
-
-
-
-### 081. CRUD를 수행하는 페이지 컨트롤러를 하나로 합치기
-
-## 작업 내용
-
-### 1단계 - 게시판 CRUD 페이지 컨트롤러들을 하나로 합친다.
-
-- com.bitcamp.board.controller.BoardController 클래스 생성
-  - 기존의 게시글 관련 페이지 컨트롤러의 메서드를 가져온다.
-  - 기존의 페이지 컨트롤러를 삭제한다.
-
-### 2단계 - 로그인, 로그아웃 관련 페이지 컨트롤러들을 하나로 합친다.
-
-- com.bitcamp.board.controller.AuthController 클래스 생성
-  - 기존의 로그인, 로그아웃 관련 페이지 컨트롤러의 메서드를 가져온다.
-  - 기존의 페이지 컨트롤러를 삭제한다.
-
-### 3단계 - 회원 CRUD 페이지 컨트롤러들을 하나로 합친다.
-
-- com.bitcamp.board.controller.MemberController 클래스 생성
-  - 기존의 회원 관련 페이지 컨트롤러의 메서드를 가져온다.
-  - 기존의 페이지 컨트롤러를 삭제한다.
-
-### 4단계 - 리팩토링
-- saveAttachedFiles()
-- checkOwner()
-### 5단계 - POST 요청 파라미터 값의 문자셋 지정을 필터로 이관한다.
--XxxController
-- com.bitcamp.board.controller.MemberController 클래스 변경
-
-### 6단계 -@RequestMapping 애노테이션 사용법을 연습한다.
-- com.bitcamp.board.controller.AuthController 클래스 변경
--@PostMapping, @GetMapping 대신 @RequestMapping 애노테이션을 사용한다.
-
 ### 082. Spring WebMVC 프레임워크 사용법
 
 ## 작업 내용
 
 ### 1단계 - @RequestMapping 애노테이션으로 요청 URL을 합성하는 방법
 
-- com.bitcamp.board.controller.XxxController 클래스 변경
+- com.bitcamp.board.controller.XxxxController 클래스 변경
 
 ### 2단계 - 스프링에서 제공하는 CharacterEncodingFilter로 교체한다.
 
-- com.bitcamp.board.listener. ContextLoaderListener 클래스 변경
-- LoginCheckFilter, Admin
+- com.bitcamp.board.listener.ContextLoaderListener 클래스 변경
+- LoginCheckFilter, AdminCheckFilter 도 자바 코드로 등록한다.
 
-### 3단계 - 요청 핸들러의 파라미터 값을 조정한다.
-- 요청을 처리하는 메서드에 필요한 값만 파라미터로 받는다
-- 요청 파라미터 값을 핸들러의 파라미터로 직접 받을 수 있다. : @RequestParam
-- @RequestParam을 생략할 수 있는 경우
-- 첨부파일 파라미터로 직접 받기
-- ServletContext를 받는 방법 : 생성자를 통해 주입 받는다. (파라미터로 받는게 아니라 필드로 받아야 한다.)
-- part 대신 스프링에서 제공하는 MutiPartFile 타입으로 첨부파일을 받는다.
-- 낱개의 파라미터 값을 도메인 객체로 받을 수 있다.
- - 단, multipart/form-data 형식으로 전송된 데이터를 처리하려면 MultipartResolver를 설정해야 한다.
-- ServletRequest 보관소에 작업 결과를 저장할 대 페이지 컨트롤에서 하는 프론트 컨트롤러에서 하기 : ModelAndView, Model, Map 클래스
-- 기본 ViewResolver를 InternalResourceViewResolver로 교체한다.
- - 접두사, 접미사를 이용해서 JSP 주소를 완성할 수 있다.
- - InternalResourceViewResolver를 설정해야 한다.
+### 3단계 - 요청 핸들러의 파라미터 및 리턴 값을 조정한다.
 
- ### 4단계 - JSP 파일을 /WEB-INF 밑에 두어 직접 접근하지 못하도록 만든다.
- - /WEB-INF/jsp/ 디렉토리 생성
+- com.bitcamp.board.controller.XxxxController 클래스 변경
+  - 요청을 처리하는 메서드에 필요한 값만 파라미터로 받는다.
+  - 요청 파라미터 값을 핸들러의 파라미터로 직접 받을 수 있다.: @RequestParam
+  - @RequestParam 을 생략할 수 있는 경우
+  - 첨부파일을 파라미터로 직접 받을 수 있다.
+  - ServletContext를 받는 방법: 생성자를 통해 주입 받는다. 
+  - Part 대신 스프링에서 제공하는 MultipartFile 타입으로 첨부파일을 받는다.
+  - 낱개의 파라미터 값을 도메인 객체로 바로 받을 수 있다.
+    - 단, multipart/form-data 형식으로 전송된 데이터를 처리하려면 MultipartResolver를 설정해야 한다.
+  - ServletRequest 보관소에 작업 결과를 저장할 때 페이지 컨트롤러에서 하는 대신 프론트 컨트롤러에서 하기: ModelAndView, Model, Map 클래스
+  - 기본 ViewResolver를 InternalResourceViewResolver로 교체한다.
+    - 접두사, 접미사를 이용하여 JSP 주소를 완성할 수 있다.
+    - InternalResourceViewResolver를 설정해야 한다.
+- com.bitcamp.board.config.AppConfig 클래스 변경
+  - createMultipartResolver() 메서드 추가
+  - createViewResolver() 메서드 추가
+
+### 4단계 - JSP 파일을 /WEB-INF 밑에 두어 직접 접근하지 못하도록 만든다.
+
+- /WEB-INF/jsp 디렉토리 생성
   - 기존의 JSP 파일을 이 디렉토리로 옮긴다.
+- com.bitcamp.board.config.AppConfig 클래스 변경
+  - createViewResolver() 메서드 변경
+
+### 5단계 - @Bean 애노테이션을 사용할 때 메서드 이름을 객체 이름으로 사용할 수 있다.
+
+- com.bitcamp.board.config.AppConfig 클래스 변경
+
+
+
+### 083. Spring WebMVC 프레임워크 사용법 2 : 기타 설정
+
+## 작업 내용 
+
+### 1단계 - 웹 애플리케이션의 contextpath를 / 로 지정한다.
+
+  - Eclipse IDE에서 처리
+  - 프론트 컨트롤러의 경로를 /service 대신 /app으로 변경
+  - ContextLoaderListener 변경
+  -  JSP의 링크 경로 변경 
