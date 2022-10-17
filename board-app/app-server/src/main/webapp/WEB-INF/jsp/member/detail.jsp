@@ -29,9 +29,7 @@
 </table>
 <p>
   <button type='submit'>변경</button>
-  <button type='submit'><a href='delete?no=${member.no}'>삭제</a></button>
-  <button type='submit'><a href='list'>목록</a></button>
-  
+  <a href='delete?no=${member.no}'>삭제</a>
 </p>
 </form>
 

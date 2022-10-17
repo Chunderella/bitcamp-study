@@ -14,16 +14,16 @@
 	</classpathentry>
 	<classpathentry output="bin/test" kind="src" path="src/test/java">
 		<attributes>
+			<attribute name="test" value="true"/>
 			<attribute name="gradle_scope" value="test"/>
 			<attribute name="gradle_used_by_scope" value="test"/>
-			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry output="bin/test" kind="src" path="src/test/resources">
 		<attributes>
+			<attribute name="test" value="true"/>
 			<attribute name="gradle_scope" value="test"/>
 			<attribute name="gradle_used_by_scope" value="test"/>
-			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
@@ -73,6 +73,18 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-core/2.18.0/e8d64a3b09e0930dbac6f8d66723d516edaedea8/log4j-core-2.18.0-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-core/2.18.0/7c1882ede137548925eadb750615edab2f6e13c/log4j-core-2.18.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.mybatis/mybatis/3.5.11/d8265af6b3fff96c2c361e60aa1bed019169297/mybatis-3.5.11-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.mybatis/mybatis/3.5.11/980273395d508c02d6359f3b6503ffbe319e23b0/mybatis-3.5.11.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.mybatis/mybatis-spring/2.0.7/e88bbf172f759b8546192cb5f489b83a6bc556ff/mybatis-spring-2.0.7-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.mybatis/mybatis-spring/2.0.7/f10e399232df99280df56d39662c00ea33756112/mybatis-spring-2.0.7.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>

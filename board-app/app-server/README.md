@@ -53,3 +53,21 @@
   - 프론트 컨트롤러의 경로를 /service 대신 /app으로 변경
   - ContextLoaderListener 변경
   -  JSP의 링크 경로 변경 
+
+
+### 084. Root IoC 컨테이너 사용법
+
+## 작업 내용
+
+### 1단계 - Root IoC 컨테이너 java config를 정의한다.
+
+- com.bitcamp.board.Rootconfig
+
+### 2단계 - 
+
+### 085. Mybatis SQL Mapper 라이브러리를 프로젝트에  추가한다.
+
+
+### 3단계 - DAO가 Mybatis를 사용하도록 변경한다.
+
+-com.bitcamp.board.dao.MybatisBoard

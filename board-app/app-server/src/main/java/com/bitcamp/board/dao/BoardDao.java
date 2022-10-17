@@ -23,8 +23,6 @@ public interface BoardDao {
   int deleteFile(int fileNo) throws Exception;
 
   int deleteFiles(int boardNo) throws Exception;
-
-
 }
 
 
