@@ -17,10 +17,11 @@ import com.bitcamp.board.domain.Board;
 @Service // 서비스 역할을 수행하는 객체에 붙이는 애노테이션
 public class DefaultBoardService implements BoardService {
 
-    @Autowired PlatformTransactionManager txManager; 
+    @Autowired 
+    PlatformTransactionManager txManager;
 
     @Autowired 
-    @Qualifier("mybatisBoardDao")
+    @Qualifier("mybatisBoardDao") 
     BoardDao boardDao;
 
     @Override
@@ -39,7 +40,10 @@ public class DefaultBoardService implements BoardService {
             }
 
             // 2) 첨부파일 등록
-            boardDao.insertFiles(board);
+            if(board.getAttachedFiles().size() > 0) {
+                boardDao.insertFiles(board);
+            }
+
             txManager.commit(status);
 
         } catch (Exception e) {
@@ -76,12 +80,16 @@ public class DefaultBoardService implements BoardService {
 
     @Override
     public Board get(int no) throws Exception {
-        // 이 메서드의 경우 하는 일이 없다.
-        // 그럼에도 불구하고 이렇게 하는 이유는 일관성을 위해서다.
-        // 즉 Controller는 Service 객체를 사용하고 Service 객체는 DAO를 사용하는 형식을 
-        // 지키기 위함이다.
-        // 사용 규칙이 동일하면 프로그래밍을 이해하기 쉬워진다.
-        return boardDao.findByNo(no);
+        //    // 방법1:
+        //    //    return boardDao.findByNo1(no); //select를 두 번 실행한다.
+        //
+        //    // 방법2:
+        //    Board board = boardDao.findByNo2(no);
+        //    List<AttachedFile> attachedFiles = boardDao.findFilesByBoard(no);
+        //    board.setAttachedFiles(attachedFiles);
+        //    return board;
+
+        return boardDao.findByNo3(no); //첨부파일 데이터까지 조인하여 select를 한번만 실행한다.
     }
 
     @Override
