@@ -19,7 +19,6 @@ import org.springframework.context.annotation.Bean;
 public class MybatisConfig {
 
 
-
     public MybatisConfig() {
         System.out.println("MybatisConfig() 생성자 호출됨!");
     }
