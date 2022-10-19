@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="output" path="bin/default"/>
 	<classpathentry output="bin/main" kind="src" path="src/main/java">
 		<attributes>
 			<attribute name="gradle_scope" value="main"/>
@@ -14,22 +15,20 @@
 	</classpathentry>
 	<classpathentry output="bin/test" kind="src" path="src/test/java">
 		<attributes>
-			<attribute name="test" value="true"/>
 			<attribute name="gradle_scope" value="test"/>
 			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry output="bin/test" kind="src" path="src/test/resources">
 		<attributes>
-			<attribute name="test" value="true"/>
 			<attribute name="gradle_scope" value="test"/>
 			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
-	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
-	<classpathentry kind="output" path="bin/default"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11/"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/30.1.1-jre/fac882f35fd501581954dcaffa410ee4b5cd8d1b/guava-30.1.1-jre-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/30.1.1-jre/87e0fd1df874ea3cbe577702fe6f17068b790fd8/guava-30.1.1-jre.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
@@ -85,6 +84,12 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.mybatis/mybatis-spring/2.0.7/e88bbf172f759b8546192cb5f489b83a6bc556ff/mybatis-spring-2.0.7-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.mybatis/mybatis-spring/2.0.7/f10e399232df99280df56d39662c00ea33756112/mybatis-spring-2.0.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-jasper/9.0.68/ea7d3dab92d30d8c7e509a3aa59a264b3d7b2a77/tomcat-embed-jasper-9.0.68-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-jasper/9.0.68/870261af278b3e5060c662c81bc5a2d74ac6217b/tomcat-embed-jasper-9.0.68.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
@@ -192,7 +197,31 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-core/9.0.68/fddaf8913ee264466156f97b5cfd5c8607608772/tomcat-embed-core-9.0.68-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-core/9.0.68/caafeb87d6ff30adda888049c9b81591c7cc20d1/tomcat-embed-core-9.0.68.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-el/9.0.68/88db1f7d3873467433d09da7127bd2d65b6f23f0/tomcat-embed-el-9.0.68-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-el/9.0.68/296afe7483256960d7ebdd8dcb4b49775d7cb85f/tomcat-embed-el-9.0.68.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.eclipse.jdt/ecj/3.18.0/a3e3bc746b00e64363061bc18ae3a53b0c078de8/ecj-3.18.0-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.eclipse.jdt/ecj/3.18.0/4d5d0911b30db24c8eb844702c8adf8e434314ff/ecj-3.18.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jcl/5.3.23/2dc3e7b8526e57140098076c8ca803ca07af1e9e/spring-jcl-5.3.23-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jcl/5.3.23/3c7eb5fcca67b611065f73ff4325e398f8b051a3/spring-jcl-5.3.23.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-annotations-api/9.0.68/8a24172cc26cbecc756ae20d10b0582b8bd12857/tomcat-annotations-api-9.0.68-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-annotations-api/9.0.68/2a0674ad7fc044efdcaa7ad3d6dc4e15b74ebcaf/tomcat-annotations-api-9.0.68.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>

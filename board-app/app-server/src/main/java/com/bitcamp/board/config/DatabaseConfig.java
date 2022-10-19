@@ -2,7 +2,9 @@ package com.bitcamp.board.config;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -10,8 +12,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 //@TrTransactionl 애노테이션을 사용하여 트랜젝션을 제어할 수 있게 기능을 활성화 시킨다.
 @EnableTransactionManagement
-public class DatabaseConfig {
 
+//JDBC 프로퍼티 값이 저장되어 있는 파일을 .properties 파일을 로딩한다.
+@PropertySource("classpath:com/bitcamp/board/config/jdbc.properties")
+public class DatabaseConfig {
 
     public DatabaseConfig() {
         System.out.println("DatabaseConfig() 생성자 호출됨!");
@@ -23,14 +27,24 @@ public class DatabaseConfig {
         return new DataSourceTransactionManager(ds);
     }
 
+
+    // ${jdbc.url} ==> .properties 파일에서 jdbc.url 이름으로 저장된 값을 가져온다.
+    // @Value("...") ==> 애노테이션에 지정된 문자열을 파라미터 변수에 전달한다. 
     @Bean
-    public DataSource dataSource() {
+    public DataSource dataSource(
+            @Value("${jdbc.driverClassName}") String driverClassName,
+            @Value("${jdbc.url}") String url,
+            @Value("${jdbc.username}") String username,
+            @Value("${jdbc.password}") String password) {
+        //애노테이션이 값을 전달 // ${} 값을 가져옴
+
+
         System.out.println("DataSource 객체 생성!");
         DriverManagerDataSource ds = new DriverManagerDataSource();
-        ds.setDriverClassName("org.mariadb.jdbc.Driver");
-        ds.setUrl("jdbc:mariadb://localhost:3306/studydb");
-        ds.setUsername("study");
-        ds.setPassword("1111");
+        ds.setDriverClassName(driverClassName);
+        ds.setUrl(url);
+        ds.setUsername(username);
+        ds.setPassword(password);
         return ds;
     }
 }
