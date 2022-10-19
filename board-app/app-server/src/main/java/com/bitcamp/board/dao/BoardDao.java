@@ -7,29 +7,29 @@ import com.bitcamp.board.domain.Board;
 
 public interface BoardDao {
 
-    int insert(Board board) throws Exception;
+    int insert(Board board) ;
 
-    Board findByNo1(int no) throws Exception;
+    Board findByNo(int no) ;
 
-    Board findByNo2(int no) throws Exception;
+    int update(Board board) ;
 
-    Board findByNo3(int no) throws Exception;
+    int delete(int no) ;
 
-    int update(Board board) throws Exception;
+    int deleteByMember(int memberNo) ;
 
-    int delete(int no) throws Exception;
+    List<Board> findAll() ;
 
-    List<Board> findAll() throws Exception;
+    int insertFiles(Board board) ;
 
-    int insertFiles(Board board) throws Exception;
+    AttachedFile findFileByNo(int fileNo) ;
 
-    AttachedFile findFileByNo(int fileNo) throws Exception;
+    List<AttachedFile> findFilesByBoard(int boardNo) ;
 
-    List<AttachedFile> findFilesByBoard(int boardNo) throws Exception;
+    int deleteFile(int fileNo) ;
 
-    int deleteFile(int fileNo) throws Exception;
+    int deleteFiles(int boardNo) ;
 
-    int deleteFiles(int boardNo) throws Exception;
+    int deleteFilesByMemberBoards(int memberNo) ;
 }
 
 
