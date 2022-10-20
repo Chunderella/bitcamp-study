@@ -22,8 +22,6 @@ public class DefaultBoardService implements BoardService {
   @Transactional
   @Override
   public void add(Board board) throws Exception {
-
-
     // 1) 게시글 등록
     if (boardDao.insert(board) == 0) {
       throw new Exception("게시글 등록 실패!");
@@ -38,23 +36,19 @@ public class DefaultBoardService implements BoardService {
   @Transactional
   @Override
   public boolean update(Board board) throws Exception {
-
     // 1) 게시글 변경
     if (boardDao.update(board) == 0) {
       return false;
     }
+
     // 2) 첨부파일 추가
     if (board.getAttachedFiles().size() > 0) {
       boardDao.insertFiles(board);
     }
 
-
-
     return true;
-
   }
 
-  @Transactional
   @Override
   public Board get(int no) throws Exception {
     return boardDao.findByNo(no); // 첨부파일 데이터까지 조인하여 select를 한 번만 실행한다.
@@ -63,15 +57,11 @@ public class DefaultBoardService implements BoardService {
   @Transactional
   @Override
   public boolean delete(int no) throws Exception {
-
     // 1) 첨부파일 삭제
     boardDao.deleteFiles(no);
 
     // 2) 게시글 삭제
-    boolean result = boardDao.delete(no) > 0;
-
-    return result;
-
+    return boardDao.delete(no) > 0;
   }
 
   @Override

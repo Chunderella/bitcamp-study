@@ -13,23 +13,23 @@ import org.springframework.web.servlet.view.JstlView;
 @Component
 public class AppWebConfig {
 
-    public AppWebConfig() {
-        System.out.println("AppWebConfig() 생성자 호출됨!");
-    }
+  public AppWebConfig() {
+    System.out.println("AppWebConfig() 생성자 호출됨!");
+  }
 
-    @Bean
-    public MultipartResolver multipartResolver() {
-        return new StandardServletMultipartResolver();
-    }
+  @Bean
+  public MultipartResolver multipartResolver() {
+    return new StandardServletMultipartResolver();
+  }
 
-    @Bean
-    public ViewResolver viewResolver() {
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setViewClass(JstlView.class); // 주어진 URL을 처리할 객체 => JSP를 실행시키주는 객체
-        viewResolver.setPrefix("/WEB-INF/jsp/");
-        viewResolver.setSuffix(".jsp");
-        return viewResolver;
-    }
+  @Bean
+  public ViewResolver viewResolver() {
+    InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+    viewResolver.setViewClass(JstlView.class); // 주어진 URL을 처리할 객체 => JSP를 실행시키주는 객체
+    viewResolver.setPrefix("/jsp/");
+    viewResolver.setSuffix(".jsp");
+    return viewResolver;
+  }
 
 }
 

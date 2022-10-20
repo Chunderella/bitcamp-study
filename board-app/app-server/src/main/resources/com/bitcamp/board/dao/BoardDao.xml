@@ -47,8 +47,7 @@
       bno desc
   </select>
   
-    <select id="findByNo
-    " resultMap="boardMap">
+    <select id="findByNo" resultMap="boardMap">
     select
       b.bno,
       b.title,
