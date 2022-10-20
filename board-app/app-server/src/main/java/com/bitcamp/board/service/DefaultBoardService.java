@@ -3,7 +3,6 @@ package com.bitcamp.board.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.Transactional;
 import com.bitcamp.board.dao.BoardDao;
 import com.bitcamp.board.domain.AttachedFile;
@@ -13,10 +12,6 @@ import com.bitcamp.board.domain.Board;
 public class DefaultBoardService implements BoardService {
 
   @Autowired 
-  PlatformTransactionManager txManager;
-
-  @Autowired 
-  //  @Qualifier("mybatisBoardDao") 
   BoardDao boardDao;
 
   @Transactional
