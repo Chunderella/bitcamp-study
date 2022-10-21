@@ -25,8 +25,8 @@ public class AuthController {
   }
 
   @GetMapping("form") 
-  public String form(@CookieValue (name="email", defaultValue="")String email, Model model) throws Exception {
-    model.addAttribute("email",email);
+  public String form(@CookieValue(name="email",defaultValue="") String email, Model model) throws Exception {
+    model.addAttribute("email", email);
     return "auth/form";
   }
 

@@ -28,7 +28,7 @@ public class AdminCheckFilter implements Filter {
     HttpServletResponse httpResponse = (HttpServletResponse) response;
 
     System.out.println("AdminCheckFilter.doFilter() 실행!");
-    if(httpRequest.getServletPath().startsWith("/member")) {
+    if (httpRequest.getServletPath().startsWith("/member")) {
       Member loginMember = (Member) httpRequest.getSession().getAttribute("loginMember");
       if (loginMember == null || // 로그인이 안됐거나 
           !loginMember.getEmail().equals("admin@test.com")) { // 관리자가 아니라면
@@ -36,6 +36,7 @@ public class AdminCheckFilter implements Filter {
         return;
       }
     }
+
     chain.doFilter(request, response);
   }
 

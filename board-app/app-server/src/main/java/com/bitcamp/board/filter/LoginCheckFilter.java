@@ -24,11 +24,9 @@ public class LoginCheckFilter implements Filter {
   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
       throws IOException, ServletException {
     System.out.println("LoginCheckFilter.doFilter() 실행!");
+
     HttpServletRequest httpRequest = (HttpServletRequest) request;
     HttpServletResponse httpResponse = (HttpServletResponse) response;
-
-    //    System.out.println(httpRequest.getPathInfo());
-
 
     System.out.println(httpRequest.getContextPath());
     String servletPath = httpRequest.getServletPath();
