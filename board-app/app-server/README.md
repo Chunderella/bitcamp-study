@@ -1,20 +1,73 @@
-### 075. DB 커넥션을 공유했을 때 발생하는 문제를 해결하기
+### 082. Spring WebMVC 프레임워크 사용법
 
 ## 작업 내용
 
-### 1단계 - 스레드 전용 DB 커넥션을 제공해주는 일을 할 객체를 만든다
+### 1단계 - @RequestMapping 애노테이션으로 요청 URL을 합성하는 방법
 
-- com.bitcamp.sql.DataSourse 클래스 생성
+- com.bitcamp.board.controller.XxxxController 클래스 변경
 
-### 2단계 - DAO에 DataSource 객체를 주입한다.
+### 2단계 - 스프링에서 제공하는 CharacterEncodingFilter로 교체한다.
 
- - ContextLoaderListener 클래스 변경
+- com.bitcamp.board.listener.ContextLoaderListener 클래스 변경
+- LoginCheckFilter, AdminCheckFilter 도 자바 코드로 등록한다.
 
-### 3단계 - DataSource에서 제공하는 Connection을 사용하여 데이터를 처리한다.
+### 3단계 - 요청 핸들러의 파라미터 및 리턴 값을 조정한다.
 
- - MariaDBBoardDao
- - MariaDBMemberDao
- - DefaultBoardService
+- com.bitcamp.board.controller.XxxxController 클래스 변경
+  - 요청을 처리하는 메서드에 필요한 값만 파라미터로 받는다.
+  - 요청 파라미터 값을 핸들러의 파라미터로 직접 받을 수 있다.: @RequestParam
+  - @RequestParam 을 생략할 수 있는 경우
+  - 첨부파일을 파라미터로 직접 받을 수 있다.
+  - ServletContext를 받는 방법: 생성자를 통해 주입 받는다. 
+  - Part 대신 스프링에서 제공하는 MultipartFile 타입으로 첨부파일을 받는다.
+  - 낱개의 파라미터 값을 도메인 객체로 바로 받을 수 있다.
+    - 단, multipart/form-data 형식으로 전송된 데이터를 처리하려면 MultipartResolver를 설정해야 한다.
+  - ServletRequest 보관소에 작업 결과를 저장할 때 페이지 컨트롤러에서 하는 대신 프론트 컨트롤러에서 하기: ModelAndView, Model, Map 클래스
+  - 기본 ViewResolver를 InternalResourceViewResolver로 교체한다.
+    - 접두사, 접미사를 이용하여 JSP 주소를 완성할 수 있다.
+    - InternalResourceViewResolver를 설정해야 한다.
+- com.bitcamp.board.config.AppConfig 클래스 변경
+  - createMultipartResolver() 메서드 추가
+  - createViewResolver() 메서드 추가
 
- ### 076. 트랜잭션 관리자 역할을 별도로 분리하기
- 
+### 4단계 - JSP 파일을 /WEB-INF 밑에 두어 직접 접근하지 못하도록 만든다.
+
+- /WEB-INF/jsp 디렉토리 생성
+  - 기존의 JSP 파일을 이 디렉토리로 옮긴다.
+- com.bitcamp.board.config.AppConfig 클래스 변경
+  - createViewResolver() 메서드 변경
+
+### 5단계 - @Bean 애노테이션을 사용할 때 메서드 이름을 객체 이름으로 사용할 수 있다.
+
+- com.bitcamp.board.config.AppConfig 클래스 변경
+
+
+
+### 083. Spring WebMVC 프레임워크 사용법 2 : 기타 설정
+
+## 작업 내용 
+
+### 1단계 - 웹 애플리케이션의 contextpath를 / 로 지정한다.
+
+  - Eclipse IDE에서 처리
+  - 프론트 컨트롤러의 경로를 /service 대신 /app으로 변경
+  - ContextLoaderListener 변경
+  -  JSP의 링크 경로 변경 
+
+
+### 084. Root IoC 컨테이너 사용법
+
+## 작업 내용
+
+### 1단계 - Root IoC 컨테이너 java config를 정의한다.
+
+- com.bitcamp.board.Rootconfig
+
+### 2단계 - 
+
+### 085. Mybatis SQL Mapper 라이브러리를 프로젝트에  추가한다.
+
+
+### 3단계 - DAO가 Mybatis를 사용하도록 변경한다.
+
+-com.bitcamp.board.dao.MybatisBoard

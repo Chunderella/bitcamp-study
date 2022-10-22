@@ -1,30 +1,36 @@
 package com.bitcamp.board.dao;
 
 import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
 import com.bitcamp.board.domain.AttachedFile;
 import com.bitcamp.board.domain.Board;
 
+@Mapper
 public interface BoardDao {
 
-  int insert(Board board) throws Exception;
+  int insert(Board board);
 
-  Board findByNo(int no) throws Exception;
+  Board findByNo(int no);
 
-  int update(Board board) throws Exception;
+  int update(Board board);
 
-  int delete(int no) throws Exception;
+  int delete(int no);
 
-  List<Board> findAll() throws Exception;
+  int deleteByMember(int memberNo);
 
-  int insertFiles(Board board) throws Exception;
+  List<Board> findAll();
 
-  AttachedFile findFileByNo(int fileNo) throws Exception;
+  int insertFiles(Board board);
 
-  int deleteFile(int fileNo) throws Exception;
+  AttachedFile findFileByNo(int fileNo);
 
-  int deleteFiles(int boardNo) throws Exception;
+  List<AttachedFile> findFilesByBoard(int boardNo);
 
+  int deleteFile(int fileNo);
 
+  int deleteFiles(int boardNo);
+
+  int deleteFilesByMemberBoards(int memberNo);
 }
 
 

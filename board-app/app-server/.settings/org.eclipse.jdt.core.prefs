@@ -1,5 +1,5 @@
 #
-#Fri Oct 07 15:21:33 KST 2022
+#Fri Oct 21 10:14:54 KST 2022
 org.eclipse.jdt.core.formatter.insert_space_after_ellipsis=insert
 org.eclipse.jdt.core.formatter.insert_space_after_comma_in_enum_declarations=insert
 org.eclipse.jdt.core.formatter.insert_space_before_comma_in_allocation_expression=do not insert
@@ -69,7 +69,7 @@ org.eclipse.jdt.core.formatter.insert_space_after_multiplicative_operator=insert
 org.eclipse.jdt.core.compiler.problem.enumIdentifier=error
 org.eclipse.jdt.core.compiler.problem.finalParameterBound=warning
 org.eclipse.jdt.core.formatter.insert_space_after_and_in_type_parameter=insert
-org.eclipse.jdt.core.compiler.annotation.nonnull=javax.annotation.Nonnull
+org.eclipse.jdt.core.compiler.annotation.nonnull=org.springframework.lang.NonNull
 org.eclipse.jdt.core.compiler.problem.redundantSpecificationOfTypeArguments=ignore
 org.eclipse.jdt.core.compiler.problem.unnecessaryElse=ignore
 org.eclipse.jdt.core.timeoutForParameterNameFromAttachedJavadoc=50
@@ -206,7 +206,7 @@ org.eclipse.jdt.core.formatter.alignment_for_compact_if=16
 org.eclipse.jdt.core.formatter.indent_empty_lines=false
 org.eclipse.jdt.core.compiler.problem.unusedWarningToken=warning
 org.eclipse.jdt.core.formatter.alignment_for_type_arguments=0
-org.eclipse.jdt.core.compiler.annotation.nullable=javax.annotation.Nullable
+org.eclipse.jdt.core.compiler.annotation.nullable=org.springframework.lang.Nullable
 org.eclipse.jdt.core.formatter.insert_space_after_unary_operator=do not insert
 org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_enum_constant=do not insert
 org.eclipse.jdt.core.formatter.alignment_for_arguments_in_annotation=0

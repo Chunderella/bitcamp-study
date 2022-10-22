@@ -1,46 +1,49 @@
 package com.bitcamp.board.service;
 
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import com.bitcamp.board.dao.BoardDao;
 import com.bitcamp.board.dao.MemberDao;
 import com.bitcamp.board.domain.Member;
 
-// 비즈니스 로직을 수행하는 객체
-// - 메서드 이름은 업무와 관련된 이름을 사용한다.
-//
-public class DefaultMemberService implements MemberService{
+@Service 
+public class DefaultMemberService implements MemberService {
+
+  @Autowired
   MemberDao memberDao;
 
-  public DefaultMemberService(MemberDao memberDao) {
-    this.memberDao = memberDao;
-  }
+  @Autowired
+  BoardDao boardDao;
+
 
   @Override
   public void add(Member member) throws Exception {
     memberDao.insert(member);
   }
 
-
   @Override
   public boolean update(Member member) throws Exception {
-    return memberDao.update(member)>0;
+    return memberDao.update(member) > 0;
   }
-
 
   @Override
   public Member get(int no) throws Exception {
     return memberDao.findByNo(no);
   }
+
   @Override
   public Member get(String email, String password) throws Exception {
     return memberDao.findByEmailPassword(email, password);
-    //파라미터가 다르더라도 같은 일을 하는 메소드에 대해서 같은 이름을 부여함으로써 프로그래밍의 일관성을 제공하는 문법(오버로딩)
   }
 
-
-
+  @Transactional
   @Override
   public boolean delete(int no) throws Exception {
-    return memberDao.delete(no) > 0 ;
+    boardDao.deleteFilesByMemberBoards(no); // 회원이 작성한 게시글의 모든 첨부파일 삭제
+    boardDao.deleteByMember(no); // 회원이 작성한 게시글 삭제
+    return memberDao.delete(no) > 0; // 회원 삭제
   }
 
   @Override
