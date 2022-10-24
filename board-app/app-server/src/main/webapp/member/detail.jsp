@@ -32,6 +32,6 @@
   <a href='delete?no=${member.no}'>삭제</a>
 </p>
 </form>
-
+ 
 </body>
 </html>
