@@ -12,8 +12,10 @@
 <script>
 var tag1 = document.getElementById("btn1");
 
+//만든 함수를 등록하는 것
 tag1.onclick = function() { // Observer 패턴: 리스너 => 이벤트 리스너 => 이벤트 핸들러 => 콜백함수(callback; cb)
-  var tag2 = document.getElementById("p1");
+//버튼을 클릭하는 순간 p1을 찾아서 이너 html 속성에 값을 주면 이 안에있는 값이 바뀜
+	var tag2 = document.getElementById("p1");
   tag2.innerHTML = "비트캠프!";
 };
 

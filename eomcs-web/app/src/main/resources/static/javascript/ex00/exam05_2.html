@@ -20,7 +20,7 @@
 <script>
 var inputNameIndex = 1;
 var btnAddName = document.getElementById("btnAddName");
-var inputNameContainer = document.querySelector("#inputNameContainer");
+var inputNameContainer = document.querySelector("#inputNameContainer"); <!--복잡한 셀렉트문법을 쓸 수 있음-->
 var inputNameDiv = document.querySelector(".inputName");
 
 btnAddName.onclick = function() {
@@ -29,7 +29,7 @@ btnAddName.onclick = function() {
 	e.querySelector(".name").innerHTML = "이름" + inputNameIndex;
 	e.querySelector("input").name = "name" + inputNameIndex;
   e.querySelector("input").value = "";
-	inputNameContainer.appendChild(e);
+	inputNameContainer.appendChild(e);<!--복제한 객체를 집어넣는다-->
 };
 
 </script>

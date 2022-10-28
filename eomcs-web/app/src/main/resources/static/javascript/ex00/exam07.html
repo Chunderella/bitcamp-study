@@ -29,13 +29,13 @@ tag1.onclick = function() {
   xhr.send();
 
   // 서버에서 보낸 JSON 형식의 데이터를 자바스크립트 객체로 변환한다.
-  var names = JSON.parse(xhr.responseText);
+  var names = JSON.parse(xhr.responseText); <!--서버에서 받은 JSON을 자바스크립트 배열로 변경한다-->
 
   // 서버가 보낸 데이터를 가지고 <li></li> 태그로 만들어 <ul></ul> 태그에 넣기
   var ul = document.getElementById("x-name-list");
 
   for (var name of names) {
-    var li = document.createElement("li");
+    var li = document.createElement("li"); <!--태그를 새로 만든다-->
     li.innerHTML = name;
     ul.appendChild(li);
   }
