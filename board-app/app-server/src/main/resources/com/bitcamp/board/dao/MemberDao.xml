@@ -8,13 +8,18 @@
   <resultMap type="member" id="memberMap">
     <id column="mno" property="no"/>
     <result column="name" property="name"/>
-    <result column="email" property="email"/>
-    <result column="cdt" property="createdDate"/>
+    <result column="id" property="id"/>
+    <result column="createddate" property="createdDate"/>
   </resultMap>
 
   <insert id="insert" parameterType="member">
     insert into app_member(name,email,pwd) 
-    values(#{name},#{email},sha2(#{password},256))
+    values(#{name},#{id},sha2(#{password},256))
+    
+     insert into member (id, pwd, grade, name, nick, tel, createddate, post,
+    addr, interest, outstate)
+    values(#{id}, sha2(#{password},256), 0, #{name}, #{nick}, #{tel}, now(),
+    #{post}, #{addr}, #{interest}, 0)
   </insert>
 
   <select id="findByNo" resultMap="memberMap">
@@ -29,29 +34,6 @@
       mno=#{value}
   </select>
   
-  <select id="findAll" resultMap="memberMap">
-    select 
-      mno,
-      name,
-      email 
-    from 
-      app_member 
-    order by 
-      name
-  </select>
-
-  <select id="findByEmailPassword" resultMap="memberMap">
-    select 
-      mno,
-      name,
-      email,
-      cdt 
-    from 
-      app_member 
-    where 
-      email=#{email} and pwd=sha2(#{password},256)
-  </select>
-  
   <update id="update" parameterType="Member">
     update app_member set 
       name=#{name}, 
@@ -60,11 +42,34 @@
     where 
       mno=#{no}
   </update>
-  
+
   <delete id="delete">
-    delete from app_member 
+    delete from member 
     where mno=#{value}
   </delete>
+
+  <select id="findAll" resultMap="memberMap">
+    select 
+      mno,
+      name,
+      id     
+    from 
+      member
+    order by 
+      name
+  </select>
+
+  <select id="findByEmailPassword" resultMap="memberMap">
+    select
+      mno,
+      name,
+      id,
+      createddate
+    from
+      member
+    where
+      id=#{id} and pwd=sha2(#{password},256)
+  </select>
 
 </mapper>
 
