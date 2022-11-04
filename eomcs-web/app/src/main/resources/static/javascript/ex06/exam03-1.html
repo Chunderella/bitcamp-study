@@ -8,6 +8,8 @@
 <h1>이벤트 - 이벤트가 발생된 태그 알아내기</h1>
 <button id="btn1" data-no="100">버튼1</button><br>
 
+//이벤트 핸들러를 등록 -> 태그를 알아내야함
+
 <script>
 "use strict"
 
@@ -17,6 +19,16 @@
 document.getElementById("btn1").addEventListener("click", function(e) {
 	console.log(this);
 
+
+/* 	document.getElementById("btn1").addEventListener("click", function() {
+    arguments[0]  <--파라미터를 안적었을 때
+		console.log(this);
+ */
+	
+	//자바스크립트 엔진이 파라미터값(e)으로 이벤트 정보를 담고 있는
+	//이벤트 객체를 넘겨 준다.
+	//안 적어주면 아규먼트스에 담겨서 무조건 담겨있다. 
+	
 	// 이벤트가 발생한 객체의 속성 값 알아내기
 	// => 개발자가 임의로 추가한 속성인 경우 반드시 getAttribute()를 사용해야 한다.
 	console.log(this.getAttribute("data-no"));
