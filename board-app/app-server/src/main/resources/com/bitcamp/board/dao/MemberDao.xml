@@ -7,24 +7,24 @@
   <!-- 자바 객체의 프로퍼티와 컬럼 이름을 연결한다. -->
   <resultMap type="member" id="memberMap">
     <id column="mno" property="no"/>
-    <result column="name" property="name"/>
-    <result column="email" property="email"/>
-    <result column="cdt" property="createdDate"/>
+    <result column="nick" property="nick"/>
+    <result column="id" property="id"/>
+    <result column="createddate" property="createdDate"/>
   </resultMap>
 
   <insert id="insert" parameterType="member">
-    insert into app_member(name,email,pwd) 
-    values(#{name},#{email},sha2(#{password},256))
+    insert into member(nick,id,pwd) 
+    values(#{nick},#{id},sha2(#{password},256))
   </insert>
 
   <select id="findByNo" resultMap="memberMap">
     select 
       mno,
-      name,
-      email,
-      cdt
+      nick,
+      id,
+      createddate
     from 
-      app_member 
+      member 
     where 
       mno=#{value}
   </select>
@@ -32,37 +32,37 @@
   <select id="findAll" resultMap="memberMap">
     select 
       mno,
-      name,
-      email 
+      nick,
+      id 
     from 
-      app_member 
+      member 
     order by 
-      name
+      nick
   </select>
 
   <select id="findByEmailPassword" resultMap="memberMap">
     select 
       mno,
-      name,
-      email,
-      cdt 
+      nick,
+      id,
+      createddate 
     from 
-      app_member 
+      member 
     where 
-      email=#{email} and pwd=sha2(#{password},256)
+      id=#{id} and pwd=sha2(#{password},256)
   </select>
   
   <update id="update" parameterType="Member">
-    update app_member set 
-      name=#{name}, 
-      email=#{email}, 
+    update member set 
+      nick=#{nick}, 
+      id=#{id}, 
       pwd=sha2(#{password},256) 
     where 
       mno=#{no}
   </update>
   
   <delete id="delete">
-    delete from app_member 
+    delete from member 
     where mno=#{value}
   </delete>
 

@@ -22,7 +22,7 @@ public interface MemberDao {
   // - SQL에서 참조할 파라미터라고 애노테이션으로 표시해야 한다.
   // - 이때 SQL에서 참조할 이름도 지정해야 한다.
   Member findByEmailPassword(
-      @Param("email") String email, 
+      @Param("id") String id, 
       @Param("password") String password);
 }
 
