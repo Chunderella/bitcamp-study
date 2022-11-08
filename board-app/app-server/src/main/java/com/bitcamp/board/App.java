@@ -12,18 +12,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 @SpringBootApplication
 public class App {
 
-    public static void main(String[] args) {
-        System.out.println("비트캠프 프로젝트!");
-        SpringApplication.run(App.class, args);
-    }
+  public static void main(String[] args) {
+    System.out.println("비트캠프 프로젝트!");
+    SpringApplication.run(App.class, args);
+  }
 
-    @GetMapping("/")
-    public String welcome() {
-        return "welcome";
-    }
+  @GetMapping("/")
+  public String welcome() {
+    return "welcome";
+  }
 
 }
-
 
 
 

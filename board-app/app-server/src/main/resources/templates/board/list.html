@@ -21,21 +21,20 @@ tr:hover {
       <th>작성자</th>
       <th>등록일</th>
     </tr>
-
-    <tr data-th-each="board : ${boards}">
-      <td data-th-text="${board.no}">100</td>
+   <tr data-th-each="party : ${parties}"> 
+      <td data-th-text="${party.no}">100</td>
       <td>
         <a href='detail?no=1'
-          data-th-href="@{detail(no=${board.no})}"
-          data-th-text="${board.title == ''} ? '(제목없음)' : ${board.title}">제목</a>
+          data-th-href="@{detail(no=${party.no})}"
+          data-th-text="${party.title == ''} ? '(제목없음)' : ${party.title}">제목</a>
       </td>
-      <td data-th-text="${board.viewCount}">17</td>
-      <td data-th-text="${board.writer.name}">홍길동</td>
-      <td data-th-text="${board.createdDate}">2022-1-1</td>
+      <td data-th-text="${party.viewCount}">17</td>
+      <td data-th-text="${partyd.writer.name}">홍길동</td>
+      <td data-th-text="${party.createdDate}">2022-1-1</td>
     </tr>
 
   </table>
-  <p><a href='../'>메인</a></p>
+  <p><a href='../'>메인</a></p> -->
 </body>
 </html>
 

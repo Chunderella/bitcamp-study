@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+=======
 # 디폴트 무시된 파일
 /shelf/
 /workspace.xml
@@ -6,3 +16,4 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+>>>>>>> a8a9db42869f9eae6ed3e182fa40bccd76dc6a4f
