@@ -35,14 +35,7 @@ public class BoardController {
     this.sc = sc;
   }
 
-  // InternalResourceViewResolver 사용 전:
-  //
-  //  @GetMapping("form")
-  //  public String form() throws Exception {
-  //    return "board/form";
-  //  }
 
-  // InternalResourceViewResolver 사용 후:
   @GetMapping("form")
   public void form() throws Exception {
   }
