@@ -16,39 +16,39 @@
   <tr>
     <th>번호</th><td><input name='no' type='number' 
         value='1' 
-        data-th-value="${party.no}"
+        data-th-value="${board.no}"
         readonly></td>
   </tr>
   <tr>
     <th>제목</th><td><input name='title' type='text' 
         value='제목'
-        data-th-value='${party.title}' 
+        data-th-value='${board.title}' 
         size='60'></td>
   </tr>
   <tr>
     <th>내용</th><td><textarea name='content'></textarea></td>
   </tr>
   <tr>
-    <th>조회수</th><td data-th-text="${party.viewCount}">17</td>
+    <th>조회수</th><td data-th-text="${board.viewCount}">17</td>
   </tr>
   <tr>
-    <th>작성자</th><td data-th-text="${party.writer.name}">홍길동</td>
+    <th>작성자</th><td data-th-text="${board.writer.name}">홍길동</td>
   </tr>
   <tr>
-    <th>등록일</th><td data-th-text="${party.createdDate}">2022-1-1</td>
+    <th>등록일</th><td data-th-text="${board.createdDate}">2022-1-1</td>
   </tr>
   <tr>
     <th>첨부파일</th>
     <td>
       <ul>
-        <li data-th-each="file : ${party.attachedFiles}">
+        <li data-th-each="file : ${board.attachedFiles}">
           <a href="files/test.gif"
              data-th-href="@{files/{path}(path=${file.filepath})}"
              data-th-text="${file.filepath}">test.gif</a>
           [<a href="fileDelete?no=1"
               data-th-href="@{fileDelete(no=${file.no})}">삭제</a>]
         </li>
-      </ul> 
+      </ul>
       파일 추가: <input name='files' type="file" multiple>
     </td>
   </tr>
@@ -56,14 +56,14 @@
 <p>
   <button type='submit'>변경</button>
   <a href='delete?no=1'
-     data-th-href="@{delete(no=${party.no})}">삭제</a>
+     data-th-href="@{delete(no=${board.no})}">삭제</a>
   <a href='list'>목록</a>
 </p>
 </form>
 
 <script>
 $(document).ready(function() {
-    $('textarea[name=content]').html('[[${party.content}]]');
+    $('textarea[name=content]').html('[[${board.content}]]');
     $('textarea[name=content]').summernote({height: 200});
 });
 </script>
