@@ -18,6 +18,20 @@ dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-web'
   developmentOnly 'org.springframework.boot:spring-boot-devtools'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  
+   // spring-webmvc 관련 라이브러리
+    implementation ('org.springframework.boot:spring-boot-starter-web') {
+      exclude group:'org.springframework.boot', module:'spring-boot-starter-tomcat'
+    }
+    
+    //Undertow 서블릿 컨테이너 추가
+    implementation 'org.springframework.boot:spring-boot-starter-undertow'
+
+    //이 라이브러리에 있는 모든 것을 제거하라.(그루비 언어=함수/메서드 호출)
+    
+    // thymeleaf 관련 라이브러리
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+  
 }
 
 test {

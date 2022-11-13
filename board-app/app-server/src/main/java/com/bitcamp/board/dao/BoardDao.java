@@ -2,7 +2,10 @@ package com.bitcamp.board.dao;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
+<<<<<<< HEAD
 import org.apache.ibatis.annotations.Param;
+=======
+>>>>>>> 3a7fbaafedd7aa50c6e32bd47bc1a143920b15bd
 import com.bitcamp.board.domain.AttachedFile;
 import com.bitcamp.board.domain.Board;
 
@@ -19,6 +22,7 @@ public interface BoardDao {
 
   int deleteByMember(int memberNo);
 
+<<<<<<< HEAD
   List<Board> findAll(
       @Param("keyword") String keyword, 
       @Param("titleSort") String titleSort,
@@ -26,6 +30,9 @@ public interface BoardDao {
       @Param("size") int size);
 
   int count(@Param("keyword") String keyword, @Param("titleSort") String titleSort);
+=======
+  List<Board> findAll();
+>>>>>>> 3a7fbaafedd7aa50c6e32bd47bc1a143920b15bd
 
   int insertFiles(Board board);
 

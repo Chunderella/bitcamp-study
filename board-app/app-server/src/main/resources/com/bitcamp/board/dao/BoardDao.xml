@@ -31,6 +31,10 @@
     <result column="bno" property="boardNo"/>
   </resultMap>
   
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 3a7fbaafedd7aa50c6e32bd47bc1a143920b15bd
   <select id="findAll" resultMap="boardMap">
     select
       b.bno,
@@ -42,6 +46,7 @@
     from 
       app_board b
       join app_member m on b.mno = m.mno
+<<<<<<< HEAD
     <if test="keyword != null">
     where
       b.title like concat("%", #{keyword}, "%")
@@ -80,6 +85,13 @@
   </select>
   
   <select id="findByNo" resultMap="boardMap">
+=======
+    order by 
+      bno desc
+  </select>
+  
+    <select id="findByNo" resultMap="boardMap">
+>>>>>>> 3a7fbaafedd7aa50c6e32bd47bc1a143920b15bd
     select
       b.bno,
       b.title,

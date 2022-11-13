@@ -38,7 +38,21 @@
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-undertow/2.6.0/49628e2b806e3f25868b9090a15055277a96199f/spring-boot-starter-undertow-2.6.0-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-undertow/2.6.0/ca581d2572107f4bad2fcb474480ecab82e89222/spring-boot-starter-undertow-2.6.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-thymeleaf/2.6.0/46026c086e225486f522dbc353f38e41b82c702e/spring-boot-starter-thymeleaf-2.6.0-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-thymeleaf/2.6.0/5119ffead41ed3348da537ba6407c45f30c5b6a3/spring-boot-starter-thymeleaf-2.6.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.12.0/198b882fdc2c72c89c63401d946f6ba46c3acea3/commons-lang3-3.12.0-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.12.0/c6842c86792ff03b9f1d1fe2aab8dc23aa6c6f0e/commons-lang3-3.12.0.jar">
+=======
 	<classpathentry sourcepath="C:/Users/bongc/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.12.0/198b882fdc2c72c89c63401d946f6ba46c3acea3/commons-lang3-3.12.0-sources.jar" kind="lib" path="C:/Users/bongc/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.12.0/c6842c86792ff03b9f1d1fe2aab8dc23aa6c6f0e/commons-lang3-3.12.0.jar">
+>>>>>>> 6561a8cc980dde8452027ebed2afecea8e591ea1
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
@@ -68,7 +82,51 @@
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/io.undertow/undertow-websockets-jsr/2.2.12.Final/a80ca1713089c50ef484eaf9a6314ef1e0654622/undertow-websockets-jsr-2.2.12.Final-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/io.undertow/undertow-websockets-jsr/2.2.12.Final/cf823b1da2e0098ae9c762ab982c42c20159a70f/undertow-websockets-jsr-2.2.12.Final.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/io.undertow/undertow-servlet/2.2.12.Final/eb0f85bab8876ecc52aee9e7d43e607c1bd5c1/undertow-servlet-2.2.12.Final-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/io.undertow/undertow-servlet/2.2.12.Final/1785152e8208984c5ba4816feeb5adf2d3fdd51a/undertow-servlet-2.2.12.Final.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/io.undertow/undertow-core/2.2.12.Final/a45af7526231d6f2a6d89821f44b7fc5c9a03b93/undertow-core-2.2.12.Final-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/io.undertow/undertow-core/2.2.12.Final/4becece74f602081a3c83805e9378e4c77d4abbf/undertow-core-2.2.12.Final.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/jakarta.servlet/jakarta.servlet-api/4.0.4/55ef0efd787dd54add675acdbb5092714505073b/jakarta.servlet-api-4.0.4-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/jakarta.servlet/jakarta.servlet-api/4.0.4/b8a1142e04838fe54194049c6e7a18dae8f9b960/jakarta.servlet-api-4.0.4.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/jakarta.websocket/jakarta.websocket-api/1.1.2/b61317e97f1582cfef798bd11cdbaa9a8afa58b9/jakarta.websocket-api-1.1.2-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/jakarta.websocket/jakarta.websocket-api/1.1.2/69c2fdfb75081cc935bc9d6c5616d12b0b73815f/jakarta.websocket-api-1.1.2.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-el/9.0.55/db3db13d90c3c26781e09e0c834d204b2d3d0c4f/tomcat-embed-el-9.0.55-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-el/9.0.55/d8b69643d1566712cf849a7e8e95c917f8aed1d3/tomcat-embed-el-9.0.55.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.thymeleaf/thymeleaf-spring5/3.0.12.RELEASE/8c1ff9b22fb1297c1200c83f6d33d842544b48b8/thymeleaf-spring5-3.0.12.RELEASE-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.thymeleaf/thymeleaf-spring5/3.0.12.RELEASE/aa640b214411978a23cbe271c3fb9569d1bda608/thymeleaf-spring5-3.0.12.RELEASE.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.thymeleaf.extras/thymeleaf-extras-java8time/3.0.4.RELEASE/7773e85b03657ddc42d124d7553d856fb512f5bf/thymeleaf-extras-java8time-3.0.4.RELEASE-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.thymeleaf.extras/thymeleaf-extras-java8time/3.0.4.RELEASE/36e7175ddce36c486fff4578b5af7bb32f54f5df/thymeleaf-extras-java8time-3.0.4.RELEASE.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/2.6.0/8e6a50c45a165437f7cb3e705717d9ee759717dc/spring-boot-autoconfigure-2.6.0-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/2.6.0/acec579389fb58c9de6920d6fd93049c51c67180/spring-boot-autoconfigure-2.6.0.jar">
+=======
 	<classpathentry sourcepath="C:/Users/bongc/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/2.6.0/8e6a50c45a165437f7cb3e705717d9ee759717dc/spring-boot-autoconfigure-2.6.0-sources.jar" kind="lib" path="C:/Users/bongc/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/2.6.0/acec579389fb58c9de6920d6fd93049c51c67180/spring-boot-autoconfigure-2.6.0.jar">
+>>>>>>> 6561a8cc980dde8452027ebed2afecea8e591ea1
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
@@ -158,7 +216,31 @@
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.jboss.threads/jboss-threads/3.1.0.Final/3258d2f6575446ff826316130bc7ab43488335e2/jboss-threads-3.1.0.Final-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.jboss.threads/jboss-threads/3.1.0.Final/9b260c0302f637a84a52d3d118214a3c59217615/jboss-threads-3.1.0.Final.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.jboss.xnio/xnio-api/3.8.4.Final/a3c768f5b00274c12c0414a39df9edade2fbc54c/xnio-api-3.8.4.Final-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.jboss.xnio/xnio-api/3.8.4.Final/8714f2bf19f6e5fa7e36e8516dcb4606ef152e4d/xnio-api-3.8.4.Final.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.wildfly.client/wildfly-client-config/1.0.1.Final/b340cea0aeb62a7f0400e841f679f8c5804f60de/wildfly-client-config-1.0.1.Final-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.wildfly.client/wildfly-client-config/1.0.1.Final/2a803b23c40a0de0f03a90d1fd3755747bc05f4b/wildfly-client-config-1.0.1.Final.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.jboss.logging/jboss-logging/3.4.2.Final/2eb4b975abf74e3ba3c125891a5101669b431c28/jboss-logging-3.4.2.Final-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.jboss.logging/jboss-logging/3.4.2.Final/e517b8a93dd9962ed5481345e4d262fdd47c4217/jboss-logging-3.4.2.Final.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.thymeleaf/thymeleaf/3.0.12.RELEASE/550efb55e38002274ed208df125cbeed0818cf3e/thymeleaf-3.0.12.RELEASE-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.thymeleaf/thymeleaf/3.0.12.RELEASE/de1865b0d58590a50c33900115a293335dd8ef25/thymeleaf-3.0.12.RELEASE.jar">
+=======
 	<classpathentry sourcepath="C:/Users/bongc/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-el/9.0.55/db3db13d90c3c26781e09e0c834d204b2d3d0c4f/tomcat-embed-el-9.0.55-sources.jar" kind="lib" path="C:/Users/bongc/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-el/9.0.55/d8b69643d1566712cf849a7e8e95c917f8aed1d3/tomcat-embed-el-9.0.55.jar">
+>>>>>>> 6561a8cc980dde8452027ebed2afecea8e591ea1
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
@@ -178,17 +260,44 @@
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.32/4381b152f738580aef4e436b2692a3db30609b26/slf4j-api-1.7.32-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.32/cdcff33940d9f2de763bc41ea05a0be5941176c3/slf4j-api-1.7.32.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jcl/5.3.13/48e59686ad1a2dd39f4f1b3d6a63a7424091893a/spring-jcl-5.3.13-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jcl/5.3.13/3aa15be194887fbda3912ecbb4ab6ec8dfdebdb0/spring-jcl-5.3.13.jar">
+=======
 	<classpathentry sourcepath="C:/Users/bongc/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jcl/5.3.13/48e59686ad1a2dd39f4f1b3d6a63a7424091893a/spring-jcl-5.3.13-sources.jar" kind="lib" path="C:/Users/bongc/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jcl/5.3.13/3aa15be194887fbda3912ecbb4ab6ec8dfdebdb0/spring-jcl-5.3.13.jar">
+>>>>>>> 6561a8cc980dde8452027ebed2afecea8e591ea1
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.wildfly.common/wildfly-common/1.5.2.Final/de915776b7676d4de7b7545bdc707540ded940a1/wildfly-common-1.5.2.Final-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.wildfly.common/wildfly-common/1.5.2.Final/8eba40cfe86bcfcc223551e75201e6e7574c7c36/wildfly-common-1.5.2.Final.jar">
+=======
 	<classpathentry sourcepath="C:/Users/bongc/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.2.7/2716c720b4d14ee019ec276658b5897ca9a9c88d/logback-core-1.2.7-sources.jar" kind="lib" path="C:/Users/bongc/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.2.7/31f7db3c4277023742268c0c3f9b65f1f297e49a/logback-core-1.2.7.jar">
+>>>>>>> 6561a8cc980dde8452027ebed2afecea8e591ea1
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.attoparser/attoparser/2.0.5.RELEASE/14657ecc2618f5cbc894070b01aed1cbeee25456/attoparser-2.0.5.RELEASE-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.attoparser/attoparser/2.0.5.RELEASE/a93ad36df9560de3a5312c1d14f69d938099fa64/attoparser-2.0.5.RELEASE.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.unbescape/unbescape/1.1.6.RELEASE/968e1622c27c39bcbcbbecadfb7a0d3c4b8a9d36/unbescape-1.1.6.RELEASE-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.unbescape/unbescape/1.1.6.RELEASE/7b90360afb2b860e09e8347112800d12c12b2a13/unbescape-1.1.6.RELEASE.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.2.7/2716c720b4d14ee019ec276658b5897ca9a9c88d/logback-core-1.2.7-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.2.7/31f7db3c4277023742268c0c3f9b65f1f297e49a/logback-core-1.2.7.jar">
+=======
 	<classpathentry sourcepath="C:/Users/bongc/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.32/4381b152f738580aef4e436b2692a3db30609b26/slf4j-api-1.7.32-sources.jar" kind="lib" path="C:/Users/bongc/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.32/cdcff33940d9f2de763bc41ea05a0be5941176c3/slf4j-api-1.7.32.jar">
+>>>>>>> 6561a8cc980dde8452027ebed2afecea8e591ea1
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
@@ -203,7 +312,16 @@
 			<attribute name="gradle_used_by_scope" value="main"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.jboss.xnio/xnio-nio/3.8.4.Final/4acaf12894bbfaad0c33e7584492c43ae63a8c62/xnio-nio-3.8.4.Final-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.jboss.xnio/xnio-nio/3.8.4.Final/109d7de9a4d995ed9f46e1409520ace346fe2fc4/xnio-nio-3.8.4.Final.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-test/2.6.0/6584e5071fa5ba73456fba6ca742d6677177ef84/spring-boot-starter-test-2.6.0-sources.jar" kind="lib" path="C:/Users/sijy1/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-test/2.6.0/f46420ff59926ec459a5a3439c6b8c0c7ff6a2fe/spring-boot-starter-test-2.6.0.jar">
+=======
 	<classpathentry sourcepath="C:/Users/bongc/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-test/2.6.0/6584e5071fa5ba73456fba6ca742d6677177ef84/spring-boot-starter-test-2.6.0-sources.jar" kind="lib" path="C:/Users/bongc/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-test/2.6.0/f46420ff59926ec459a5a3439c6b8c0c7ff6a2fe/spring-boot-starter-test-2.6.0.jar">
+>>>>>>> 6561a8cc980dde8452027ebed2afecea8e591ea1
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="test"/>
 			<attribute name="test" value="true"/>
