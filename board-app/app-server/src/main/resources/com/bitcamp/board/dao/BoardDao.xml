@@ -31,7 +31,10 @@
     <result column="bno" property="boardNo"/>
   </resultMap>
   
+<<<<<<< HEAD
+=======
   
+>>>>>>> 3a7fbaafedd7aa50c6e32bd47bc1a143920b15bd
   <select id="findAll" resultMap="boardMap">
     select
       b.bno,
@@ -43,11 +46,52 @@
     from 
       app_board b
       join app_member m on b.mno = m.mno
+<<<<<<< HEAD
+    <if test="keyword != null">
+    where
+      b.title like concat("%", #{keyword}, "%")
+      or b.cont like concat("%", #{keyword}, "%")
+      or m.name like concat("%", #{keyword}, "%")
+    </if>
+    order by 
+    <if test="titleSort != null">
+      title ${titleSort}
+    </if>
+    <if test="titleSort == null">
+      bno desc
+    </if>
+    limit #{startIndex}, #{size}
+  </select>
+  
+  <select id="count" resultType="int">
+    select
+      count(*)
+    from 
+      app_board b
+      join app_member m on b.mno = m.mno
+    <if test="keyword != null">
+    where
+      b.title like concat("%", #{keyword}, "%")
+      or b.cont like concat("%", #{keyword}, "%")
+      or m.name like concat("%", #{keyword}, "%")
+    </if>
+    order by 
+    <if test="titleSort != null">
+      title ${titleSort}
+    </if>
+    <if test="titleSort == null">
+      bno desc
+    </if>  
+  </select>
+  
+  <select id="findByNo" resultMap="boardMap">
+=======
     order by 
       bno desc
   </select>
   
     <select id="findByNo" resultMap="boardMap">
+>>>>>>> 3a7fbaafedd7aa50c6e32bd47bc1a143920b15bd
     select
       b.bno,
       b.title,

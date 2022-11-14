@@ -12,16 +12,26 @@ tr:hover {
 </head>
 <body>
   <h1>게시글</h1>
-  <a href='form'>새 글</a>
-  <table border='1'>
+
+  <a href='form'>새 글</a>([[${pageNo}]], [[${maxPageNo}]], [[${pageSize}]])
+  <table border='1' id="xx-board-table">
+  <thead>
     <tr>
-      <th>번호</th>
-      <th>제목</th>
+      <th id="noSort">번호</th>
+      <th id="titleSort" data-type="" data-th-data-type="${titleSort}">제목</th>
       <th>조회수</th>
       <th>작성자</th>
       <th>등록일</th>
     </tr>
+<<<<<<< HEAD
+  </thead>
+  <tbody data-page-no="1" data-th-data-page-no="${pageNo}" 
+        data-page-size="3" data-th-data-page-size="${pageSize}"
+        data-max-page-no="5" data-th-data-max-page-no="${maxPageNo}">
+    <tr data-th-each="board : ${boards}" data-th-fragment="page">
+=======
     <tr data-th-each="board : ${boards}">
+>>>>>>> 3a7fbaafedd7aa50c6e32bd47bc1a143920b15bd
       <td data-th-text="${board.no}">100</td>
       <td>
         <a href='detail?no=1'
@@ -32,9 +42,100 @@ tr:hover {
       <td data-th-text="${board.writer.name}">홍길동</td>
       <td data-th-text="${board.createdDate}">2022-1-1</td>
     </tr>
-
+  </tbody>
   </table>
+<<<<<<< HEAD
+  검색어: <input type="text" name="keyword" value="검색어" data-th-value="${keyword}">
+  <button id='searchBtn'>검색</button><br>
+  <p>
+    <a href='.' id="xx-prev-btn">이전</a>
+    <a href='.' id="xx-next-btn">다음</a>
+    <a href='../'>메인</a>
+  </p>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+  var titleSort = document.querySelector("#titleSort");
+  var sortType = titleSort.getAttribute("data-type");
+  var boardTableBody = $("#xx-board-table > tbody");
+
+  var flag = "제목";
+  
+  var pageNo = boardTableBody.attr("data-page-no");
+  var pageSize = boardTableBody.attr("data-page-size");
+  var maxPageNo = boardTableBody.attr("data-max-page-no");
+  
+  if (sortType == "" || sortType == null) {
+	  titleSort.innerHTML = "제목"; 
+  } else if (sortType == "desc") {
+	  titleSort.innerHTML = "제목&#30;";
+  } else {
+	  titleSort.innerHTML = "제목&#31;";
+  }
+  
+  $("#xx-prev-btn").click((e) => {
+	  e.preventDefault(); // 태그의 원래 행위를 막는다.
+	  if (pageNo > 1) {
+		  pageNo--;
+	  }
+	  search();
+  });
+  $("#xx-next-btn").click((e) => {
+	  e.preventDefault(); // 태그의 원래 행위를 막는다.
+	  if (pageNo < maxPageNo) {
+		  pageNo++;
+	  }
+	  search();
+  });
+  
+  document.querySelector("#searchBtn").onclick = () => {
+	  search();
+  };
+  
+  document.querySelector("#titleSort").onclick = (e) => {
+	  
+	  console.log(sortType);
+	  var flag = "제목";
+	  if (sortType == "" || sortType == null) {
+		  sortType = "desc";
+		  flag += "&#30;";
+	  } else if (sortType == "desc") {
+		  sortType = "asc";
+		  flag += "&#31;";
+	  } else {
+		  sortType = "";
+		  flag += "";
+	  }
+	  console.log(sortType);
+	  e.target.setAttribute("data-type", sortType);
+	  e.target.innerHTML = flag;
+	  
+	  var sortParam = ""
+	  if (sortType != "") {
+  	   sortParam = "&titleSort=" + sortType;
+	  }
+	  search(sortParam);
+  };
+  
+  function search(sortParam) {
+	  var params = {
+			  "pageNo": pageNo,
+			  "pageSize" : pageSize
+	  };
+	  if (sortParam != undefined) {
+		  params.sortParam = sortParam;
+	  }
+	  var keyword = document.querySelector("input[name=keyword]").value;
+	  if (keyword != "") {
+		  params.keyword = window.encodeURIComponent(keyword);
+	  }
+	  console.log(params);
+		boardTableBody.load("list-ajax", params);
+  }
+  </script>
+=======
   <p><a href='../'>메인</a></p>
+>>>>>>> 3a7fbaafedd7aa50c6e32bd47bc1a143920b15bd
 </body>
 </html>
 
