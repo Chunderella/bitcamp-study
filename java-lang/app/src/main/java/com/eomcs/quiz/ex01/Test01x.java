@@ -8,20 +8,27 @@ package com.eomcs.quiz.ex01;
 // - 메서드 파라미터 및 리턴 값 다루기
 // [시간 복잡도]
 // - ?
-public class Test01x {
 
-  public static void main(String[] args) {
-    int c = countBits(0b01100011);
-    System.out.println(c == 4); // true
+  public class Test01 {
 
-    c = countBits(0b01010111_01100011);
-    System.out.println(c == 9); // true
+    public static void main(String[] args) {
+      int c = countBits(0b01100011);
+      System.out.println(c == 4); // true
+  
+      c = countBits(0b01010111_01100011);
+      System.out.println(c == 9); // true
+    }
+  
+    static int countBits(int value) {
+      int r = 0;
+  
+      while (value != 0) {
+        r += (value & 1); // 1
+        value >>>= 1;
+      }
+  
+      return r;
+    }
+  
   }
-
-  static int countBits(int value) {
-    int r = 0;
-    // 이 메서드를 완성하시오!
-    return r;
-  }
-
-}
+  
