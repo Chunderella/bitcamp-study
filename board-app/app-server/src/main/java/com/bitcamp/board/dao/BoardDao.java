@@ -26,7 +26,10 @@ public interface BoardDao {
       @Param("size") int size);
 
   int count(@Param("keyword") String keyword, @Param("titleSort") String titleSort);
+<<<<<<< HEAD
 
+=======
+>>>>>>> dad32d1d69bb1beafd7c84e6efce20df300fdb29
 
   int insertFiles(Board board);
 

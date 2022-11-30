@@ -68,7 +68,10 @@ public class DefaultBoardService implements BoardService {
   @Override
   public int size(String keyword, String titleSort) throws Exception {
     return boardDao.count(keyword, titleSort);
+<<<<<<< HEAD
 
+=======
+>>>>>>> dad32d1d69bb1beafd7c84e6efce20df300fdb29
   }
 
   @Override
@@ -79,6 +82,12 @@ public class DefaultBoardService implements BoardService {
   @Override
   public boolean deleteAttachedFile(int fileNo) throws Exception {
     return boardDao.deleteFile(fileNo) > 0;
+  }
+
+  @Override
+  public List<Board> list() throws Exception {
+    // TODO Auto-generated method stub
+    return null;
   }
 
 }
