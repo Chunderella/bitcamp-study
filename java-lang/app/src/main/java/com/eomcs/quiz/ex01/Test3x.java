@@ -22,8 +22,11 @@ public class Test03 {
     System.out.println(r == 0b01010111_01100011); // true
   }
 
-  static int swapBits(int value, int i, int j) {
-    // 이 메서드를 완성하시오!
+  static int swapBits(int value, int i, int j) { 
+    if (((value >>> i) & 1) != ((value >>> j) & 1)) {
+      int bitMask = (1 << i) | (1 << j);
+      value ^= bitMask;  
+    }
     return value;
   }
 
