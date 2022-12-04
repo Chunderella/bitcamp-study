@@ -68,6 +68,10 @@ public class DefaultBoardService implements BoardService {
   @Override
   public int size(String keyword, String titleSort) throws Exception {
     return boardDao.count(keyword, titleSort);
+<<<<<<< HEAD
+
+=======
+>>>>>>> dad32d1d69bb1beafd7c84e6efce20df300fdb29
   }
 
   @Override

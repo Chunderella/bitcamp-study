@@ -16,13 +16,21 @@ public class Test02x {
     int p = parity(0b01100011);
     System.out.println(p == 0); // true
 
+    System.out.println("------------------------");
+
     p = parity(0b01010111_01100011);
     System.out.println(p == 1); // true
   }
 
   static int parity(int value) {
     int r = 0;
-    // 이 메서드를 완성하시오!
+
+    while (value != 0) {
+      r ^= 1;
+      value &= (value -1);
+      System.out.println("==>");
+    }
+
     return r;
   }
 

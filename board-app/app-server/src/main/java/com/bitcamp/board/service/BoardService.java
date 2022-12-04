@@ -16,9 +16,15 @@ public interface BoardService {
 
   boolean delete(int no) throws Exception;
 
+<<<<<<< HEAD
+  List<Board> list(String keyword, String titleSort, int pageNo, int pageSize) throws Exception;
+
+  int size(String keyword, String titleSort) throws Exception;
+=======
 
   int size(String keyword, String titleSort) throws Exception;
   List<Board> list() throws Exception;
+>>>>>>> dad32d1d69bb1beafd7c84e6efce20df300fdb29
 
   AttachedFile getAttachedFile(int fileNo) throws Exception;
 
