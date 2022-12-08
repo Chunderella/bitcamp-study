@@ -14,12 +14,15 @@ public class Test05 {
 
   public static void main(String[] args) {
     System.out.println(countWaysToChangeDigit(10) == 17);
-    System.out.println(countWaysToChangeDigit(2345) == 35);
+    System.out.println(countWaysToChangeDigit(2345) == 22);
   }
 
   static int countWaysToChangeDigit(int value) {
     int answer = 0;  
-    // 이 메서드를 완성하시오!
+    while (value > 0) {    
+      answer += 9 - value % 10;
+      value /= 10;
+    }
     return answer;
   }
 }
