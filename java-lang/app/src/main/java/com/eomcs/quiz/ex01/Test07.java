@@ -36,16 +36,41 @@ public class Test07 {
     System.out.println(factorialTrailingZeros(20) == 4);
     System.out.println(factorialTrailingZeros(25) == 6);
     System.out.println(factorialTrailingZeros(30) == 7);
+
+    System.out.println("----------------------------");
+
+    for (int i = 1; i < 100; i++) {
+      System.out.printf("%d ==> %d, %d\n",
+          i, factorialTrailingZeros(i), factorialTrailingZeros2(i));
+    }
   }
 
   static int factorialTrailingZeros(int n) {  
     int result = 0;
-    // 이 메서드를 완성하시오!
+    int primeFactor = 5;
+    while (n >= primeFactor) {
+      result += n / primeFactor;
+      primeFactor *= 5;      
+    }
+    return result;
+  }
+
+  static int factorialTrailingZeros2(int n) {  
+    int result = 0;
+    for (int i = 5; i <= n; i += 5) {
+      int number = i;
+      while (number % 5 == 0) {
+        number /= 5;
+        result++;
+      }
+    }
     return result;
   }
 }
 
-// 참고:
-// => "Legendre's formula(= de Polignac's formula)" 수학식을 적용해 보라! 
-// 
-
+// "Legendre's formula(= de Polignac's formula)" 수학식을 적용: 
+// => f(n) = |n/5| + |n/5^2| + |n/5^3| + ... + |n/5^k|,
+// => 5^(k+1) > n,
+// => 5^k <= n < 5^(k+1)
+// => k = log_5(n)
+//
