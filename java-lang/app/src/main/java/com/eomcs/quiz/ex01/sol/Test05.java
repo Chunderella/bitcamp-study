@@ -22,6 +22,7 @@ public class Test05 {
     int answer = 0;  
     while (value > 0) {    
       answer += 9 - value % 10;
+    
       value /= 10;
     }
     return answer;
