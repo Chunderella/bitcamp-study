@@ -33,12 +33,12 @@ index of the largest fraction assuming that none of the fractions are equal
 public class Test05 {
   public static void main(String[] args) {
     System.out.println(maxFraction(
-        new int[]{5, 2, 5}, 
+        new int[]{5, 2, 8}, 
         new int[]{6, 3, 4}) == 2);
 
     System.out.println(maxFraction(
-        new int[]{2, 4, 5, 16, 56}, 
-        new int[]{3, 5, 6, 22, 99}) == 2);
+        new int[]{2, 4, 8, 16, 56}, 
+        new int[]{3, 8, 6, 22, 99}) == 2);
 
   }
 
